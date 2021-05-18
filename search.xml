@@ -1320,4 +1320,162 @@
         <tag>Git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>人工泪液推荐</title>
+    <url>/2021/05/18/Daily/%E4%BA%BA%E5%B7%A5%E6%B3%AA%E6%B6%B2%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>商品名</th>
+<th>化学名</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爱丽</td>
+<td>玻璃酸钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>海露</td>
+<td>玻璃酸钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>人工泪液</td>
+<td>羟丙甲纤维素滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>瑞新</td>
+<td>羧甲基纤维素钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>新泪然</td>
+<td>羟糖甘滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>唯地息</td>
+<td>卡波姆山梨酸滴眼液</td>
+<td>凝胶状</td>
+</tr>
+<tr>
+<td>思然</td>
+<td>聚乙二醇滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>倍然</td>
+<td>葡萄糖酐70滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>潇莱威</td>
+<td>羧甲基纤维素钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>泪然</td>
+<td>右旋糖酐羟丙甲纤维素滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>聚乙烯醇滴眼液</td>
+<td>聚乙烯醇滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>立宝舒</td>
+<td>卡波姆眼用凝胶</td>
+<td>水液性</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>健康，滴眼液</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>猫鼻支家庭治疗方案</title>
+    <url>/2021/05/18/Daily/%E7%8C%AB%E9%BC%BB%E6%94%AF%E5%AE%B6%E5%BA%AD%E6%B2%BB%E7%96%97%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>用小儿柴胡和阿莫西林冲开。买个针筒一天喂两次。</p>
+<p>京东买速诺消炎药。一次喂半片，一天两次，一个星期。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>猫，猫鼻支</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN报错E200009:尚未纳入版本控制</title>
+    <url>/2021/05/18/Git/SVN%E6%8A%A5%E9%94%99E200009:%E5%B0%9A%E6%9C%AA%E7%BA%B3%E5%85%A5%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>报错E200009除了文件未添加的以外，还可能是因为文件名包含空格，导致解析失败。</p>
+<p>解决方案：将要添加的文件名用双引号括起来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ svn commit -m <span class="string">&quot;xx&quot;</span> <span class="string">&quot;xx xx.xx&quot;</span></span><br><span class="line">$ svn rm / add <span class="string">&quot;xx xx.xx&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN批量增加与删除</title>
+    <url>/2021/05/18/Git/SVN%E6%89%B9%E9%87%8F%E5%A2%9E%E5%8A%A0%E4%B8%8E%E5%88%A0%E9%99%A4/</url>
+    <content><![CDATA[<ol>
+<li><p>批量删除</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn status|grep ! |awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>|xargs svn del</span><br><span class="line"><span class="comment"># 首先 svn status 查看 svn 状态，列出所有改动，</span></span><br><span class="line"><span class="comment"># 打 ! 的是已经删除的文件，但是未标记在库中除去。</span></span><br><span class="line"><span class="comment"># 通过 grep ! 将这些文件单独抽离出来，</span></span><br><span class="line"><span class="comment"># 在用 awk &#x27;&#123;print $2&#125;&#x27; 将抽离出来的文本结果处理，留下每一行的第二段文字，即文件名。</span></span><br><span class="line"><span class="comment"># **注意：svn status|grep ! 与后面的 |awk &#x27;&#123;print $2&#125;&#x27;|xargs svn del 之间必须有空格，**</span></span><br><span class="line"><span class="comment"># 否则，终端回认为这个 ! 是特殊符号。</span></span><br><span class="line"><span class="comment"># 使用 xargs 这个参数构造命令将每一行的文本作为参数提供给 svn del，</span></span><br><span class="line"><span class="comment"># 相当于所有列出的文件都执行了一遍 del 操作。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>批量添加</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn status|grep ? |awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>|xargs svn add</span><br><span class="line"><span class="comment"># 与批量删除几乎一样，区别就是 ! 换成 ? ，查找要添加的文件，并将 del 换成 add 添加文件。</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>终端命令</tag>
+        <tag>SVN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac批量删除类型文件</title>
+    <url>/2021/05/18/Mac/Mac%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 删除 .DS_Store</span></span><br><span class="line">sudo find <span class="string">&quot;文件路径&quot;</span> -name <span class="string">&quot;.DS_Store&quot;</span> -depth -<span class="built_in">exec</span> rm &#123;&#125; \\;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除 .svn</span></span><br><span class="line">find . -<span class="built_in">type</span> d -name <span class="string">&quot;.svn&quot;</span>|xargs rm -rf</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>终端命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac获取当前电池健康状态</title>
+    <url>/2021/05/18/Mac/Mac%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%94%B5%E6%B1%A0%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<p>终端执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ioreg -rn AppleSmartBattery | grep -i capacity</span><br></pre></td></tr></table></figure>
+
+
+
+<p>![image-20210518140011203](/Users/zhao/Library/Application Support/typora-user-images/image-20210518140011203.png)</p>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>终端命令</tag>
+      </tags>
+  </entry>
 </search>

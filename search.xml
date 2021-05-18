@@ -260,8 +260,28 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 其中 class_name 包括：default / primary / success / info / warning / danger</span><br><span class="line">&#123;% note class_name %&#125; content &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
 
+<div class="note default">
+            <p>default </p>
+          </div>
+
+<div class="note primary">
+            <p>primary </p>
+          </div>
+
 <div class="note success">
             <p>success </p>
+          </div>
+
+<div class="note info">
+            <p>info </p>
+          </div>
+
+<div class="note warning">
+            <p>warning </p>
+          </div>
+
+<div class="note danger">
+            <p>danger </p>
           </div>
 
 <h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p><code>code</code>：在文章中插入代码</p>
@@ -333,8 +353,6 @@
 
 <h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章链接</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
-
-<a href="#">Post not found: Blog/Hexo博客搭建</a>
 
 ]]></content>
       <categories>

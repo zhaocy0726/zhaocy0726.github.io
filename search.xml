@@ -58,158 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建</title>
-    <url>/2021/05/14/Hexo/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo：一个快速、简洁且高效的博客框架。基于 Node.js 运行，使用 Markdown 解析文章。</p>
-<p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
-<p>GitHub Pages：由 GitHub 官方提供的一种免费的静态站点托管服务，托管和发布静态网站页面。</p>
-<p><a href="https://pages.github.com/">GitHub Pages 官方文档</a></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>本地编写MD，通过 Hexo 解析，渲染成具有主体样式的 HTML 静态网页，最后发布到 GitHub。</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
-<li><p>安装Git（使用的Mac安装Xcode后自动安装），使用 <code>git --version</code> 判断是否安装及版本</p>
-<blockquote>
-<p>  下载地址：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
-</blockquote>
-</li>
-<li><p>安装Node.js，使用 <code>node -v</code> 判断是否安装及版本。npm 默认随 <a href="https://hexo.io/docs/#Install-Node-js">Node.js</a> 安装。</p>
-<blockquote>
-<p>  下载地址：<a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
-</blockquote>
-</li>
-<li><p>安装 Hexo，终端执行 <code>$ npm install -g hexo-cli</code></p>
-<p> 结果：</p>
-<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqhzqyubqsj30um03egm1.jpg" alt="image-20210514132215744"></p>
-</li>
-</ol>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>安装 Hexo 完成后，Finder 切换到指定的文件夹并执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
-<p>floder 是文件名，必须要有，否则报错：</p>
-<blockquote>
-<p>  FATAL xx not empty, please run <code>hexo init</code> on an empty folder and then copy your files into it</p>
-<p>  FATAL {</p>
-<p>   err: Error: target not empty</p>
-<p>   …</p>
-<p>  }</p>
-</blockquote>
-<p>完成后，文件夹内文件结构为</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqhzqz8gatj309k0bu0t0.jpg" alt="image-20210514135038433"></p>
-<p>_config.yml：网站的配置信息，在此配置大部分参数。</p>
-<p>package.json：应用程序的信息。</p>
-<p>scaffolds：模板文件夹。新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
-<p>source：资源文件夹。开头命名为<code>_</code>的文件/文件夹和隐藏的文件会被忽略。</p>
-<p>Themes：主题文件夹。Hexo会根据主题来生成静态页面。</p>
-<p>public：网站文件</p>
-<h2 id="尝试运行"><a href="#尝试运行" class="headerlink" title="尝试运行"></a>尝试运行</h2><p>此时hexo本地服务器初步搭建完成，执行以下命令开启服务器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo service</span><br><span class="line"><span class="comment"># 可简写为</span></span><br><span class="line">$ hexo s	</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中打开 <a href="http://0.0.0.0:4000/">http://localhost:4000</a> 就可以看到初步完成的博客。</p>
-<h2 id="搭建GitHub-Pages"><a href="#搭建GitHub-Pages" class="headerlink" title="搭建GitHub Pages"></a>搭建GitHub Pages</h2><ol>
-<li><p> 新建一个 repository 并直接命名为 <code>&lt;你的 GitHub 用户名&gt;.github.io</code>。</p>
-</li>
-<li><p>修改 <code>_config.yml</code> 的 <code>deploy</code></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/xx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
-<li><p>安装 <code>Hexo-deployer-git</code> ，终端执行</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p> 安装完成后显示</p>
-<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gql5lvziasj30eh01djrc.jpg" alt="image-20210517091204163"></p>
-</li>
-<li><p> 部署文章</p>
-</li>
-</ol>
-<h2 id="部署文章"><a href="#部署文章" class="headerlink" title="部署文章"></a>部署文章</h2><p>文章编辑完成，要部署时执行以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>    </span><br><span class="line">$ hexo new post --path 分类/标题 <span class="string">&quot;标题&quot;</span> <span class="comment"># 常用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">$ hexo s                </span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 清理缓存（若无缓存导致的异常可以不用执行此命令）</span></span><br><span class="line">$ hexo clean</span><br><span class="line"><span class="comment"># 2 生成静态页面</span></span><br><span class="line">$ hexo generate / hexo g</span><br><span class="line"><span class="comment"># 3 部署到服务器</span></span><br><span class="line">$ hexo deploy / hexo d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或将 2 与 3 合并，以下命令作用相同</span></span><br><span class="line">$ hexo generate --deploy</span><br><span class="line">$ hexo deploy --generate</span><br><span class="line">$ hexo d -g</span><br><span class="line">$ hexo g -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 帮助</span></span><br><span class="line">$ hexo <span class="built_in">help</span>             </span><br></pre></td></tr></table></figure>
-
-<p>此时已经部署到 GitHub Pages。在浏览器输入 <code>https://名字.github.io</code> 即可访问博客网站。</p>
-<h2 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h2><ol>
-<li><p>检查是否存在<code>SSH Key</code>，终端执行</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
-
-<p> 如果有 <code>id_rsa.pub</code> 与 <code>id_rsa</code> 则跳过第二步。</p>
-</li>
-<li><p>生成<code>SSH key</code>，终端执行</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;email&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p> 会在 <code>~/.ssh</code> 目录下生成 <code>id_rsa.pub</code> 和 <code>id_rsa</code> 。</p>
-</li>
-<li><p><code>Finder</code> 前往 <code>~/.ssh</code> 使用文本格式打开 <code>id_rsa.pub</code> ，并复制内容。</p>
-<p> 进入 <code>GitHub</code> -&gt; <code>Setting</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code> </p>
-<p> <code>Title</code> 添加一个相关标题，将复制的内容贴到<code>Key</code>中，然后点击 <code>Add SSH key</code>。输入账号密码，添加完成后自动返回到列表界面，即可看到刚刚添加的<code>SSH key</code>。</p>
-</li>
-</ol>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ol>
-<li><p> 万网购买域名，我在阿里购买的</p>
-</li>
-<li><p>登录阿里云，进入域名模块，点击已购买的域名后的解析，点击添加记录</p>
-<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gql7jtanlaj30kp0eg74v.jpg" alt="image-20210517101922663"></p>
-</li>
-<li><p> 记录类型选择 <code>CNAME</code>，主机记录输入 www，记录值填 &lt;用户名&gt;.github.io，保存。再添加一条记录，记录类型选默认为 <code>A</code>，主机记录填写 <code>@</code>，记录值填写<code>git</code>分配的ip(通过终端 <code>ping</code> 自己的 <code>xx.github.io</code> 获取)，保存。</p>
-</li>
-<li><p> <code>Hexo</code> 的配置文件 <code>_config.yml</code> 中，配置 <code>url</code> 设置为 <code>https://www.xx.xx</code> 即已申请的地址。</p>
-</li>
-<li><p>登录 <code>GitHub</code> ，进入 <code>Setting</code> -&gt; <code>Pages</code> ，设置 <code>Custom domain</code> 为 <code>https://www.xx.xx</code> 即已申请的地址。</p>
-<p> 正确完成设置后，<code>GitHub Pages</code> 设置中可以看到</p>
-<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlcyvka0yj31gs0asabl.jpg" alt="image-20210517132648604"></p>
-<p> 此时再去访问域名就可以直接进入博客了。</p>
-</li>
-<li><p> 如果每次重新部署完无法访问域名，则将 <code>CNAME</code> 文件创建到 <code>Source</code> 文件夹内。</p>
-</li>
-</ol>
-<h2 id="添加阅读次数"><a href="#添加阅读次数" class="headerlink" title="添加阅读次数"></a>添加阅读次数</h2><ol>
-<li><p> 申请 <code>LeanCloud</code> 账号并认证</p>
-</li>
-<li><p> 点击左上角 <code>LeanCloud</code> 进入应用列表，并创建应用</p>
-</li>
-<li><p> 点击应用，进入应用信息界面，点击左侧菜单栏的 <code>数据存储</code> -&gt; <code>结构化数据</code></p>
-</li>
-<li><p> 点击 <code>创建 Class</code>，<code>Class 名称</code> 必须为 <code>Counter</code>，选择 <code>无限制</code>。（为了兼容及避免错误）</p>
-</li>
-<li><p> 点击左侧菜单栏的 <code>应用Keys</code>，复制<code>AppID</code>及<code>AppKey</code>。</p>
-</li>
-<li><p> 进入主题的配置文件中，搜索 <code>leancloud_visitors</code>，将 <code>enable</code> 改为 <code>true</code>，并粘贴上 <code>AppID</code>及<code>AppKey</code>。</p>
-</li>
-<li><p> 为了确保安全性，在 <code>LeanCloud</code> 的左侧菜单栏中选择 <code>安全中心</code>，在 <code>Web 安全域名</code> 中填入我们的域名。</p>
-</li>
-<li><p>部署后可能会发现阅读次数未显示数字，而是 <code>Counter not initialized! More info at console err msg.</code></p>
-<ol>
-<li><p> 将主题配置文件中的 <code>sercurity</code> 修改为 <code>false</code></p>
-</li>
-<li><p>终端执行 </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-leancloud-counter-security</span><br></pre></td></tr></table></figure>
-
-<p> 运行后可能报错 <code> Cannot read property &#39;enable_sync&#39; of undefined</code></p>
-<p> 在环境配置中添加 </p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">leancloud_counter_security:</span><br><span class="line">  enable_sync: true</span><br><span class="line">  app_id: u**z</span><br><span class="line">  app_key: G**k</span><br><span class="line">  username: # Will be asked while deploying if is left blank</span><br><span class="line">  password: # Recommmended to be left blank. Will be asked while deploying if is left blank</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><ol>
-<li><p>终端切到博客文件夹下，下载主题</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://xx.git themes/主题名</span><br></pre></td></tr></table></figure>
-
-<p> 或者直接下载主题包，再拖入到 <code>themes</code> 中</p>
-</li>
-<li><p> 修改配置文件 <code>_config.yml</code>，找到 <code>themes</code> 修改主题名。</p>
-</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li> <strong>官方文档，墙裂推荐</strong>：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
-<li> <a href="http://gonghonglou.com/2016/02/03/firstblog/">http://gonghonglou.com/2016/02/03/firstblog/</a></li>
-<li> <a href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo内置标签</title>
     <url>/2021/05/17/Hexo/Hexo%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><p><code>quote</code>：在文章中插入引言，可包含作者、来源和标题。</p>
@@ -354,6 +202,158 @@
 <h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章链接</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建</title>
+    <url>/2021/05/14/Hexo/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo：一个快速、简洁且高效的博客框架。基于 Node.js 运行，使用 Markdown 解析文章。</p>
+<p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
+<p>GitHub Pages：由 GitHub 官方提供的一种免费的静态站点托管服务，托管和发布静态网站页面。</p>
+<p><a href="https://pages.github.com/">GitHub Pages 官方文档</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>本地编写MD，通过 Hexo 解析，渲染成具有主体样式的 HTML 静态网页，最后发布到 GitHub。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+<li><p>安装Git（使用的Mac安装Xcode后自动安装），使用 <code>git --version</code> 判断是否安装及版本</p>
+<blockquote>
+<p>  下载地址：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+</blockquote>
+</li>
+<li><p>安装Node.js，使用 <code>node -v</code> 判断是否安装及版本。npm 默认随 <a href="https://hexo.io/docs/#Install-Node-js">Node.js</a> 安装。</p>
+<blockquote>
+<p>  下载地址：<a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
+</blockquote>
+</li>
+<li><p>安装 Hexo，终端执行 <code>$ npm install -g hexo-cli</code></p>
+<p> 结果：</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqhzqyubqsj30um03egm1.jpg" alt="image-20210514132215744"></p>
+</li>
+</ol>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>安装 Hexo 完成后，Finder 切换到指定的文件夹并执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>floder 是文件名，必须要有，否则报错：</p>
+<blockquote>
+<p>  FATAL xx not empty, please run <code>hexo init</code> on an empty folder and then copy your files into it</p>
+<p>  FATAL {</p>
+<p>   err: Error: target not empty</p>
+<p>   …</p>
+<p>  }</p>
+</blockquote>
+<p>完成后，文件夹内文件结构为</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqhzqz8gatj309k0bu0t0.jpg" alt="image-20210514135038433"></p>
+<p>_config.yml：网站的配置信息，在此配置大部分参数。</p>
+<p>package.json：应用程序的信息。</p>
+<p>scaffolds：模板文件夹。新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<p>source：资源文件夹。开头命名为<code>_</code>的文件/文件夹和隐藏的文件会被忽略。</p>
+<p>Themes：主题文件夹。Hexo会根据主题来生成静态页面。</p>
+<p>public：网站文件</p>
+<h2 id="尝试运行"><a href="#尝试运行" class="headerlink" title="尝试运行"></a>尝试运行</h2><p>此时hexo本地服务器初步搭建完成，执行以下命令开启服务器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo service</span><br><span class="line"><span class="comment"># 可简写为</span></span><br><span class="line">$ hexo s	</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中打开 <a href="http://0.0.0.0:4000/">http://localhost:4000</a> 就可以看到初步完成的博客。</p>
+<h2 id="搭建GitHub-Pages"><a href="#搭建GitHub-Pages" class="headerlink" title="搭建GitHub Pages"></a>搭建GitHub Pages</h2><ol>
+<li><p> 新建一个 repository 并直接命名为 <code>&lt;你的 GitHub 用户名&gt;.github.io</code>。</p>
+</li>
+<li><p>修改 <code>_config.yml</code> 的 <code>deploy</code></p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/xx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
+<li><p>安装 <code>Hexo-deployer-git</code> ，终端执行</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p> 安装完成后显示</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gql5lvziasj30eh01djrc.jpg" alt="image-20210517091204163"></p>
+</li>
+<li><p> 部署文章</p>
+</li>
+</ol>
+<h2 id="部署文章"><a href="#部署文章" class="headerlink" title="部署文章"></a>部署文章</h2><p>文章编辑完成，要部署时执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>    </span><br><span class="line">$ hexo new post --path 分类/标题 <span class="string">&quot;标题&quot;</span> <span class="comment"># 常用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">$ hexo s                </span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 清理缓存（若无缓存导致的异常可以不用执行此命令）</span></span><br><span class="line">$ hexo clean</span><br><span class="line"><span class="comment"># 2 生成静态页面</span></span><br><span class="line">$ hexo generate / hexo g</span><br><span class="line"><span class="comment"># 3 部署到服务器</span></span><br><span class="line">$ hexo deploy / hexo d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或将 2 与 3 合并，以下命令作用相同</span></span><br><span class="line">$ hexo generate --deploy</span><br><span class="line">$ hexo deploy --generate</span><br><span class="line">$ hexo d -g</span><br><span class="line">$ hexo g -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 帮助</span></span><br><span class="line">$ hexo <span class="built_in">help</span>             </span><br></pre></td></tr></table></figure>
+
+<p>此时已经部署到 GitHub Pages。在浏览器输入 <code>https://名字.github.io</code> 即可访问博客网站。</p>
+<h2 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h2><ol>
+<li><p>检查是否存在<code>SSH Key</code>，终端执行</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<p> 如果有 <code>id_rsa.pub</code> 与 <code>id_rsa</code> 则跳过第二步。</p>
+</li>
+<li><p>生成<code>SSH key</code>，终端执行</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;email&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p> 会在 <code>~/.ssh</code> 目录下生成 <code>id_rsa.pub</code> 和 <code>id_rsa</code> 。</p>
+</li>
+<li><p><code>Finder</code> 前往 <code>~/.ssh</code> 使用文本格式打开 <code>id_rsa.pub</code> ，并复制内容。</p>
+<p> 进入 <code>GitHub</code> -&gt; <code>Setting</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code> </p>
+<p> <code>Title</code> 添加一个相关标题，将复制的内容贴到<code>Key</code>中，然后点击 <code>Add SSH key</code>。输入账号密码，添加完成后自动返回到列表界面，即可看到刚刚添加的<code>SSH key</code>。</p>
+</li>
+</ol>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ol>
+<li><p> 万网购买域名，我在阿里购买的</p>
+</li>
+<li><p>登录阿里云，进入域名模块，点击已购买的域名后的解析，点击添加记录</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gql7jtanlaj30kp0eg74v.jpg" alt="image-20210517101922663"></p>
+</li>
+<li><p> 记录类型选择 <code>CNAME</code>，主机记录输入 www，记录值填 &lt;用户名&gt;.github.io，保存。再添加一条记录，记录类型选默认为 <code>A</code>，主机记录填写 <code>@</code>，记录值填写<code>git</code>分配的ip(通过终端 <code>ping</code> 自己的 <code>xx.github.io</code> 获取)，保存。</p>
+</li>
+<li><p> <code>Hexo</code> 的配置文件 <code>_config.yml</code> 中，配置 <code>url</code> 设置为 <code>https://www.xx.xx</code> 即已申请的地址。</p>
+</li>
+<li><p>登录 <code>GitHub</code> ，进入 <code>Setting</code> -&gt; <code>Pages</code> ，设置 <code>Custom domain</code> 为 <code>https://www.xx.xx</code> 即已申请的地址。</p>
+<p> 正确完成设置后，<code>GitHub Pages</code> 设置中可以看到</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlcyvka0yj31gs0asabl.jpg" alt="image-20210517132648604"></p>
+<p> 此时再去访问域名就可以直接进入博客了。</p>
+</li>
+<li><p> 如果每次重新部署完无法访问域名，则将 <code>CNAME</code> 文件创建到 <code>Source</code> 文件夹内。</p>
+</li>
+</ol>
+<h2 id="添加阅读次数"><a href="#添加阅读次数" class="headerlink" title="添加阅读次数"></a>添加阅读次数</h2><ol>
+<li><p> 申请 <code>LeanCloud</code> 账号并认证</p>
+</li>
+<li><p> 点击左上角 <code>LeanCloud</code> 进入应用列表，并创建应用</p>
+</li>
+<li><p> 点击应用，进入应用信息界面，点击左侧菜单栏的 <code>数据存储</code> -&gt; <code>结构化数据</code></p>
+</li>
+<li><p> 点击 <code>创建 Class</code>，<code>Class 名称</code> 必须为 <code>Counter</code>，选择 <code>无限制</code>。（为了兼容及避免错误）</p>
+</li>
+<li><p> 点击左侧菜单栏的 <code>应用Keys</code>，复制<code>AppID</code>及<code>AppKey</code>。</p>
+</li>
+<li><p> 进入主题的配置文件中，搜索 <code>leancloud_visitors</code>，将 <code>enable</code> 改为 <code>true</code>，并粘贴上 <code>AppID</code>及<code>AppKey</code>。</p>
+</li>
+<li><p> 为了确保安全性，在 <code>LeanCloud</code> 的左侧菜单栏中选择 <code>安全中心</code>，在 <code>Web 安全域名</code> 中填入我们的域名。</p>
+</li>
+<li><p>部署后可能会发现阅读次数未显示数字，而是 <code>Counter not initialized! More info at console err msg.</code></p>
+<ol>
+<li><p> 将主题配置文件中的 <code>sercurity</code> 修改为 <code>false</code></p>
+</li>
+<li><p>终端执行 </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-leancloud-counter-security</span><br></pre></td></tr></table></figure>
+
+<p> 运行后可能报错 <code> Cannot read property &#39;enable_sync&#39; of undefined</code></p>
+<p> 在环境配置中添加 </p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">leancloud_counter_security:</span><br><span class="line">  enable_sync: true</span><br><span class="line">  app_id: u**z</span><br><span class="line">  app_key: G**k</span><br><span class="line">  username: # Will be asked while deploying if is left blank</span><br><span class="line">  password: # Recommmended to be left blank. Will be asked while deploying if is left blank</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><ol>
+<li><p>终端切到博客文件夹下，下载主题</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://xx.git themes/主题名</span><br></pre></td></tr></table></figure>
+
+<p> 或者直接下载主题包，再拖入到 <code>themes</code> 中</p>
+</li>
+<li><p> 修改配置文件 <code>_config.yml</code>，找到 <code>themes</code> 修改主题名。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li> <strong>官方文档，墙裂推荐</strong>：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li> <a href="http://gonghonglou.com/2016/02/03/firstblog/">http://gonghonglou.com/2016/02/03/firstblog/</a></li>
+<li> <a href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Blog</category>
@@ -629,20 +629,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac在Docker栏中添加空白项</title>
-    <url>/2020/12/22/Mac/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
-    <content><![CDATA[<p>终端输入</p>
-<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
-]]></content>
-      <categories>
-        <category>Mac</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>终端命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac电源管理设置-pmset</title>
     <url>/2020/11/20/Mac/Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE%20-%20pmset/</url>
     <content><![CDATA[<h1 id="Mac-电源管理设置-pmset"><a href="#Mac-电源管理设置-pmset" class="headerlink" title="Mac 电源管理设置-pmset"></a>Mac 电源管理设置-pmset</h1><p>[toc]</p>
@@ -792,6 +778,20 @@
         <tag>终端命令</tag>
         <tag>Mac异常处理</tag>
         <tag>电源管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac在Docker栏中添加空白项</title>
+    <url>/2020/12/22/Mac/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
+    <content><![CDATA[<p>终端输入</p>
+<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>终端命令</tag>
       </tags>
   </entry>
   <entry>

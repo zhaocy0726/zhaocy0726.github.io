@@ -1,8 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mac 删除 launchpad 上的图标</title>
+    <url>/Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/</url>
+    <content><![CDATA[<h2 id="Mac-删除-launchpad-上的图标"><a href="#Mac-删除-launchpad-上的图标" class="headerlink" title="Mac 删除 launchpad 上的图标"></a>Mac 删除 launchpad 上的图标</h2><p>启动台（launchpad）上有很多我们不想看到的顽固图标，是跟随我们需要的app一起安装到电脑中的，但是实际使用中确根本用不到这些内容。这导致启动台显示很多冗余图标，对于喜欢干净整洁的我们看着很不舒服，但是当我们想要删除到这些没用的内容发现无法删除，长按option也没有显示删除的选项。使用以下步骤尝试删除：</p>
+<ol>
+<li> 打开访达（Finder），按住 ‘command + shift + G’ 或者点击菜单栏中 ‘前往→前往文件夹’</li>
+<li> 输入 <code>/private/var/folders</code></li>
+<li> 在搜索栏输入 <code>com.apple.dock.launchpad</code></li>
+<li> 搜索范围选择<code>folders</code></li>
+<li> 进入<code>com.apple.dock.launchpad</code>文件夹，并复制<code>db</code>文件夹</li>
+</ol>
+<blockquote>
+<p>  以上步骤也可以使用终端输入 <code>find / -name com.apple.dock.launchpad 2&gt;/dev/null</code>获取<code>db</code>绝对地址，但是需要等待一段时间进行全盘搜索</p>
+</blockquote>
+<ol>
+<li> 打开终端，输入<code>cd </code>，并粘贴复制到的<code>db</code>文件夹的绝对地址</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /private/var/folders/xxxxxxx/com.apple.dock.launchpad/db</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li> 继续在终端输入</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlite3 db &quot;delete from apps where title=&#x27;图标名字&#x27;;&quot;&amp;&amp;killall Dock</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  注意：</p>
+<ol>
+<li> 图标名字就是要删除的图标的名字，要完全一致，包括大小写、空格、中英文标点符号等</li>
+<li> 一次删除一个，不要同时删除好几个</li>
+</ol>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 安装第三方软件失败处理</title>
+    <url>/Mac%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<p>处理安装第三方软件失败，在系统设置中找不到允许任何来源，或打开软件提示已损坏。</p>
+<span id="more"></span>
+
+
+
+<h2 id="Mac-允许任何来源"><a href="#Mac-允许任何来源" class="headerlink" title="Mac 允许任何来源"></a>Mac 允许任何来源</h2><p>系统设置中隐私设置没有显示全部来源时，终端输入</p>
+<p><code>sudo spctl --master-disable</code></p>
+<h2 id="Mac-打开软件提示已损坏无法打开的解决办法"><a href="#Mac-打开软件提示已损坏无法打开的解决办法" class="headerlink" title="Mac 打开软件提示已损坏无法打开的解决办法"></a>Mac 打开软件提示已损坏无法打开的解决办法</h2><ol>
+<li> 如题失败时，终端执行</li>
+</ol>
+<p><code>sudo xattr -d com.apple.quarantine /Applications/xxxx.app</code></p>
+<ol start="2">
+<li> 重启app</li>
+</ol>
+<div class="note success">
+            <p>这是一个成功的模块 </p>
+          </div>
+
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 系统异常可尝试恢复操作</title>
+    <url>/Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>Mac虽然相比较来说会稳定些，但是也不是没有出问题的可能。以下是我的电脑出现问题时尝试过的部分恢复操作，有些时候重置系统设置就能修复部分问题（比如电脑接口无法充电或连接外设无反应）。<strong>恢复前记得备份电脑数据！</strong>虽然我的数据没有丢失过，但是苹果官方人员在推荐我做以下操作之前还是建议我备份了电脑数据。如果还是不行那么推荐直接联系官方人员。</p>
+<span id="more"></span> 
+
+
+
+<p>[toc]</p>
+<h2 id="Mac-重置-NVRAM"><a href="#Mac-重置-NVRAM" class="headerlink" title="Mac 重置 NVRAM"></a>Mac 重置 NVRAM</h2><p>重置 Mac 上的 NVRAM，可储存在 NVRAM 中的设置包括显示屏分辨率、时区，以及最近的内核崩溃信息等，这个办法不会造成数据丢失。</p>
+<p>步骤</p>
+<blockquote>
+<ol>
+<li> 将 Mac 关机</li>
+<li> 然后开机并立即同时按住以下四个按键：Option、Command、P 和 R ，大约 20 秒后松开这些按键</li>
+<li> 在此期间您的 Mac 可能看似在重新启动。您可以在 Apple 标志出现并再次消失后松开这些按键</li>
+</ol>
+</blockquote>
+<p>在您的 Mac 完成启动后，您可能需要打开“系统偏好设置”并调整已重置的任何设置，例如音量、显示屏分辨率、启动磁盘选择或时区。</p>
+<h2 id="Mac-重置系统管理控制器（SMC）"><a href="#Mac-重置系统管理控制器（SMC）" class="headerlink" title="Mac 重置系统管理控制器（SMC）"></a>Mac 重置系统管理控制器（SMC）</h2><blockquote>
+<ol>
+<li> 关机</li>
+<li> 按住电源按钮10秒左右</li>
+<li> 松开电源按钮，等待几秒</li>
+<li> 开机</li>
+</ol>
+</blockquote>
+<h2 id="Mac-重置电源配置？"><a href="#Mac-重置电源配置？" class="headerlink" title="Mac 重置电源配置？"></a>Mac 重置电源配置？</h2><blockquote>
+<ol>
+<li> 关机</li>
+<li> 按住右Shift键、左Option键、左Control键 7 秒。Mac可能会开机，并显示Apple标志。</li>
+<li> 在继续按住这些按键的同时，再按住电源键 7 秒。如果Mac在第一次按下这些按键时开机，此时它会关闭。</li>
+<li> 松开所有的按键，等待几秒</li>
+<li> 开机</li>
+</ol>
+</blockquote>
+<h2 id="Mac-安全模式"><a href="#Mac-安全模式" class="headerlink" title="Mac 安全模式"></a>Mac 安全模式</h2><ul>
+<li>  <strong>步骤</strong></li>
+</ul>
+<blockquote>
+<ol>
+<li> 将Mac关机</li>
+<li> 按电源键启动Mac，然后立即松手按住Shift键。直至显示屏上将出现 Apple 标志。松开按键，等待电脑开机。</li>
+<li> 在右上角看到“安全模式”字样，说明已经进入到安全模式。也可以通过“关于本机”-“系统信息”-“软件”部分查看“启动模式”是否显示“安全”。</li>
+</ol>
+</blockquote>
+<ul>
+<li><p><strong>安全模式作用</strong></p>
+<ul>
+<li>  验证启动磁盘，并根据需要尝试修复目录问题</li>
+<li>  仅载入需要的内核扩展</li>
+<li>  防止启动项和登录项自动打开</li>
+<li>  停用用户安装的字体</li>
+<li>  删除字体缓存、内核缓存和其他系统缓存文件</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 电源管理设置-pmset</title>
+    <url>/Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE%20-%20pmset/</url>
+    <content><![CDATA[<h1 id="Mac-电源管理设置-pmset"><a href="#Mac-电源管理设置-pmset" class="headerlink" title="Mac 电源管理设置-pmset"></a>Mac 电源管理设置-pmset</h1><p>[toc]</p>
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><code>pmset</code>，操纵电源管理设置（<strong>p</strong>ower <strong>m</strong>anagement <strong>set</strong>ting）。</p>
+<p>顾名思义，这个工具可以设置和列出电源管理设置，像空闲睡眠时间、访问时唤醒、断点重启等等。其中一部分功能在系统设置中通过图形界面的方式提供了，然而大部分更加灵活的选项并没有显示出来。</p>
+<p>这种情况下，如果需要调整未提供的管理设置。就需要使用<code>pmset</code>命令来进行调整。</p>
+<p><code>pmset</code>命令必须使用root用户来运行。</p>
+<p>查看对应相关内容可以在终端运行 <code>man pmset</code>， 查看官方说明。</p>
+<h3 id="相关标记"><a href="#相关标记" class="headerlink" title="相关标记"></a>相关标记</h3><p><code>pmset</code> 可以根据使用情况设置不同的电量管理设定。当设备正在充电、使用电池、UPS（不间断电源）或三者都有的情况下，可以应用不同的设定。下面是相关的标记：</p>
+<ul>
+<li>  -c 调节设定用于连接充电器的时候</li>
+<li>  -b 调节设定用于使用电池的时候</li>
+<li>  -u 调节设定用于使用 UPS 的时候</li>
+<li>  -a 调节设定用于全部情景</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li> <strong>显示信息</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -g [option]  // option 为可选项</span><br></pre></td></tr></table></figure>
+
+<p><strong>option 参数</strong></p>
+<ul>
+<li><p>  -g (不带参数)  显示当前正在使用的设置</p>
+</li>
+<li><p>  -g live 显示当前正在使用的设置（等同于不带参数）</p>
+</li>
+<li><p>  -g custom 显示为所有电源的自定义设置（分别显示电池与电源设置）</p>
+</li>
+<li><p>  -g cap 显示机器支持哪些电源功能</p>
+</li>
+<li><p>  -g sched 显示计划启动、唤醒或关闭、睡眠事件</p>
+</li>
+<li><p>  -g ps/batt 显示电池和UPS状态</p>
+</li>
+<li><p>  -g pslog 显示电源（电池或UPS）状态的连续日志</p>
+</li>
+<li><p>  -g rawlog 显示直接读取电池的电池状态的连续日志</p>
+</li>
+<li><p>  -g therm 显示影响 CPU 速度的热力条件。不适用于全部平台</p>
+</li>
+<li><p>  -g thermlog 显示影响 CPU 速度的热量的通知日志。不适用于全部平台</p>
+</li>
+<li><p>  -g assertions 显示电量断言的概要。断言可以阻止系统睡眠或显示器睡眠。适用于 10.6 及更新版本</p>
+</li>
+<li><p>  -g assertionslog 显示电量断言的创建及释出日志。适用于 10.6 及更新版本</p>
+</li>
+<li><p>  -g sysload 显示“系统负载顾问”——。适用于 10.6 及更新版本</p>
+</li>
+<li><p>  -g ac/adapter 显示关于交流电源适配器的详情。只有 MacBoook 和 MacBook Pro 支持。</p>
+</li>
+<li><p>  -g log 显示睡眠，唤醒及其他电源管理时间的历史。这个日志只提供给管理员和调试目的</p>
+</li>
+<li><p>  -g uuid 显示当前活跃的睡眠、唤醒的 UUID。</p>
+</li>
+<li><p>  -g uuidlog 显示当前活跃的睡眠、唤醒的 UUID，并且打印一个新的被系统设置的 UUID</p>
+</li>
+<li><p>  -g history 一个调试工具。当使用启动参数 io=0x3000000 被启用时，打印系统睡眠唤醒的 UUID 的时间线。</p>
+</li>
+<li><p>  -g powerstate 打印当前为 IO Kit 驱动电源状态。调用者应该至少提供一个 IO Kit 类名来作为参数。如果没有类名被听过，它将打印全部驱动的电源状态。</p>
+</li>
+<li><p>  -g powerstatelog </p>
+</li>
+<li><p>  -g stats 打印自系统启动以来睡眠和唤醒系统的计数。</p>
+</li>
+<li><p>  -g systemstate 打印当前系统的电量状态和可用能力。</p>
+</li>
+<li><p>  -g everything 打印每个参数。这是一个有用的快速收集所有 pmset 提供的输出。适用于 10.8。</p>
+</li>
+</ul>
+<ol start="2">
+<li> <strong>修改安全休眠级别</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0 </span><br></pre></td></tr></table></figure>
+
+<p>台式默认支持模式。睡眠时内存保持供电，其他部件断电，系统将不会备份内存到硬盘，唤醒时直接从内存恢复。</p>
+<ul>
+<li>  优点是<strong>快速唤醒、睡眠</strong>，因为内存保持供电，无论唤醒还是睡眠都很快，节省SSD空间和寿命。因为内存数据不写入硬盘，所以硬盘里不会有内存镜像，也不会缩短SSD寿命。</li>
+<li>  缺点是如果在睡眠过程中没电了的话，Mac会丢失内存中的数据，数据安全性不高。同时<strong>电力消耗最大</strong>，导致<strong>待机时间短</strong>。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 3 // 默认模式</span><br></pre></td></tr></table></figure>
+
+<p>笔记本默认支持模式。将内存镜像写入磁盘的同时也给内存供电，直到电池的临界值，系统会存储一份内存的备份到硬盘，唤醒时从内存唤醒，除非内存断电了将会由硬盘唤醒。相对其他模式来说，电力消耗一般，唤醒速度相对适中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 25 // 最佳省电, 亮屏会慢3~5s</span><br></pre></td></tr></table></figure>
+
+<p>只能通过<code>pmset</code>设置。系统将内存镜像写入硬盘，写入后断开电脑所有部件断电，唤醒的时候从硬盘读取。</p>
+<ul>
+<li>  优点是<strong>最省电，待机时间长，不怕数据丢失，对电池寿命友好</strong>。</li>
+<li>  缺点是<strong>睡眠和唤醒速度最慢</strong>，也会缩短SSD寿命。</li>
+</ul>
+<h2 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><code>displaysleep</code>: Mac闲置多长时间后进入显示器睡眠（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
+<p><code>disksleep</code>: Mac闲置多长时间后关闭硬盘。这个系统偏好里也有，只不过换了一个字眼—如果可能，使硬盘进入睡眠—勾上这个的话系统就会自动根据sleep的时间设一个合适的时间（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
+<p><code>sleep</code>: 系统睡眠计时器（值为分钟，或者设置 0 来禁用）。</p>
+<blockquote>
+<p>  注意：睡眠时间的设置上，应该是 sleep &gt;= disksleep &gt;=displaysleep</p>
+</blockquote>
+<p><code>womp</code>: 远程网络唤醒（值为 1 或者 0）</p>
+<p><code>ring</code>: 通过调制解调器环境（值为 1 或者 0）</p>
+<p><code>hibernatemode</code>: 改变休眠模式。请小心使用（值为整数）</p>
+<p><code>hibernatefile</code>: 改变休眠镜像文件位置。镜像应该只被定为到根卷中。请小心使用（值为路径）</p>
+<p><code>powernap</code>: 这个就是电能小憩，你可以在系统偏好设置里选择开或关，跟在这里设置是一样的，1是开启 0是</p>
+<p><code>standby</code>：使得机器在睡眠了一段指定的时间间隔后，核心电源管理会自动休眠机器。<del>即当满足以下条件（接电源、没有外界设备、没有网络活动），到了<code>standbydelay</code> x秒后，就开始启动安全睡眠模式。</del>根据<code>highstandbythreshold</code>设置的电量百分比，当满足对应条件<code>standbydelayhigh</code>或<code>standbydelaylow</code>时，进入安全睡眠模式，往硬盘上写入sleepimag后进入深度睡眠。</p>
+<p><code>standbydelayhigh</code>：设置电量高于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
+<p><code>standbydelaylow</code>：设置电量低于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
+<p><code>networkoversleep</code>: 这个设置影响 OS X 在系统睡眠时如何联网。这个设置不被全平台使用，不支持修改这个值。</p>
+<p><code>ttyskeepawake</code>: 当任何 tty（如：远程登录会话） 在活动状态时，阻止系统空闲睡眠。远程用户正在活动时防止Mac进入睡眠，1是开启 0是关闭。</p>
+<p>tcpkeepalive</p>
+<p><code>acwake</code>: 当电源（AC 或者电池）改变的时候唤醒机器（值为 1 或者 0）</p>
+<p><code>proximitywake</code>：在受支持的系统上，该选项根据使用相同iCloud id的设备的接近程度控制系统从睡眠中唤醒。</p>
+<p><code>halfdim</code>: 显示器睡眠时使显示器亮度改变为当前亮度的一半，1是开启 0是关闭。如果关闭这个功能的话，显示器睡眠会直接关掉显示器。</p>
+<p><code>lidwake</code>: 当笔记本打开盖子的时候唤醒机器（值为 1 或者 0）</p>
+<hr>
+<p>(以下部分通过 <code>man pmset</code> 查看)</p>
+<p><code>autorestart</code>: 当断电后自动重启（值为 1 或者 0）</p>
+<p><code>lessbright</code>: 显示休眠将使用介于全亮度和全亮度之间的中间半亮度状态(值为 1 或 0)</p>
+<p><code>sms</code>: 当重力突然改变时，使用瞬时运动传感器来停止磁盘头（值为 1 或者 0）</p>
+<p><code>destroyfvkeyonstandby</code>: 当变为待机模式时销毁文件库密钥。默认地，当系统待机时密钥被保留。如果关键文件被销毁，将导致当用户退出待机模式时输入密码（值为 1 – 销毁 ，0 – 保留）</p>
+<h3 id="命令用例"><a href="#命令用例" class="headerlink" title="命令用例"></a>命令用例</h3><p>想要修改某一项设置的话，就打开终端，按照以下的格式输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset [-a(all) | -b(battery) | -c(charger) | -u(UPS)] [setting value] [...]</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li> 修改网络状态, 开启, 盒盖即断网, 类似关机状态</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -a tcpkeepalive 0 // 可能会影响到 查找我的mac功能</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li> 合上屏幕之后，在4200分钟之内如果被唤醒，则从<a href="https://www.smzdm.com/fenlei/neicun/">内存</a>直接调用数据，如果4200分钟后依然未请求唤醒，系统则会移送所有内存数据到<a href="https://www.smzdm.com/fenlei/yingpan/">硬盘</a>，并且停止供电。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -b standby 1 // 默认0</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li> 禁止sleepimage的生成与写入（耗电量巨大，有数据丢失风险）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0  </span><br><span class="line">sudo pmset -a autopoweroff 0  </span><br><span class="line">sudo pmset -a standby 0  </span><br><span class="line">sudo rm /var/vm/sleepimage</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 在 Docker 栏中添加空白项</title>
+    <url>/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
+    <content><![CDATA[<p>终端输入</p>
+<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 终端统计代码行数</title>
+    <url>/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 调整鼠标 DPI</title>
+    <url>/Mac%E8%B0%83%E6%95%B4%E9%BC%A0%E6%A0%87DPI/</url>
+    <content><![CDATA[<h2 id="Mac-调整鼠标-DPI"><a href="#Mac-调整鼠标-DPI" class="headerlink" title="Mac 调整鼠标 DPI"></a>Mac 调整鼠标 DPI</h2><p><strong>终端中先查看当前值</strong></p>
+<p>鼠标双击阈值：</p>
+<p><code>defaults read -g com.apple.mouse.doubleClickThreshold</code></p>
+<p>鼠标加速度：</p>
+<p><code>defaults read -g com.apple.mouse.scaling</code></p>
+<p>滚动速度：</p>
+<p><code>defaults read -g com.apple.scrollwheel.scaling</code></p>
+<p><strong>调整数据</strong></p>
+<p>鼠标双击阈值：</p>
+<p><code>defaults write -g com.apple.mouse.doubleClickThreshold 0.75</code></p>
+<p>鼠标加速度：</p>
+<p><code>defaults write -g com.apple.mouse.scaling 5</code></p>
+<p>滚动速度：</p>
+<p><code>defaults write -g com.apple.scrollwheel.scaling 0.75</code></p>
+<p><strong>重启电脑后生效</strong></p>
+]]></content>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git创建私有库</title>
+    <url>/Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="1-创建私有Spec-Repo（只需要创建一次）"><a href="#1-创建私有Spec-Repo（只需要创建一次）" class="headerlink" title="1. 创建私有Spec Repo（只需要创建一次）"></a>1. 创建私有Spec Repo（只需要创建一次）</h3><ol>
+<li>首先创建一个 git 仓库（gitHub，Bitbucket，gitLab，coding，gitee，CSDN Code），权限选择私有仓库。如果有MIT选项，选中。</li>
+<li>将远程版本库添加到本地：pod repo add MyRepo <a href="https://xxx.git/">https://xxx.git</a> （创建好的Repo仓库）</li>
+<li>成功执行完上一步后, 在 finder 跳转到 ~/.cocoapods/repos 目录下可以看到MyRepo版本库。可以看到与 MyRepo 同级有一个 Master 版本库，这个是git默认的开源版本库。</li>
+</ol>
+<h3 id="2-创建代码库"><a href="#2-创建代码库" class="headerlink" title="2.创建代码库"></a>2.创建代码库</h3><ol>
+<li><p> 同1.1</p>
+</li>
+<li><p>可以使用常规创建项目方法，将远程代码库添加到本地</p>
+<ol>
+<li> 克隆代码 <code>git clone xxx.git TestCode</code></li>
+<li> 切换到该文件夹路径，如果是一个空项目则创建项目</li>
+<li> 创建 <code>.podspec</code> 文件：<code>$ pod spec create &#39;TestCode&#39;</code></li>
+<li> 创建 <code>.swift-version</code>：<code>$ echo&quot;2.3&quot;&gt; .swift-version</code></li>
+</ol>
+</li>
+<li><p>也可以使用 <code>$ pod lib create TestCode</code> 创建项目</p>
+<ol>
+<li> 创建项目</li>
+<li> 选择相关信息：平台 、 语言 、 Demo 、 测试框架 、 界面测试 、 类前缀，根据需求选择</li>
+<li> 添加git ：<code>$ git remote add origin http://xxx.git</code></li>
+<li> 拉取更新：<code>$ git pull origin master</code></li>
+</ol>
+</li>
+<li><p>修改 <code>.podspec</code> 文件</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new <span class="keyword">do</span> |s|</span><br><span class="line">s.name = <span class="string">&quot;TestCode&quot;</span> <span class="comment"># 项目名称</span></span><br><span class="line">s.version = <span class="string">&quot;0.0.1&quot;</span> <span class="comment"># 版本号 与 你仓库的 标签号 对应</span></span><br><span class="line">s.license = &#123; :<span class="built_in">type</span> =&gt; <span class="string">&quot;MIT&quot;</span>, :file =&gt; <span class="string">&quot;LICENSE&quot;</span> &#125; <span class="comment"># 开源许可证</span></span><br><span class="line">s.summary = <span class="string">&quot;desc&quot;</span> <span class="comment"># 项目简介</span></span><br><span class="line"></span><br><span class="line">s.homepage = <span class="string">&quot;http://git.com/xxx&quot;</span> <span class="comment"># 仓库的主页</span></span><br><span class="line">s.source = &#123; :git =&gt; <span class="string">&quot;http://git.com/xxx.git&quot;</span>, :branch =&gt; <span class="string">&#x27;master&#x27;</span>, :tag =&gt; <span class="string">&quot;#&#123;s.version&#125;&quot;</span> &#125; <span class="comment">#你的仓库地址，不能用SSH地址</span></span><br><span class="line">s.source_files = <span class="string">&quot;TestCode/*.&#123;h,m&#125;&quot;</span> <span class="comment"># 代码的位置</span></span><br><span class="line">s.requires_arc = <span class="literal">true</span> <span class="comment"># 是否启用ARC</span></span><br><span class="line">s.platform = :ios, <span class="string">&quot;7.0&quot;</span> <span class="comment">#平台及支持的最低版本</span></span><br><span class="line"><span class="comment"># s.xcconfig = &#123; &#x27;OTHER_LDFLAGS&#x27; =&gt; &#x27;-Objc -all_load -fobjc-arc&#x27;,&#x27;ENABLE_BITCODE&#x27;=&gt;&#x27;NO&#x27;&#125; # target的相关设置</span></span><br><span class="line">s.author = &#123; <span class="string">&quot;author&quot;</span> =&gt; <span class="string">&quot;xxx.com&quot;</span> &#125; <span class="comment"># 作者信息, 开源上线后可能发送邮件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># s.frameworks = &quot;UIKit&quot;, &quot;Foundation&quot; #支持的框架</span></span><br><span class="line"><span class="comment"># s.resources = &quot;*.bundle&quot; # 资源文件</span></span><br><span class="line"><span class="comment"># s.dependency = &quot;AFNetworking&quot; # 依赖库，有多少依赖库就写多少 s.dependency</span></span><br><span class="line"><span class="comment"># s.dependency &#x27;AFNetworking&#x27;, &#x27;~&gt; 3.0&#x27; # 可以指定版本</span></span><br></pre></td></tr></table></figure></li>
+<li><p> 验证 <code>.podspec</code> 是否正确：<code>$ pod lib lint</code></p>
+</li>
+<li><p> 通过后显示 <code>TestCode passed validation</code></p>
+</li>
+</ol>
+<h3 id="3-上传代码"><a href="#3-上传代码" class="headerlink" title="3. 上传代码"></a>3. 上传代码</h3><ol>
+<li><p> 修改代码完成后，修改项目中的版本与 <code>.podspec</code> 中的 <code>s.version</code> 版本</p>
+</li>
+<li><p>开始上传代码</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pod lib lint // 检查.podspec及代码是否有错误，如果有错误不能提交</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add . // 缓存修改</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">&quot;desc&quot;</span> // 标记</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git tag <span class="string">&quot;新的版本号&quot;</span> // 打标签</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push --tags // 推送到远程仓库 （git push origin master —tags）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> pod repo push MyRepo TestCode.podspec --allow-warnings // 修改版本仓库</span></span><br></pre></td></tr></table></figure></li>
+<li><p> 如果没有报错则提交成功</p>
+</li>
+</ol>
+<h3 id="4-使用私有库"><a href="#4-使用私有库" class="headerlink" title="4. 使用私有库"></a>4. 使用私有库</h3><ol>
+<li><p>使用时需要在 <code>Podfile</code> 顶部加入</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source &#x27;https://xxx/MyRepo.git&#x27;</span><br><span class="line">source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p> 在 <code>Podfile</code> 中引入需要使用的私有库</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo内置标签</title>
-    <url>/2021/05/17/Blog/Hexo%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
+    <url>/Hexo%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><p><code>quote</code>：在文章中插入引言，可包含作者、来源和标题。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
@@ -134,7 +504,7 @@
   </entry>
   <entry>
     <title>Hexo博客搭建</title>
-    <url>/2021/05/14/Blog/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <url>/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo：一个快速、简洁且高效的博客框架。基于 Node.js 运行，使用 Markdown 解析文章。</p>
 <p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
 <p>GitHub Pages：由 GitHub 官方提供的一种免费的静态站点托管服务，托管和发布静态网站页面。</p>
@@ -283,7 +653,7 @@
   </entry>
   <entry>
     <title>Hexo博客配置及命令</title>
-    <url>/2021/05/14/Blog/Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
+    <url>/Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
 <p>官方文档： <a href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
 <h3 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h3><p><code>Front-matter</code> 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。</p>
@@ -393,378 +763,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac 删除 launchpad 上的图标</title>
-    <url>/2020/12/22/Mac/Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/</url>
-    <content><![CDATA[<h2 id="Mac-删除-launchpad-上的图标"><a href="#Mac-删除-launchpad-上的图标" class="headerlink" title="Mac 删除 launchpad 上的图标"></a>Mac 删除 launchpad 上的图标</h2><p>启动台（launchpad）上有很多我们不想看到的顽固图标，是跟随我们需要的app一起安装到电脑中的，但是实际使用中确根本用不到这些内容。这导致启动台显示很多冗余图标，对于喜欢干净整洁的我们看着很不舒服，但是当我们想要删除到这些没用的内容发现无法删除，长按option也没有显示删除的选项。使用以下步骤尝试删除：</p>
-<ol>
-<li> 打开访达（Finder），按住 ‘command + shift + G’ 或者点击菜单栏中 ‘前往→前往文件夹’</li>
-<li> 输入 <code>/private/var/folders</code></li>
-<li> 在搜索栏输入 <code>com.apple.dock.launchpad</code></li>
-<li> 搜索范围选择<code>folders</code></li>
-<li> 进入<code>com.apple.dock.launchpad</code>文件夹，并复制<code>db</code>文件夹</li>
-</ol>
-<blockquote>
-<p>  以上步骤也可以使用终端输入 <code>find / -name com.apple.dock.launchpad 2&gt;/dev/null</code>获取<code>db</code>绝对地址，但是需要等待一段时间进行全盘搜索</p>
-</blockquote>
-<ol>
-<li> 打开终端，输入<code>cd </code>，并粘贴复制到的<code>db</code>文件夹的绝对地址</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /private/var/folders/xxxxxxx/com.apple.dock.launchpad/db</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li> 继续在终端输入</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlite3 db &quot;delete from apps where title=&#x27;图标名字&#x27;;&quot;&amp;&amp;killall Dock</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>  注意：</p>
-<ol>
-<li> 图标名字就是要删除的图标的名字，要完全一致，包括大小写、空格、中英文标点符号等</li>
-<li> 一次删除一个，不要同时删除好几个</li>
-</ol>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 系统异常可尝试恢复操作</title>
-    <url>/2020/12/22/Mac/Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p>Mac虽然相比较来说会稳定些，但是也不是没有出问题的可能。以下是我的电脑出现问题时尝试过的部分恢复操作，有些时候重置系统设置就能修复部分问题（比如电脑接口无法充电或连接外设无反应）。<strong>恢复前记得备份电脑数据！</strong>虽然我的数据没有丢失过，但是苹果官方人员在推荐我做以下操作之前还是建议我备份了电脑数据。如果还是不行那么推荐直接联系官方人员。</p>
-<span id="more"></span> 
-
-
-
-<p>[toc]</p>
-<h2 id="Mac-重置-NVRAM"><a href="#Mac-重置-NVRAM" class="headerlink" title="Mac 重置 NVRAM"></a>Mac 重置 NVRAM</h2><p>重置 Mac 上的 NVRAM，可储存在 NVRAM 中的设置包括显示屏分辨率、时区，以及最近的内核崩溃信息等，这个办法不会造成数据丢失。</p>
-<p>步骤</p>
-<blockquote>
-<ol>
-<li> 将 Mac 关机</li>
-<li> 然后开机并立即同时按住以下四个按键：Option、Command、P 和 R ，大约 20 秒后松开这些按键</li>
-<li> 在此期间您的 Mac 可能看似在重新启动。您可以在 Apple 标志出现并再次消失后松开这些按键</li>
-</ol>
-</blockquote>
-<p>在您的 Mac 完成启动后，您可能需要打开“系统偏好设置”并调整已重置的任何设置，例如音量、显示屏分辨率、启动磁盘选择或时区。</p>
-<h2 id="Mac-重置系统管理控制器（SMC）"><a href="#Mac-重置系统管理控制器（SMC）" class="headerlink" title="Mac 重置系统管理控制器（SMC）"></a>Mac 重置系统管理控制器（SMC）</h2><blockquote>
-<ol>
-<li> 关机</li>
-<li> 按住电源按钮10秒左右</li>
-<li> 松开电源按钮，等待几秒</li>
-<li> 开机</li>
-</ol>
-</blockquote>
-<h2 id="Mac-重置电源配置？"><a href="#Mac-重置电源配置？" class="headerlink" title="Mac 重置电源配置？"></a>Mac 重置电源配置？</h2><blockquote>
-<ol>
-<li> 关机</li>
-<li> 按住右Shift键、左Option键、左Control键 7 秒。Mac可能会开机，并显示Apple标志。</li>
-<li> 在继续按住这些按键的同时，再按住电源键 7 秒。如果Mac在第一次按下这些按键时开机，此时它会关闭。</li>
-<li> 松开所有的按键，等待几秒</li>
-<li> 开机</li>
-</ol>
-</blockquote>
-<h2 id="Mac-安全模式"><a href="#Mac-安全模式" class="headerlink" title="Mac 安全模式"></a>Mac 安全模式</h2><ul>
-<li>  <strong>步骤</strong></li>
-</ul>
-<blockquote>
-<ol>
-<li> 将Mac关机</li>
-<li> 按电源键启动Mac，然后立即松手按住Shift键。直至显示屏上将出现 Apple 标志。松开按键，等待电脑开机。</li>
-<li> 在右上角看到“安全模式”字样，说明已经进入到安全模式。也可以通过“关于本机”-“系统信息”-“软件”部分查看“启动模式”是否显示“安全”。</li>
-</ol>
-</blockquote>
-<ul>
-<li><p><strong>安全模式作用</strong></p>
-<ul>
-<li>  验证启动磁盘，并根据需要尝试修复目录问题</li>
-<li>  仅载入需要的内核扩展</li>
-<li>  防止启动项和登录项自动打开</li>
-<li>  停用用户安装的字体</li>
-<li>  删除字体缓存、内核缓存和其他系统缓存文件</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 安装第三方软件失败处理</title>
-    <url>/2020/12/22/Mac/Mac%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<p>处理安装第三方软件失败，在系统设置中找不到允许任何来源，或打开软件提示已损坏。</p>
-<span id="more"></span>
-
-
-
-<h2 id="Mac-允许任何来源"><a href="#Mac-允许任何来源" class="headerlink" title="Mac 允许任何来源"></a>Mac 允许任何来源</h2><p>系统设置中隐私设置没有显示全部来源时，终端输入</p>
-<p><code>sudo spctl --master-disable</code></p>
-<h2 id="Mac-打开软件提示已损坏无法打开的解决办法"><a href="#Mac-打开软件提示已损坏无法打开的解决办法" class="headerlink" title="Mac 打开软件提示已损坏无法打开的解决办法"></a>Mac 打开软件提示已损坏无法打开的解决办法</h2><ol>
-<li> 如题失败时，终端执行</li>
-</ol>
-<p><code>sudo xattr -d com.apple.quarantine /Applications/xxxx.app</code></p>
-<ol start="2">
-<li> 重启app</li>
-</ol>
-<div class="note success">
-            <p>这是一个成功的模块 </p>
-          </div>
-
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 电源管理设置-pmset</title>
-    <url>/2020/11/20/Mac/Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE%20-%20pmset/</url>
-    <content><![CDATA[<h1 id="Mac-电源管理设置-pmset"><a href="#Mac-电源管理设置-pmset" class="headerlink" title="Mac 电源管理设置-pmset"></a>Mac 电源管理设置-pmset</h1><p>[toc]</p>
-<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><code>pmset</code>，操纵电源管理设置（<strong>p</strong>ower <strong>m</strong>anagement <strong>set</strong>ting）。</p>
-<p>顾名思义，这个工具可以设置和列出电源管理设置，像空闲睡眠时间、访问时唤醒、断点重启等等。其中一部分功能在系统设置中通过图形界面的方式提供了，然而大部分更加灵活的选项并没有显示出来。</p>
-<p>这种情况下，如果需要调整未提供的管理设置。就需要使用<code>pmset</code>命令来进行调整。</p>
-<p><code>pmset</code>命令必须使用root用户来运行。</p>
-<p>查看对应相关内容可以在终端运行 <code>man pmset</code>， 查看官方说明。</p>
-<h3 id="相关标记"><a href="#相关标记" class="headerlink" title="相关标记"></a>相关标记</h3><p><code>pmset</code> 可以根据使用情况设置不同的电量管理设定。当设备正在充电、使用电池、UPS（不间断电源）或三者都有的情况下，可以应用不同的设定。下面是相关的标记：</p>
-<ul>
-<li>  -c 调节设定用于连接充电器的时候</li>
-<li>  -b 调节设定用于使用电池的时候</li>
-<li>  -u 调节设定用于使用 UPS 的时候</li>
-<li>  -a 调节设定用于全部情景</li>
-</ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li> <strong>显示信息</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -g [option]  // option 为可选项</span><br></pre></td></tr></table></figure>
-
-<p><strong>option 参数</strong></p>
-<ul>
-<li><p>  -g (不带参数)  显示当前正在使用的设置</p>
-</li>
-<li><p>  -g live 显示当前正在使用的设置（等同于不带参数）</p>
-</li>
-<li><p>  -g custom 显示为所有电源的自定义设置（分别显示电池与电源设置）</p>
-</li>
-<li><p>  -g cap 显示机器支持哪些电源功能</p>
-</li>
-<li><p>  -g sched 显示计划启动、唤醒或关闭、睡眠事件</p>
-</li>
-<li><p>  -g ps/batt 显示电池和UPS状态</p>
-</li>
-<li><p>  -g pslog 显示电源（电池或UPS）状态的连续日志</p>
-</li>
-<li><p>  -g rawlog 显示直接读取电池的电池状态的连续日志</p>
-</li>
-<li><p>  -g therm 显示影响 CPU 速度的热力条件。不适用于全部平台</p>
-</li>
-<li><p>  -g thermlog 显示影响 CPU 速度的热量的通知日志。不适用于全部平台</p>
-</li>
-<li><p>  -g assertions 显示电量断言的概要。断言可以阻止系统睡眠或显示器睡眠。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g assertionslog 显示电量断言的创建及释出日志。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g sysload 显示“系统负载顾问”——。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g ac/adapter 显示关于交流电源适配器的详情。只有 MacBoook 和 MacBook Pro 支持。</p>
-</li>
-<li><p>  -g log 显示睡眠，唤醒及其他电源管理时间的历史。这个日志只提供给管理员和调试目的</p>
-</li>
-<li><p>  -g uuid 显示当前活跃的睡眠、唤醒的 UUID。</p>
-</li>
-<li><p>  -g uuidlog 显示当前活跃的睡眠、唤醒的 UUID，并且打印一个新的被系统设置的 UUID</p>
-</li>
-<li><p>  -g history 一个调试工具。当使用启动参数 io=0x3000000 被启用时，打印系统睡眠唤醒的 UUID 的时间线。</p>
-</li>
-<li><p>  -g powerstate 打印当前为 IO Kit 驱动电源状态。调用者应该至少提供一个 IO Kit 类名来作为参数。如果没有类名被听过，它将打印全部驱动的电源状态。</p>
-</li>
-<li><p>  -g powerstatelog </p>
-</li>
-<li><p>  -g stats 打印自系统启动以来睡眠和唤醒系统的计数。</p>
-</li>
-<li><p>  -g systemstate 打印当前系统的电量状态和可用能力。</p>
-</li>
-<li><p>  -g everything 打印每个参数。这是一个有用的快速收集所有 pmset 提供的输出。适用于 10.8。</p>
-</li>
-</ul>
-<ol start="2">
-<li> <strong>修改安全休眠级别</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0 </span><br></pre></td></tr></table></figure>
-
-<p>台式默认支持模式。睡眠时内存保持供电，其他部件断电，系统将不会备份内存到硬盘，唤醒时直接从内存恢复。</p>
-<ul>
-<li>  优点是<strong>快速唤醒、睡眠</strong>，因为内存保持供电，无论唤醒还是睡眠都很快，节省SSD空间和寿命。因为内存数据不写入硬盘，所以硬盘里不会有内存镜像，也不会缩短SSD寿命。</li>
-<li>  缺点是如果在睡眠过程中没电了的话，Mac会丢失内存中的数据，数据安全性不高。同时<strong>电力消耗最大</strong>，导致<strong>待机时间短</strong>。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 3 // 默认模式</span><br></pre></td></tr></table></figure>
-
-<p>笔记本默认支持模式。将内存镜像写入磁盘的同时也给内存供电，直到电池的临界值，系统会存储一份内存的备份到硬盘，唤醒时从内存唤醒，除非内存断电了将会由硬盘唤醒。相对其他模式来说，电力消耗一般，唤醒速度相对适中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 25 // 最佳省电, 亮屏会慢3~5s</span><br></pre></td></tr></table></figure>
-
-<p>只能通过<code>pmset</code>设置。系统将内存镜像写入硬盘，写入后断开电脑所有部件断电，唤醒的时候从硬盘读取。</p>
-<ul>
-<li>  优点是<strong>最省电，待机时间长，不怕数据丢失，对电池寿命友好</strong>。</li>
-<li>  缺点是<strong>睡眠和唤醒速度最慢</strong>，也会缩短SSD寿命。</li>
-</ul>
-<h2 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><code>displaysleep</code>: Mac闲置多长时间后进入显示器睡眠（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
-<p><code>disksleep</code>: Mac闲置多长时间后关闭硬盘。这个系统偏好里也有，只不过换了一个字眼—如果可能，使硬盘进入睡眠—勾上这个的话系统就会自动根据sleep的时间设一个合适的时间（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
-<p><code>sleep</code>: 系统睡眠计时器（值为分钟，或者设置 0 来禁用）。</p>
-<blockquote>
-<p>  注意：睡眠时间的设置上，应该是 sleep &gt;= disksleep &gt;=displaysleep</p>
-</blockquote>
-<p><code>womp</code>: 远程网络唤醒（值为 1 或者 0）</p>
-<p><code>ring</code>: 通过调制解调器环境（值为 1 或者 0）</p>
-<p><code>hibernatemode</code>: 改变休眠模式。请小心使用（值为整数）</p>
-<p><code>hibernatefile</code>: 改变休眠镜像文件位置。镜像应该只被定为到根卷中。请小心使用（值为路径）</p>
-<p><code>powernap</code>: 这个就是电能小憩，你可以在系统偏好设置里选择开或关，跟在这里设置是一样的，1是开启 0是</p>
-<p><code>standby</code>：使得机器在睡眠了一段指定的时间间隔后，核心电源管理会自动休眠机器。<del>即当满足以下条件（接电源、没有外界设备、没有网络活动），到了<code>standbydelay</code> x秒后，就开始启动安全睡眠模式。</del>根据<code>highstandbythreshold</code>设置的电量百分比，当满足对应条件<code>standbydelayhigh</code>或<code>standbydelaylow</code>时，进入安全睡眠模式，往硬盘上写入sleepimag后进入深度睡眠。</p>
-<p><code>standbydelayhigh</code>：设置电量高于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
-<p><code>standbydelaylow</code>：设置电量低于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
-<p><code>networkoversleep</code>: 这个设置影响 OS X 在系统睡眠时如何联网。这个设置不被全平台使用，不支持修改这个值。</p>
-<p><code>ttyskeepawake</code>: 当任何 tty（如：远程登录会话） 在活动状态时，阻止系统空闲睡眠。远程用户正在活动时防止Mac进入睡眠，1是开启 0是关闭。</p>
-<p>tcpkeepalive</p>
-<p><code>acwake</code>: 当电源（AC 或者电池）改变的时候唤醒机器（值为 1 或者 0）</p>
-<p><code>proximitywake</code>：在受支持的系统上，该选项根据使用相同iCloud id的设备的接近程度控制系统从睡眠中唤醒。</p>
-<p><code>halfdim</code>: 显示器睡眠时使显示器亮度改变为当前亮度的一半，1是开启 0是关闭。如果关闭这个功能的话，显示器睡眠会直接关掉显示器。</p>
-<p><code>lidwake</code>: 当笔记本打开盖子的时候唤醒机器（值为 1 或者 0）</p>
-<hr>
-<p>(以下部分通过 <code>man pmset</code> 查看)</p>
-<p><code>autorestart</code>: 当断电后自动重启（值为 1 或者 0）</p>
-<p><code>lessbright</code>: 显示休眠将使用介于全亮度和全亮度之间的中间半亮度状态(值为 1 或 0)</p>
-<p><code>sms</code>: 当重力突然改变时，使用瞬时运动传感器来停止磁盘头（值为 1 或者 0）</p>
-<p><code>destroyfvkeyonstandby</code>: 当变为待机模式时销毁文件库密钥。默认地，当系统待机时密钥被保留。如果关键文件被销毁，将导致当用户退出待机模式时输入密码（值为 1 – 销毁 ，0 – 保留）</p>
-<h3 id="命令用例"><a href="#命令用例" class="headerlink" title="命令用例"></a>命令用例</h3><p>想要修改某一项设置的话，就打开终端，按照以下的格式输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset [-a(all) | -b(battery) | -c(charger) | -u(UPS)] [setting value] [...]</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li> 修改网络状态, 开启, 盒盖即断网, 类似关机状态</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -a tcpkeepalive 0 // 可能会影响到 查找我的mac功能</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li> 合上屏幕之后，在4200分钟之内如果被唤醒，则从<a href="https://www.smzdm.com/fenlei/neicun/">内存</a>直接调用数据，如果4200分钟后依然未请求唤醒，系统则会移送所有内存数据到<a href="https://www.smzdm.com/fenlei/yingpan/">硬盘</a>，并且停止供电。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pmset -b standby 1 // 默认0</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="3">
-<li> 禁止sleepimage的生成与写入（耗电量巨大，有数据丢失风险）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0  </span><br><span class="line">sudo pmset -a autopoweroff 0  </span><br><span class="line">sudo pmset -a standby 0  </span><br><span class="line">sudo rm /var/vm/sleepimage</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 在 Docker 栏中添加空白项</title>
-    <url>/2020/12/22/Mac/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
-    <content><![CDATA[<p>终端输入</p>
-<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 终端统计代码行数</title>
-    <url>/2020/12/22/Mac/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 调整鼠标 DPI</title>
-    <url>/2020/12/22/Mac/Mac%E8%B0%83%E6%95%B4%E9%BC%A0%E6%A0%87DPI/</url>
-    <content><![CDATA[<h2 id="Mac-调整鼠标-DPI"><a href="#Mac-调整鼠标-DPI" class="headerlink" title="Mac 调整鼠标 DPI"></a>Mac 调整鼠标 DPI</h2><p><strong>终端中先查看当前值</strong></p>
-<p>鼠标双击阈值：</p>
-<p><code>defaults read -g com.apple.mouse.doubleClickThreshold</code></p>
-<p>鼠标加速度：</p>
-<p><code>defaults read -g com.apple.mouse.scaling</code></p>
-<p>滚动速度：</p>
-<p><code>defaults read -g com.apple.scrollwheel.scaling</code></p>
-<p><strong>调整数据</strong></p>
-<p>鼠标双击阈值：</p>
-<p><code>defaults write -g com.apple.mouse.doubleClickThreshold 0.75</code></p>
-<p>鼠标加速度：</p>
-<p><code>defaults write -g com.apple.mouse.scaling 5</code></p>
-<p>滚动速度：</p>
-<p><code>defaults write -g com.apple.scrollwheel.scaling 0.75</code></p>
-<p><strong>重启电脑后生效</strong></p>
-]]></content>
-      <tags>
-        <tag>Mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git创建私有库</title>
-    <url>/2021/05/17/Git/Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="1-创建私有Spec-Repo（只需要创建一次）"><a href="#1-创建私有Spec-Repo（只需要创建一次）" class="headerlink" title="1. 创建私有Spec Repo（只需要创建一次）"></a>1. 创建私有Spec Repo（只需要创建一次）</h3><ol>
-<li>首先创建一个 git 仓库（gitHub，Bitbucket，gitLab，coding，gitee，CSDN Code），权限选择私有仓库。如果有MIT选项，选中。</li>
-<li>将远程版本库添加到本地：pod repo add MyRepo <a href="https://xxx.git/">https://xxx.git</a> （创建好的Repo仓库）</li>
-<li>成功执行完上一步后, 在 finder 跳转到 ~/.cocoapods/repos 目录下可以看到MyRepo版本库。可以看到与 MyRepo 同级有一个 Master 版本库，这个是git默认的开源版本库。</li>
-</ol>
-<h3 id="2-创建代码库"><a href="#2-创建代码库" class="headerlink" title="2.创建代码库"></a>2.创建代码库</h3><ol>
-<li><p> 同1.1</p>
-</li>
-<li><p>可以使用常规创建项目方法，将远程代码库添加到本地</p>
-<ol>
-<li> 克隆代码 <code>git clone xxx.git TestCode</code></li>
-<li> 切换到该文件夹路径，如果是一个空项目则创建项目</li>
-<li> 创建 <code>.podspec</code> 文件：<code>$ pod spec create &#39;TestCode&#39;</code></li>
-<li> 创建 <code>.swift-version</code>：<code>$ echo&quot;2.3&quot;&gt; .swift-version</code></li>
-</ol>
-</li>
-<li><p>也可以使用 <code>$ pod lib create TestCode</code> 创建项目</p>
-<ol>
-<li> 创建项目</li>
-<li> 选择相关信息：平台 、 语言 、 Demo 、 测试框架 、 界面测试 、 类前缀，根据需求选择</li>
-<li> 添加git ：<code>$ git remote add origin http://xxx.git</code></li>
-<li> 拉取更新：<code>$ git pull origin master</code></li>
-</ol>
-</li>
-<li><p>修改 <code>.podspec</code> 文件</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new <span class="keyword">do</span> |s|</span><br><span class="line">s.name = <span class="string">&quot;TestCode&quot;</span> <span class="comment"># 项目名称</span></span><br><span class="line">s.version = <span class="string">&quot;0.0.1&quot;</span> <span class="comment"># 版本号 与 你仓库的 标签号 对应</span></span><br><span class="line">s.license = &#123; :<span class="built_in">type</span> =&gt; <span class="string">&quot;MIT&quot;</span>, :file =&gt; <span class="string">&quot;LICENSE&quot;</span> &#125; <span class="comment"># 开源许可证</span></span><br><span class="line">s.summary = <span class="string">&quot;desc&quot;</span> <span class="comment"># 项目简介</span></span><br><span class="line"></span><br><span class="line">s.homepage = <span class="string">&quot;http://git.com/xxx&quot;</span> <span class="comment"># 仓库的主页</span></span><br><span class="line">s.source = &#123; :git =&gt; <span class="string">&quot;http://git.com/xxx.git&quot;</span>, :branch =&gt; <span class="string">&#x27;master&#x27;</span>, :tag =&gt; <span class="string">&quot;#&#123;s.version&#125;&quot;</span> &#125; <span class="comment">#你的仓库地址，不能用SSH地址</span></span><br><span class="line">s.source_files = <span class="string">&quot;TestCode/*.&#123;h,m&#125;&quot;</span> <span class="comment"># 代码的位置</span></span><br><span class="line">s.requires_arc = <span class="literal">true</span> <span class="comment"># 是否启用ARC</span></span><br><span class="line">s.platform = :ios, <span class="string">&quot;7.0&quot;</span> <span class="comment">#平台及支持的最低版本</span></span><br><span class="line"><span class="comment"># s.xcconfig = &#123; &#x27;OTHER_LDFLAGS&#x27; =&gt; &#x27;-Objc -all_load -fobjc-arc&#x27;,&#x27;ENABLE_BITCODE&#x27;=&gt;&#x27;NO&#x27;&#125; # target的相关设置</span></span><br><span class="line">s.author = &#123; <span class="string">&quot;author&quot;</span> =&gt; <span class="string">&quot;xxx.com&quot;</span> &#125; <span class="comment"># 作者信息, 开源上线后可能发送邮件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># s.frameworks = &quot;UIKit&quot;, &quot;Foundation&quot; #支持的框架</span></span><br><span class="line"><span class="comment"># s.resources = &quot;*.bundle&quot; # 资源文件</span></span><br><span class="line"><span class="comment"># s.dependency = &quot;AFNetworking&quot; # 依赖库，有多少依赖库就写多少 s.dependency</span></span><br><span class="line"><span class="comment"># s.dependency &#x27;AFNetworking&#x27;, &#x27;~&gt; 3.0&#x27; # 可以指定版本</span></span><br></pre></td></tr></table></figure></li>
-<li><p> 验证 <code>.podspec</code> 是否正确：<code>$ pod lib lint</code></p>
-</li>
-<li><p> 通过后显示 <code>TestCode passed validation</code></p>
-</li>
-</ol>
-<h3 id="3-上传代码"><a href="#3-上传代码" class="headerlink" title="3. 上传代码"></a>3. 上传代码</h3><ol>
-<li><p> 修改代码完成后，修改项目中的版本与 <code>.podspec</code> 中的 <code>s.version</code> 版本</p>
-</li>
-<li><p>开始上传代码</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pod lib lint // 检查.podspec及代码是否有错误，如果有错误不能提交</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add . // 缓存修改</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">&quot;desc&quot;</span> // 标记</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git tag <span class="string">&quot;新的版本号&quot;</span> // 打标签</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push --tags // 推送到远程仓库 （git push origin master —tags）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> pod repo push MyRepo TestCode.podspec --allow-warnings // 修改版本仓库</span></span><br></pre></td></tr></table></figure></li>
-<li><p> 如果没有报错则提交成功</p>
-</li>
-</ol>
-<h3 id="4-使用私有库"><a href="#4-使用私有库" class="headerlink" title="4. 使用私有库"></a>4. 使用私有库</h3><ol>
-<li><p>使用时需要在 <code>Podfile</code> 顶部加入</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source &#x27;https://xxx/MyRepo.git&#x27;</span><br><span class="line">source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br></pre></td></tr></table></figure></li>
-<li><p> 在 <code>Podfile</code> 中引入需要使用的私有库</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 简介及常用命令</title>
-    <url>/2021/05/17/Git/Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <url>/Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>一、Git简介  </p>
 <p>Git是Linux之父Linus与2005年用C语言编写的<strong>分布式控制系统</strong>。  </p>
 <p>Git的分布式区别于SVN等集中式版本控制系统的地方有哪些呢？</p>

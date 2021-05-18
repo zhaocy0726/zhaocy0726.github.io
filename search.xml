@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>人工泪液推荐</title>
+    <url>/2021/05/18/Daily/%E4%BA%BA%E5%B7%A5%E6%B3%AA%E6%B6%B2%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>商品名</th>
+<th>化学名</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爱丽</td>
+<td>玻璃酸钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>海露</td>
+<td>玻璃酸钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>人工泪液</td>
+<td>羟丙甲纤维素滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>瑞新</td>
+<td>羧甲基纤维素钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>新泪然</td>
+<td>羟糖甘滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>唯地息</td>
+<td>卡波姆山梨酸滴眼液</td>
+<td>凝胶状</td>
+</tr>
+<tr>
+<td>思然</td>
+<td>聚乙二醇滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>倍然</td>
+<td>葡萄糖酐70滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>潇莱威</td>
+<td>羧甲基纤维素钠滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>泪然</td>
+<td>右旋糖酐羟丙甲纤维素滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>聚乙烯醇滴眼液</td>
+<td>聚乙烯醇滴眼液</td>
+<td>水液性</td>
+</tr>
+<tr>
+<td>立宝舒</td>
+<td>卡波姆眼用凝胶</td>
+<td>水液性</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>健康，滴眼液</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>猫鼻支家庭治疗方案</title>
+    <url>/2021/05/18/Daily/%E7%8C%AB%E9%BC%BB%E6%94%AF%E5%AE%B6%E5%BA%AD%E6%B2%BB%E7%96%97%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>用小儿柴胡和阿莫西林冲开。买个针筒一天喂两次。</p>
+<p>京东买速诺消炎药。一次喂半片，一天两次，一个星期。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>猫，猫鼻支</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git创建私有库</title>
     <url>/2021/05/17/Git/Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</url>
     <content><![CDATA[<h2 id="1-创建私有Spec-Repo（只需要创建一次）"><a href="#1-创建私有Spec-Repo（只需要创建一次）" class="headerlink" title="1. 创建私有Spec Repo（只需要创建一次）"></a>1. 创建私有Spec Repo（只需要创建一次）</h2><ol>
@@ -58,21 +151,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SVN报错E200009:尚未纳入版本控制</title>
-    <url>/2021/05/18/Git/SVN%E6%8A%A5%E9%94%99E200009:%E5%B0%9A%E6%9C%AA%E7%BA%B3%E5%85%A5%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>报错E200009除了文件未添加的以外，还可能是因为文件名包含空格，导致解析失败。</p>
-<p>解决方案：将要添加的文件名用双引号括起来</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ svn commit -m <span class="string">&quot;xx&quot;</span> <span class="string">&quot;xx xx.xx&quot;</span></span><br><span class="line">$ svn rm / add <span class="string">&quot;xx xx.xx&quot;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SVN</category>
-      </categories>
-      <tags>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SVN批量增加与删除</title>
     <url>/2021/05/18/Git/SVN%E6%89%B9%E9%87%8F%E5%A2%9E%E5%8A%A0%E4%B8%8E%E5%88%A0%E9%99%A4/</url>
     <content><![CDATA[<ol>
@@ -88,6 +166,21 @@
       <tags>
         <tag>SVN</tag>
         <tag>终端命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN报错E200009:尚未纳入版本控制</title>
+    <url>/2021/05/18/Git/SVN%E6%8A%A5%E9%94%99E200009:%E5%B0%9A%E6%9C%AA%E7%BA%B3%E5%85%A5%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>报错E200009除了文件未添加的以外，还可能是因为文件名包含空格，导致解析失败。</p>
+<p>解决方案：将要添加的文件名用双引号括起来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ svn commit -m <span class="string">&quot;xx&quot;</span> <span class="string">&quot;xx xx.xx&quot;</span></span><br><span class="line">$ svn rm / add <span class="string">&quot;xx xx.xx&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
       </tags>
   </entry>
   <entry>
@@ -511,99 +604,6 @@
       </tags>
   </entry>
   <entry>
-    <title>人工泪液推荐</title>
-    <url>/2021/05/18/Daily/%E4%BA%BA%E5%B7%A5%E6%B3%AA%E6%B6%B2%E6%8E%A8%E8%8D%90/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th>商品名</th>
-<th>化学名</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>爱丽</td>
-<td>玻璃酸钠滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>海露</td>
-<td>玻璃酸钠滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>人工泪液</td>
-<td>羟丙甲纤维素滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>瑞新</td>
-<td>羧甲基纤维素钠滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>新泪然</td>
-<td>羟糖甘滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>唯地息</td>
-<td>卡波姆山梨酸滴眼液</td>
-<td>凝胶状</td>
-</tr>
-<tr>
-<td>思然</td>
-<td>聚乙二醇滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>倍然</td>
-<td>葡萄糖酐70滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>潇莱威</td>
-<td>羧甲基纤维素钠滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>泪然</td>
-<td>右旋糖酐羟丙甲纤维素滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>聚乙烯醇滴眼液</td>
-<td>聚乙烯醇滴眼液</td>
-<td>水液性</td>
-</tr>
-<tr>
-<td>立宝舒</td>
-<td>卡波姆眼用凝胶</td>
-<td>水液性</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>健康，滴眼液</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>猫鼻支家庭治疗方案</title>
-    <url>/2021/05/18/Daily/%E7%8C%AB%E9%BC%BB%E6%94%AF%E5%AE%B6%E5%BA%AD%E6%B2%BB%E7%96%97%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<p>用小儿柴胡和阿莫西林冲开。买个针筒一天喂两次。</p>
-<p>京东买速诺消炎药。一次喂半片，一天两次，一个星期。</p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>猫，猫鼻支</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac删除launchpad上的图标</title>
     <url>/2020/12/22/Mac/Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/</url>
     <content><![CDATA[<h2 id="Mac-删除-launchpad-上的图标"><a href="#Mac-删除-launchpad-上的图标" class="headerlink" title="Mac 删除 launchpad 上的图标"></a>Mac 删除 launchpad 上的图标</h2><p>启动台（launchpad）上有很多我们不想看到的顽固图标，是跟随我们需要的app一起安装到电脑中的，但是实际使用中确根本用不到这些内容。这导致启动台显示很多冗余图标，对于喜欢干净整洁的我们看着很不舒服，但是当我们想要删除到这些没用的内容发现无法删除，长按option也没有显示删除的选项。使用以下步骤尝试删除：</p>
@@ -921,14 +921,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac终端统计代码行数</title>
-    <url>/2020/12/22/Mac/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
-
+    <title>Mac在Docker栏中添加空白项</title>
+    <url>/2020/12/22/Mac/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
+    <content><![CDATA[<p>终端输入</p>
+<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
 ]]></content>
       <categories>
         <category>Mac</category>
@@ -945,6 +941,24 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ioreg -rn AppleSmartBattery | grep -i capacity</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqmk5e7ws9j30mh060q4o.jpg" alt="image-20210518140011203"></p>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>终端命令</tag>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac终端统计代码行数</title>
+    <url>/2020/12/22/Mac/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Mac</category>
@@ -980,20 +994,6 @@
         <tag>终端命令</tag>
         <tag>Mac</tag>
         <tag>Mac异常处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac在Docker栏中添加空白项</title>
-    <url>/2020/12/22/Mac/Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
-    <content><![CDATA[<p>终端输入</p>
-<p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
-]]></content>
-      <categories>
-        <category>Mac</category>
-      </categories>
-      <tags>
-        <tag>终端命令</tag>
-        <tag>Mac</tag>
       </tags>
   </entry>
   <entry>

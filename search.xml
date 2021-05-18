@@ -1466,9 +1466,7 @@
     <content><![CDATA[<p>终端执行命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ioreg -rn AppleSmartBattery | grep -i capacity</span><br></pre></td></tr></table></figure>
 
-
-
-<p>![image-20210518140011203](/Users/zhao/Library/Application Support/typora-user-images/image-20210518140011203.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqmk5e7ws9j30mh060q4o.jpg" alt="image-20210518140011203"></p>
 ]]></content>
       <categories>
         <category>Mac</category>

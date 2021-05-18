@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Mac通过终端设置系统的睡眠模式及电池配置。">
+  <meta name="description" content="Mac启动台有很多用不到图标，但是可能是配套App，又不能删（比如 Adobe），直接将这些图标隐藏，让启动台看着更清爽。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac电源管理设置-pmset">
-<meta property="og:url" content="https://www.zhaocy.fun/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/index.html">
+<meta property="og:title" content="Mac删除launchpad上的图标">
+<meta property="og:url" content="https://www.zhaocy.fun/2020/12/22/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/index.html">
 <meta property="og:site_name" content="zhaocy&#39;s blog">
-<meta property="og:description" content="Mac通过终端设置系统的睡眠模式及电池配置。">
+<meta property="og:description" content="Mac启动台有很多用不到图标，但是可能是配套App，又不能删（比如 Adobe），直接将这些图标隐藏，让启动台看着更清爽。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-20T01:20:11.743Z">
-<meta property="article:modified_time" content="2021-05-18T03:49:09.316Z">
+<meta property="article:published_time" content="2020-12-22T05:11:12.573Z">
+<meta property="article:modified_time" content="2021-05-18T03:49:16.537Z">
 <meta property="article:author" content="春阳">
 <meta property="article:tag" content="Mac">
 <meta property="article:tag" content="终端命令">
-<meta property="article:tag" content="Mac异常处理">
-<meta property="article:tag" content="电源管理">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.zhaocy.fun/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/">
+<link rel="canonical" href="https://www.zhaocy.fun/2020/12/22/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>Mac电源管理设置-pmset | zhaocy's blog</title>
+  <title>Mac删除launchpad上的图标 | zhaocy's blog</title>
   
 
 
@@ -193,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2020/12/22/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Mac电源管理设置-pmset
+          Mac删除launchpad上的图标
         </h1>
 
         <div class="post-meta">
@@ -216,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-20 09:20:11" itemprop="dateCreated datePublished" datetime="2020-11-20T09:20:11+08:00">2020-11-20</time>
+              <time title="创建时间：2020-12-22 13:11:12" itemprop="dateCreated datePublished" datetime="2020-12-22T13:11:12+08:00">2020-12-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-18 11:49:09" itemprop="dateModified" datetime="2021-05-18T11:49:09+08:00">2021-05-18</time>
+                <time title="修改时间：2021-05-18 11:49:16" itemprop="dateModified" datetime="2021-05-18T11:49:16+08:00">2021-05-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,14 +234,14 @@
             </span>
 
           
-            <span id="/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/" class="post-meta-item leancloud_visitors" data-flag-title="Mac电源管理设置-pmset" title="阅读次数">
+            <span id="/2020/12/22/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/" class="post-meta-item leancloud_visitors" data-flag-title="Mac删除launchpad上的图标" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <div class="post-description">Mac通过终端设置系统的睡眠模式及电池配置。</div>
+            <div class="post-description">Mac启动台有很多用不到图标，但是可能是配套App，又不能删（比如 Adobe），直接将这些图标隐藏，让启动台看着更清爽。</div>
 
         </div>
       </header>
@@ -254,144 +252,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Mac-电源管理设置-pmset"><a href="#Mac-电源管理设置-pmset" class="headerlink" title="Mac 电源管理设置-pmset"></a>Mac 电源管理设置-pmset</h1><p>[toc]</p>
-<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><code>pmset</code>，操纵电源管理设置（<strong>p</strong>ower <strong>m</strong>anagement <strong>set</strong>ting）。</p>
-<p>顾名思义，这个工具可以设置和列出电源管理设置，像空闲睡眠时间、访问时唤醒、断点重启等等。其中一部分功能在系统设置中通过图形界面的方式提供了，然而大部分更加灵活的选项并没有显示出来。</p>
-<p>这种情况下，如果需要调整未提供的管理设置。就需要使用<code>pmset</code>命令来进行调整。</p>
-<p><code>pmset</code>命令必须使用root用户来运行。</p>
-<p>查看对应相关内容可以在终端运行 <code>man pmset</code>， 查看官方说明。</p>
-<h3 id="相关标记"><a href="#相关标记" class="headerlink" title="相关标记"></a>相关标记</h3><p><code>pmset</code> 可以根据使用情况设置不同的电量管理设定。当设备正在充电、使用电池、UPS（不间断电源）或三者都有的情况下，可以应用不同的设定。下面是相关的标记：</p>
-<ul>
-<li>  -c 调节设定用于连接充电器的时候</li>
-<li>  -b 调节设定用于使用电池的时候</li>
-<li>  -u 调节设定用于使用 UPS 的时候</li>
-<li>  -a 调节设定用于全部情景</li>
-</ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li> <strong>显示信息</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pmset -g [option]  // option 为可选项</span><br></pre></td></tr></table></figure>
-
-<p><strong>option 参数</strong></p>
-<ul>
-<li><p>  -g (不带参数)  显示当前正在使用的设置</p>
-</li>
-<li><p>  -g live 显示当前正在使用的设置（等同于不带参数）</p>
-</li>
-<li><p>  -g custom 显示为所有电源的自定义设置（分别显示电池与电源设置）</p>
-</li>
-<li><p>  -g cap 显示机器支持哪些电源功能</p>
-</li>
-<li><p>  -g sched 显示计划启动、唤醒或关闭、睡眠事件</p>
-</li>
-<li><p>  -g ps/batt 显示电池和UPS状态</p>
-</li>
-<li><p>  -g pslog 显示电源（电池或UPS）状态的连续日志</p>
-</li>
-<li><p>  -g rawlog 显示直接读取电池的电池状态的连续日志</p>
-</li>
-<li><p>  -g therm 显示影响 CPU 速度的热力条件。不适用于全部平台</p>
-</li>
-<li><p>  -g thermlog 显示影响 CPU 速度的热量的通知日志。不适用于全部平台</p>
-</li>
-<li><p>  -g assertions 显示电量断言的概要。断言可以阻止系统睡眠或显示器睡眠。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g assertionslog 显示电量断言的创建及释出日志。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g sysload 显示“系统负载顾问”——。适用于 10.6 及更新版本</p>
-</li>
-<li><p>  -g ac/adapter 显示关于交流电源适配器的详情。只有 MacBoook 和 MacBook Pro 支持。</p>
-</li>
-<li><p>  -g log 显示睡眠，唤醒及其他电源管理时间的历史。这个日志只提供给管理员和调试目的</p>
-</li>
-<li><p>  -g uuid 显示当前活跃的睡眠、唤醒的 UUID。</p>
-</li>
-<li><p>  -g uuidlog 显示当前活跃的睡眠、唤醒的 UUID，并且打印一个新的被系统设置的 UUID</p>
-</li>
-<li><p>  -g history 一个调试工具。当使用启动参数 io=0x3000000 被启用时，打印系统睡眠唤醒的 UUID 的时间线。</p>
-</li>
-<li><p>  -g powerstate 打印当前为 IO Kit 驱动电源状态。调用者应该至少提供一个 IO Kit 类名来作为参数。如果没有类名被听过，它将打印全部驱动的电源状态。</p>
-</li>
-<li><p>  -g powerstatelog </p>
-</li>
-<li><p>  -g stats 打印自系统启动以来睡眠和唤醒系统的计数。</p>
-</li>
-<li><p>  -g systemstate 打印当前系统的电量状态和可用能力。</p>
-</li>
-<li><p>  -g everything 打印每个参数。这是一个有用的快速收集所有 pmset 提供的输出。适用于 10.8。</p>
-</li>
-</ul>
-<ol start="2">
-<li> <strong>修改安全休眠级别</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0 </span><br></pre></td></tr></table></figure>
-
-<p>台式默认支持模式。睡眠时内存保持供电，其他部件断电，系统将不会备份内存到硬盘，唤醒时直接从内存恢复。</p>
-<ul>
-<li>  优点是<strong>快速唤醒、睡眠</strong>，因为内存保持供电，无论唤醒还是睡眠都很快，节省SSD空间和寿命。因为内存数据不写入硬盘，所以硬盘里不会有内存镜像，也不会缩短SSD寿命。</li>
-<li>  缺点是如果在睡眠过程中没电了的话，Mac会丢失内存中的数据，数据安全性不高。同时<strong>电力消耗最大</strong>，导致<strong>待机时间短</strong>。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 3 // 默认模式</span><br></pre></td></tr></table></figure>
-
-<p>笔记本默认支持模式。将内存镜像写入磁盘的同时也给内存供电，直到电池的临界值，系统会存储一份内存的备份到硬盘，唤醒时从内存唤醒，除非内存断电了将会由硬盘唤醒。相对其他模式来说，电力消耗一般，唤醒速度相对适中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 25 // 最佳省电, 亮屏会慢3~5s</span><br></pre></td></tr></table></figure>
-
-<p>只能通过<code>pmset</code>设置。系统将内存镜像写入硬盘，写入后断开电脑所有部件断电，唤醒的时候从硬盘读取。</p>
-<ul>
-<li>  优点是<strong>最省电，待机时间长，不怕数据丢失，对电池寿命友好</strong>。</li>
-<li>  缺点是<strong>睡眠和唤醒速度最慢</strong>，也会缩短SSD寿命。</li>
-</ul>
-<h2 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><code>displaysleep</code>: Mac闲置多长时间后进入显示器睡眠（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
-<p><code>disksleep</code>: Mac闲置多长时间后关闭硬盘。这个系统偏好里也有，只不过换了一个字眼—如果可能，使硬盘进入睡眠—勾上这个的话系统就会自动根据sleep的时间设一个合适的时间（值为分钟，或者设置 0 来禁用，不能长于sleep）。</p>
-<p><code>sleep</code>: 系统睡眠计时器（值为分钟，或者设置 0 来禁用）。</p>
-<blockquote>
-<p>  注意：睡眠时间的设置上，应该是 sleep &gt;= disksleep &gt;=displaysleep</p>
-</blockquote>
-<p><code>womp</code>: 远程网络唤醒（值为 1 或者 0）</p>
-<p><code>ring</code>: 通过调制解调器环境（值为 1 或者 0）</p>
-<p><code>hibernatemode</code>: 改变休眠模式。请小心使用（值为整数）</p>
-<p><code>hibernatefile</code>: 改变休眠镜像文件位置。镜像应该只被定为到根卷中。请小心使用（值为路径）</p>
-<p><code>powernap</code>: 这个就是电能小憩，你可以在系统偏好设置里选择开或关，跟在这里设置是一样的，1是开启 0是</p>
-<p><code>standby</code>：使得机器在睡眠了一段指定的时间间隔后，核心电源管理会自动休眠机器。<del>即当满足以下条件（接电源、没有外界设备、没有网络活动），到了<code>standbydelay</code> x秒后，就开始启动安全睡眠模式。</del>根据<code>highstandbythreshold</code>设置的电量百分比，当满足对应条件<code>standbydelayhigh</code>或<code>standbydelaylow</code>时，进入安全睡眠模式，往硬盘上写入sleepimag后进入深度睡眠。</p>
-<p><code>standbydelayhigh</code>：设置电量高于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
-<p><code>standbydelaylow</code>：设置电量低于<code>highstandbythreshold</code>设置的百分比时，进入睡眠的延迟，单位秒。</p>
-<p><code>networkoversleep</code>: 这个设置影响 OS X 在系统睡眠时如何联网。这个设置不被全平台使用，不支持修改这个值。</p>
-<p><code>ttyskeepawake</code>: 当任何 tty（如：远程登录会话） 在活动状态时，阻止系统空闲睡眠。远程用户正在活动时防止Mac进入睡眠，1是开启 0是关闭。</p>
-<p>tcpkeepalive</p>
-<p><code>acwake</code>: 当电源（AC 或者电池）改变的时候唤醒机器（值为 1 或者 0）</p>
-<p><code>proximitywake</code>：在受支持的系统上，该选项根据使用相同iCloud id的设备的接近程度控制系统从睡眠中唤醒。</p>
-<p><code>halfdim</code>: 显示器睡眠时使显示器亮度改变为当前亮度的一半，1是开启 0是关闭。如果关闭这个功能的话，显示器睡眠会直接关掉显示器。</p>
-<p><code>lidwake</code>: 当笔记本打开盖子的时候唤醒机器（值为 1 或者 0）</p>
-<hr>
-<p>(以下部分通过 <code>man pmset</code> 查看)</p>
-<p><code>autorestart</code>: 当断电后自动重启（值为 1 或者 0）</p>
-<p><code>lessbright</code>: 显示休眠将使用介于全亮度和全亮度之间的中间半亮度状态(值为 1 或 0)</p>
-<p><code>sms</code>: 当重力突然改变时，使用瞬时运动传感器来停止磁盘头（值为 1 或者 0）</p>
-<p><code>destroyfvkeyonstandby</code>: 当变为待机模式时销毁文件库密钥。默认地，当系统待机时密钥被保留。如果关键文件被销毁，将导致当用户退出待机模式时输入密码（值为 1 – 销毁 ，0 – 保留）</p>
-<h3 id="命令用例"><a href="#命令用例" class="headerlink" title="命令用例"></a>命令用例</h3><p>想要修改某一项设置的话，就打开终端，按照以下的格式输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pmset [-a(all) | -b(battery) | -c(charger) | -u(UPS)] [setting value] [...]</span><br></pre></td></tr></table></figure>
-
-
-
+        <h2 id="Mac-删除-launchpad-上的图标"><a href="#Mac-删除-launchpad-上的图标" class="headerlink" title="Mac 删除 launchpad 上的图标"></a>Mac 删除 launchpad 上的图标</h2><p>启动台（launchpad）上有很多我们不想看到的顽固图标，是跟随我们需要的app一起安装到电脑中的，但是实际使用中确根本用不到这些内容。这导致启动台显示很多冗余图标，对于喜欢干净整洁的我们看着很不舒服，但是当我们想要删除到这些没用的内容发现无法删除，长按option也没有显示删除的选项。使用以下步骤尝试删除：</p>
 <ol>
-<li> 修改网络状态, 开启, 盒盖即断网, 类似关机状态</li>
+<li> 打开访达（Finder），按住 ‘command + shift + G’ 或者点击菜单栏中 ‘前往→前往文件夹’</li>
+<li> 输入 <code>/private/var/folders</code></li>
+<li> 在搜索栏输入 <code>com.apple.dock.launchpad</code></li>
+<li> 搜索范围选择<code>folders</code></li>
+<li> 进入<code>com.apple.dock.launchpad</code>文件夹，并复制<code>db</code>文件夹</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pmset -a tcpkeepalive 0 // 可能会影响到 查找我的mac功能</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li> 合上屏幕之后，在4200分钟之内如果被唤醒，则从<a target="_blank" rel="noopener" href="https://www.smzdm.com/fenlei/neicun/">内存</a>直接调用数据，如果4200分钟后依然未请求唤醒，系统则会移送所有内存数据到<a target="_blank" rel="noopener" href="https://www.smzdm.com/fenlei/yingpan/">硬盘</a>，并且停止供电。</li>
+<blockquote>
+<p>  以上步骤也可以使用终端输入 <code>find / -name com.apple.dock.launchpad 2&gt;/dev/null</code>获取<code>db</code>绝对地址，但是需要等待一段时间进行全盘搜索</p>
+</blockquote>
+<ol>
+<li> 打开终端，输入<code>cd </code>，并粘贴复制到的<code>db</code>文件夹的绝对地址</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pmset -b standby 1 // 默认0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /private/var/folders/xxxxxxx/com.apple.dock.launchpad/db</span><br></pre></td></tr></table></figure>
 
-
-
-<ol start="3">
-<li> 禁止sleepimage的生成与写入（耗电量巨大，有数据丢失风险）</li>
+<ol start="7">
+<li> 继续在终端输入</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pmset -a hibernatemode 0  </span><br><span class="line">sudo pmset -a autopoweroff 0  </span><br><span class="line">sudo pmset -a standby 0  </span><br><span class="line">sudo rm /var/vm/sleepimage</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 db &quot;delete from apps where title=&#x27;图标名字&#x27;;&quot;&amp;&amp;killall Dock</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>  注意：</p>
+<ol>
+<li> 图标名字就是要删除的图标的名字，要完全一致，包括大小写、空格、中英文标点符号等</li>
+<li> 一次删除一个，不要同时删除好几个</li>
+</ol>
+</blockquote>
 
     </div>
 
@@ -403,8 +291,6 @@
           <div class="post-tags">
               <a href="/tags/Mac/" rel="tag"># Mac</a>
               <a href="/tags/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/" rel="tag"># 终端命令</a>
-              <a href="/tags/Mac%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="tag"># Mac异常处理</a>
-              <a href="/tags/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86/" rel="tag"># 电源管理</a>
           </div>
 
         
@@ -412,10 +298,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/Mac-Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/" rel="next" title="Mac系统异常可尝试恢复操作">
-      Mac系统异常可尝试恢复操作 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/22/Mac-Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/" rel="prev" title="Mac系统异常可尝试恢复操作">
+      <i class="fa fa-chevron-left"></i> Mac系统异常可尝试恢复操作
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/22/Mac-Mac%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86/" rel="next" title="Mac安装第三方软件失败处理">
+      Mac安装第三方软件失败处理 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -475,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac-%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset"><span class="nav-number">1.</span> <span class="nav-text">Mac 电源管理设置-pmset</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A0%87%E8%AE%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">相关标记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">设置参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">命令用例</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-%E5%88%A0%E9%99%A4-launchpad-%E4%B8%8A%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">Mac 删除 launchpad 上的图标</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="由 Hexo 官方文档获取的常用的配置及命令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客配置及命令">
+<meta property="og:url" content="https://www.zhaocy.fun/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="zhaocy&#39;s blog">
+<meta property="og:description" content="由 Hexo 官方文档获取的常用的配置及命令。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-14T07:36:04.000Z">
+<meta property="article:modified_time" content="2021-05-18T03:48:56.041Z">
+<meta property="article:author" content="春阳">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.zhaocy.fun/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo博客配置及命令 | zhaocy's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zhaocy's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">iOS developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="春阳">
+      <meta itemprop="description" content="iOS, Mac">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaocy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客配置及命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-14 15:36:04" itemprop="dateCreated datePublished" datetime="2021-05-14T15:36:04+08:00">2021-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-18 11:48:56" itemprop="dateModified" datetime="2021-05-18T11:48:56+08:00">2021-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo博客配置及命令" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <div class="post-description">由 Hexo 官方文档获取的常用的配置及命令。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
+<p>官方文档： <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
+<h3 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h3><p><code>Front-matter</code> 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。</p>
+<p>常用预设参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>布局</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>date</td>
+<td>创建日期</td>
+</tr>
+<tr>
+<td>update</td>
+<td>修改日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启评论功能（默认 <code>true</code>）</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（没有顺序和层次）</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（具有顺序性和层次性）</td>
+</tr>
+</tbody></table>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="init-新建网站"><a href="#init-新建网站" class="headerlink" title="init - 新建网站"></a>init - 新建网站</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
+
+<p>本命令相当于执行了以下几步：</p>
+<ol>
+<li> Git clone <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-starter">hexo-starter</a> 和 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-theme-landscape">hexo-theme-landscape</a> 主题到当前目录或指定目录。</li>
+<li> 使用 <a target="_blank" rel="noopener" href="https://classic.yarnpkg.com/lang/en/">Yarn 1</a>、<a target="_blank" rel="noopener" href="https://pnpm.js.org/">pnpm</a> 或 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/install">npm</a> 包管理器下载依赖（如有已安装多个，则列在前面的优先）。</li>
+</ol>
+<h3 id="new-新建文章"><a href="#new-新建文章" class="headerlink" title="new - 新建文章"></a>new - 新建文章</h3><p>如果没有 layout 的话，使用默认 layout 参数。如果标题有空格，需要用引号括起来。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo new <span class="string">&quot;test&quot;</span></span><br><span class="line"><span class="comment"># 常用参数</span></span><br><span class="line"><span class="comment"># -p / --path : 自定义新文章的路径</span></span><br><span class="line"><span class="comment"># -r / --replace : 如果存在同名文章则替换</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，会创建 <code>source/_posts/test.md</code>，<code>md</code> 中 <code>title</code> 为 <code>test</code>。对于独立页面来说，<code>Hexo</code> 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件。你可以使用 <code>--path</code> 参数来覆盖上述行为、自行决定文件的目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page --path about/me <span class="string">&quot;About me&quot;</span> // 1</span><br><span class="line">$ hexo new page --path about/me // 2</span><br><span class="line">$ hexo new post --path 分类/标题 <span class="string">&quot;标题&quot;</span> // 常用</span><br></pre></td></tr></table></figure>
+
+<p>以上 <code>1</code> 命令会创建一个 <code>source/about/me.md</code> 文件，同时md中的 title 为 <code>&quot;About me&quot;</code>。如果没有指定<code>title</code>，即 <code>2</code> 命令会创建 <code>source/_posts/about/me.md</code> ，同时 <code>md</code> 中的 <code>title</code> 为 <code>page</code>。</p>
+<p><code>1</code> 中的 <code>page</code> 为 <code>Hexo</code> 提供的默认布局，共有三种 <code>post</code> 、 <code>page</code> 、 <code>draft</code>。在创建这三种将会默认保存到不同路径，自定义的其他布局和 <code>post</code> 相同。</p>
+<table>
+<thead>
+<tr>
+<th align="left">布局</th>
+<th align="left">路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">post / 自定义</td>
+<td align="left">source/_posts</td>
+</tr>
+<tr>
+<td align="left">page</td>
+<td align="left">source</td>
+</tr>
+<tr>
+<td align="left">draft</td>
+<td align="left">_drafts</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>  <strong>草稿默认不会显示在页面中。</strong>可在执行时加上 <code>--draft</code> 参数，或是把 <code>render_drafts</code> 参数设为 <code>true</code> 来预览草稿。</p>
+</blockquote>
+<h3 id="generate-生成静态文件"><a href="#generate-生成静态文件" class="headerlink" title="generate - 生成静态文件"></a>generate - 生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line"><span class="comment"># 可简写为</span></span><br><span class="line">$ hexo g</span><br><span class="line"><span class="comment"># 常用参数</span></span><br><span class="line"><span class="comment"># -d / --delploy : 文件生成后立即部署网站</span></span><br><span class="line"><span class="comment"># -w / --watch : 监视文件变动</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="publish-发表草稿"><a href="#publish-发表草稿" class="headerlink" title="publish - 发表草稿"></a>publish - 发表草稿</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>draft</code> 布局模板的默认被保存到 <code>source/_drafts</code> 文件夹内，使用 <code>publish</code> 将草稿移动到 <code>source/_posts</code> 文件夹。</p>
+<h3 id="server-启动服务器"><a href="#server-启动服务器" class="headerlink" title="server - 启动服务器"></a>server - 启动服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line"><span class="comment"># 常用参数</span></span><br><span class="line"><span class="comment"># -p / --port : 重设端口</span></span><br><span class="line"><span class="comment"># -s / --static : 只使用静态文件</span></span><br><span class="line"><span class="comment"># -l / --log : 启动日记记录，使用覆盖记录格式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="deploy-部署网站"><a href="#deploy-部署网站" class="headerlink" title="deploy - 部署网站"></a>deploy - 部署网站</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"><span class="comment"># 可简写为</span></span><br><span class="line">$ hexo d</span><br><span class="line"><span class="comment"># 常用参数</span></span><br><span class="line"><span class="comment"># -g / --generate : 部署之前预先生成的静态文件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="render-渲染文件"><a href="#render-渲染文件" class="headerlink" title="render - 渲染文件"></a>render - 渲染文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br><span class="line"><span class="comment"># 常用参数</span></span><br><span class="line"><span class="comment"># -o / --output ：设置输出路径</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="clean-清除缓存文件"><a href="#clean-清除缓存文件" class="headerlink" title="clean - 清除缓存文件"></a>clean - 清除缓存文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+<h3 id="list-列出网站资料"><a href="#list-列出网站资料" class="headerlink" title="list - 列出网站资料"></a>list - 列出网站资料</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="version-显示-Hexo-版本"><a href="#version-显示-Hexo-版本" class="headerlink" title="version - 显示 Hexo 版本"></a>version - 显示 Hexo 版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+
+<h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands">https://hexo.io/zh-cn/docs/commands</a></p>
+<h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/migration">https://hexo.io/zh-cn/docs/migration</a></p>
+<h2 id="标签插件"><a href="#标签插件" class="headerlink" title="标签插件"></a>标签插件</h2><p>官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">https://hexo.io/zh-cn/docs/tag-plugins</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="prev" title="Hexo博客搭建">
+      <i class="fa fa-chevron-left"></i> Hexo博客搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/17/Git-Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/" rel="next" title="Git创建私有库">
+      Git创建私有库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">文章配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init-%E6%96%B0%E5%BB%BA%E7%BD%91%E7%AB%99"><span class="nav-number">2.1.</span> <span class="nav-text">init - 新建网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new-%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="nav-number">2.2.</span> <span class="nav-text">new - 新建文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">generate - 生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#publish-%E5%8F%91%E8%A1%A8%E8%8D%89%E7%A8%BF"><span class="nav-number">2.4.</span> <span class="nav-text">publish - 发表草稿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.5.</span> <span class="nav-text">server - 启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy-%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99"><span class="nav-number">2.6.</span> <span class="nav-text">deploy - 部署网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#render-%E6%B8%B2%E6%9F%93%E6%96%87%E4%BB%B6"><span class="nav-number">2.7.</span> <span class="nav-text">render - 渲染文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clean-%E6%B8%85%E9%99%A4%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-number">2.8.</span> <span class="nav-text">clean - 清除缓存文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list-%E5%88%97%E5%87%BA%E7%BD%91%E7%AB%99%E8%B5%84%E6%96%99"><span class="nav-number">2.9.</span> <span class="nav-text">list - 列出网站资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#version-%E6%98%BE%E7%A4%BA-Hexo-%E7%89%88%E6%9C%AC"><span class="nav-number">2.10.</span> <span class="nav-text">version - 显示 Hexo 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">2.11.</span> <span class="nav-text">官方文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB"><span class="nav-number">3.</span> <span class="nav-text">迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">标签插件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">春阳</p>
+  <div class="site-description" itemprop="description">iOS, Mac</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">春阳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz","app_key":"GcHQqd7KtA98Da2PX9rtN54k","server_url":null,"security":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

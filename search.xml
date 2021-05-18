@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Git创建私有库</title>
-    <url>/Git-Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</url>
+    <url>/2021/05/17/Git-Git%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</url>
     <content><![CDATA[<h2 id="1-创建私有Spec-Repo（只需要创建一次）"><a href="#1-创建私有Spec-Repo（只需要创建一次）" class="headerlink" title="1. 创建私有Spec Repo（只需要创建一次）"></a>1. 创建私有Spec Repo（只需要创建一次）</h2><ol>
 <li>首先创建一个 git 仓库（gitHub，Bitbucket，gitLab，coding，gitee，CSDN Code），权限选择私有仓库。如果有MIT选项，选中。</li>
 <li>将远程版本库添加到本地：pod repo add MyRepo <a href="https://xxx.git/">https://xxx.git</a> （创建好的Repo仓库）</li>
@@ -59,7 +59,7 @@
   </entry>
   <entry>
     <title>Hexo内置标签</title>
-    <url>/Hexo-Hexo%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
+    <url>/2021/05/17/Hexo-Hexo%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><p><code>quote</code>：在文章中插入引言，可包含作者、来源和标题。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
@@ -195,7 +195,7 @@
   </entry>
   <entry>
     <title>Hexo博客搭建</title>
-    <url>/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <url>/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo：一个快速、简洁且高效的博客框架。基于 Node.js 运行，使用 Markdown 解析文章。</p>
 <p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
 <p>GitHub Pages：由 GitHub 官方提供的一种免费的静态站点托管服务，托管和发布静态网站页面。</p>
@@ -347,7 +347,7 @@
   </entry>
   <entry>
     <title>Hexo博客配置及命令</title>
-    <url>/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
+    <url>/2021/05/14/Hexo-Hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
 <p>官方文档： <a href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
 <h3 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h3><p><code>Front-matter</code> 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。</p>
@@ -461,7 +461,7 @@
   </entry>
   <entry>
     <title>Mac删除launchpad上的图标</title>
-    <url>/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/</url>
+    <url>/2020/12/22/Mac-Mac%E5%88%A0%E9%99%A4Launchpad%E7%9A%84%E5%9B%BE%E6%A0%87/</url>
     <content><![CDATA[<h2 id="Mac-删除-launchpad-上的图标"><a href="#Mac-删除-launchpad-上的图标" class="headerlink" title="Mac 删除 launchpad 上的图标"></a>Mac 删除 launchpad 上的图标</h2><p>启动台（launchpad）上有很多我们不想看到的顽固图标，是跟随我们需要的app一起安装到电脑中的，但是实际使用中确根本用不到这些内容。这导致启动台显示很多冗余图标，对于喜欢干净整洁的我们看着很不舒服，但是当我们想要删除到这些没用的内容发现无法删除，长按option也没有显示删除的选项。使用以下步骤尝试删除：</p>
 <ol>
 <li> 打开访达（Finder），按住 ‘command + shift + G’ 或者点击菜单栏中 ‘前往→前往文件夹’</li>
@@ -501,7 +501,7 @@
   </entry>
   <entry>
     <title>Mac系统异常可尝试恢复操作</title>
-    <url>/Mac-Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/</url>
+    <url>/2020/12/22/Mac-Mac%E5%BC%82%E5%B8%B8%E5%8F%AF%E5%B0%9D%E8%AF%95%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>Mac虽然相比较来说会稳定些，但是也不是没有出问题的可能。以下是我的电脑出现问题时尝试过的部分恢复操作，有些时候重置系统设置就能修复部分问题（比如电脑接口无法充电或连接外设无反应）。<strong>恢复前记得备份电脑数据！</strong>虽然我的数据没有丢失过，但是苹果官方人员在推荐我做以下操作之前还是建议我备份了电脑数据。如果还是不行那么推荐直接联系官方人员。</p>
 <span id="more"></span> 
 
@@ -567,7 +567,7 @@
   </entry>
   <entry>
     <title>Mac安装第三方软件失败处理</title>
-    <url>/Mac-Mac%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86/</url>
+    <url>/2020/12/22/Mac-Mac%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h2 id="处理第三方应用软件无法打开或文件损坏"><a href="#处理第三方应用软件无法打开或文件损坏" class="headerlink" title="处理第三方应用软件无法打开或文件损坏"></a>处理第三方应用软件无法打开或文件损坏</h2><p>在Mac安装第三方软件时可能会有以上提示，当遇到「打不开xxx，因为它来自身份不明开发者。」时，触发了苹果的安全机制，检测到软件没有签名，禁止随意安装。苹果默认只能安装 App Store 下载的或被认可的开发者开发的软件。</p>
 <p>在遇到这种问题时，首先按住 Control 再次点击图标安装。如果还是安装失败，再执行以下操作</p>
 <div class="note warning">
@@ -612,7 +612,7 @@
   </entry>
   <entry>
     <title>Mac电源管理设置-pmset</title>
-    <url>/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/</url>
+    <url>/2020/11/20/Mac-Mac%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E8%AE%BE%E7%BD%AE-pmset/</url>
     <content><![CDATA[<h1 id="Mac-电源管理设置-pmset"><a href="#Mac-电源管理设置-pmset" class="headerlink" title="Mac 电源管理设置-pmset"></a>Mac 电源管理设置-pmset</h1><p>[toc]</p>
 <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><code>pmset</code>，操纵电源管理设置（<strong>p</strong>ower <strong>m</strong>anagement <strong>set</strong>ting）。</p>
 <p>顾名思义，这个工具可以设置和列出电源管理设置，像空闲睡眠时间、访问时唤醒、断点重启等等。其中一部分功能在系统设置中通过图形界面的方式提供了，然而大部分更加灵活的选项并没有显示出来。</p>
@@ -764,7 +764,7 @@
   </entry>
   <entry>
     <title>Mac在Docker栏中添加空白项</title>
-    <url>/Mac-Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
+    <url>/2020/12/22/Mac-Mac%E7%9A%84Docker%E6%A0%8F%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD/</url>
     <content><![CDATA[<p>终端输入</p>
 <p><code>defaults write com.apple.dock persistent-apps -array-add &#39;&#123;&quot;tile-type&quot;=&quot;spacer-tile&quot;;&#125;&#39;; killall Dock</code></p>
 ]]></content>
@@ -778,7 +778,7 @@
   </entry>
   <entry>
     <title>Mac终端统计代码行数</title>
-    <url>/Mac-Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
+    <url>/2020/12/22/Mac-Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
@@ -796,7 +796,7 @@
   </entry>
   <entry>
     <title>Mac调整鼠标DPI</title>
-    <url>/Mac-Mac%E8%B0%83%E6%95%B4%E9%BC%A0%E6%A0%87DPI/</url>
+    <url>/2020/12/22/Mac-Mac%E8%B0%83%E6%95%B4%E9%BC%A0%E6%A0%87DPI/</url>
     <content><![CDATA[<h2 id="Mac-调整鼠标-DPI"><a href="#Mac-调整鼠标-DPI" class="headerlink" title="Mac 调整鼠标 DPI"></a>Mac 调整鼠标 DPI</h2><p><strong>终端中先查看当前值</strong></p>
 <p>鼠标双击阈值：</p>
 <p><code>defaults read -g com.apple.mouse.doubleClickThreshold</code></p>
@@ -824,7 +824,7 @@
   </entry>
   <entry>
     <title>Git简介及常用命令</title>
-    <url>/Git-Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <url>/2021/05/17/Git-Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="一、Git简介"><a href="#一、Git简介" class="headerlink" title="一、Git简介"></a>一、Git简介</h1><p>Git是Linux之父Linus与2005年用C语言编写的<strong>分布式控制系统</strong>。  </p>
 <p>Git的分布式区别于SVN等集中式版本控制系统的地方有哪些呢？</p>
 <ul>

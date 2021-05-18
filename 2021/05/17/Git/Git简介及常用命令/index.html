@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="阅读 《Pro Git》总结的一部分常用配置及命令。">
@@ -172,10 +172,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -240,6 +236,20 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/05/17/Git/Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/17/Git/Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <div class="post-description">阅读 《Pro Git》总结的一部分常用配置及命令。</div>
 
         </div>
@@ -757,6 +767,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -803,7 +814,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一、Git简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE-Git"><span class="nav-number">2.</span> <span class="nav-text">二、配置 Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">三、获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">1. 克隆现有仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BAGit%E4%BB%93%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">2. 创建Git仓库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">四、Git常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="nav-number">4.1.</span> <span class="nav-text">1. 状态检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%8A%B6%E6%80%81%E7%AE%80%E8%A7%88"><span class="nav-number">4.2.</span> <span class="nav-text">2. 状态简览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%B8%E5%AF%B9%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">4.3.</span> <span class="nav-text">3. 查看当前相对修改的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%96%B0"><span class="nav-number">4.4.</span> <span class="nav-text">4. 提交更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%92%A4%E9%94%80"><span class="nav-number">4.5.</span> <span class="nav-text">5. 撤销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="nav-number">4.6.</span> <span class="nav-text">6. 查看提交历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6-%E6%88%96%E8%80%85%E8%AF%B4%E6%98%AF%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="nav-number">4.7.</span> <span class="nav-text">7. 移动文件(或者说是重命名文件)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">4.8.</span> <span class="nav-text">8. 删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-number">4.9.</span> <span class="nav-text">9. 版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%90%9C%E7%B4%A2"><span class="nav-number">4.10.</span> <span class="nav-text">10. 搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">五、远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">5.1.</span> <span class="nav-text">1. 查看远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">5.2.</span> <span class="nav-text">2. 添加远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8B%89%E5%8F%96%E6%9B%B4%E6%96%B0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">5.3.</span> <span class="nav-text">3. 拉取更新的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%A7%BB%E9%99%A4%E4%B8%8E%E9%87%8D%E5%91%BD%E5%90%8D"><span class="nav-number">5.4.</span> <span class="nav-text">4. 远程仓库移除与重命名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">六、标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%88%97%E5%87%BA%E6%A0%87%E7%AD%BE"><span class="nav-number">6.1.</span> <span class="nav-text">1. 列出标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE"><span class="nav-number">6.2.</span> <span class="nav-text">2. 添加标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B1%E4%BA%AB%E6%A0%87%E7%AD%BE"><span class="nav-number">6.3.</span> <span class="nav-text">3. 共享标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E6%A0%87%E7%AD%BE"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%B9%E6%8D%AE%E6%A0%87%E7%AD%BE%E6%A3%80%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="nav-number">6.5.</span> <span class="nav-text">5. 根据标签检出数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">七、分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">7.1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="nav-number">7.2.</span> <span class="nav-text">2. 创建分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="nav-number">7.3.</span> <span class="nav-text">3. 切换分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%86%E6%94%AF%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6"><span class="nav-number">7.4.</span> <span class="nav-text">4. 分支的创建与合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%81%87%E5%88%B0%E5%86%B2%E7%AA%81%E7%9A%84%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="nav-number">7.5.</span> <span class="nav-text">4. 遇到冲突的分支合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%88%86%E6%94%AF%E5%88%97%E8%A1%A8"><span class="nav-number">7.6.</span> <span class="nav-text">5. 分支列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">7.7.</span> <span class="nav-text">6. 分支开发工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E8%B7%9F%E8%B8%AA%E5%88%86%E6%94%AF"><span class="nav-number">7.8.</span> <span class="nav-text">7. 跟踪分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="nav-number">7.9.</span> <span class="nav-text">8. 删除远程分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%8F%98%E5%9F%BA"><span class="nav-number">7.10.</span> <span class="nav-text">9. 变基</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%9A%82%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-number">7.11.</span> <span class="nav-text">10. 暂存文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%82%A8%E8%97%8F"><span class="nav-number">7.12.</span> <span class="nav-text">11. 储藏</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">8.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-number">8.1.</span> <span class="nav-text">1. 忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Git%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="nav-number">8.2.</span> <span class="nav-text">2. Git命令别名</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git%E7%AE%80%E4%BB%8B"><span class="nav-text">一、Git简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE-Git"><span class="nav-text">二、配置 Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="nav-text">三、获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E4%BB%93%E5%BA%93"><span class="nav-text">1. 克隆现有仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BAGit%E4%BB%93%E5%BA%93"><span class="nav-text">2. 创建Git仓库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">四、Git常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="nav-text">1. 状态检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%8A%B6%E6%80%81%E7%AE%80%E8%A7%88"><span class="nav-text">2. 状态简览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%B8%E5%AF%B9%E4%BF%AE%E6%94%B9%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-text">3. 查看当前相对修改的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%96%B0"><span class="nav-text">4. 提交更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%92%A4%E9%94%80"><span class="nav-text">5. 撤销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="nav-text">6. 查看提交历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6-%E6%88%96%E8%80%85%E8%AF%B4%E6%98%AF%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="nav-text">7. 移动文件(或者说是重命名文件)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-text">8. 删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-text">9. 版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%90%9C%E7%B4%A2"><span class="nav-text">10. 搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">五、远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">1. 查看远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">2. 添加远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8B%89%E5%8F%96%E6%9B%B4%E6%96%B0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-text">3. 拉取更新的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%A7%BB%E9%99%A4%E4%B8%8E%E9%87%8D%E5%91%BD%E5%90%8D"><span class="nav-text">4. 远程仓库移除与重命名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="nav-text">六、标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%88%97%E5%87%BA%E6%A0%87%E7%AD%BE"><span class="nav-text">1. 列出标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE"><span class="nav-text">2. 添加标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B1%E4%BA%AB%E6%A0%87%E7%AD%BE"><span class="nav-text">3. 共享标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E6%A0%87%E7%AD%BE"><span class="nav-text">4. 删除标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%B9%E6%8D%AE%E6%A0%87%E7%AD%BE%E6%A3%80%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="nav-text">5. 根据标签检出数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-text">七、分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="nav-text">2. 创建分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="nav-text">3. 切换分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%86%E6%94%AF%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6"><span class="nav-text">4. 分支的创建与合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%81%87%E5%88%B0%E5%86%B2%E7%AA%81%E7%9A%84%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="nav-text">4. 遇到冲突的分支合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%88%86%E6%94%AF%E5%88%97%E8%A1%A8"><span class="nav-text">5. 分支列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-text">6. 分支开发工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E8%B7%9F%E8%B8%AA%E5%88%86%E6%94%AF"><span class="nav-text">7. 跟踪分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="nav-text">8. 删除远程分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%8F%98%E5%9F%BA"><span class="nav-text">9. 变基</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%9A%82%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-text">10. 暂存文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%82%A8%E8%97%8F"><span class="nav-text">11. 储藏</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-text">1. 忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Git%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="nav-text">2. Git命令别名</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -839,6 +850,10 @@
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -861,7 +876,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">春阳</span>
+  <span class="author" itemprop="copyrightHolder">ZCY</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
@@ -873,97 +888,6 @@
 
 
 
-<script data-pjax>
-  (function() {
-    function leancloudSelector(url) {
-      url = encodeURI(url);
-      return document.getElementById(url).querySelector('.leancloud-visitors-count');
-    }
-
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = decodeURI(visitors.id);
-      var title = visitors.dataset.flagTitle;
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            leancloudSelector(url).innerText = counter.time + 1;
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .catch(error => {
-                console.error('Failed to save visitor count', error);
-              });
-          } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return decodeURI(element.id);
-      });
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          for (let url of entries) {
-            let target = results.find(item => item.url === url);
-            leancloudSelector(url).innerText = target ? target.time : 0;
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz","app_key":"GcHQqd7KtA98Da2PX9rtN54k","server_url":null,"security":false};
-    function fetchData(api_server) {
-      var Counter = (method, url, data) => {
-        return fetch(`${api_server}/1.1${url}`, {
-          method,
-          headers: {
-            'X-LC-Id'     : app_id,
-            'X-LC-Key'    : app_key,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    }
-
-    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
-
-    if (api_server) {
-      fetchData(api_server);
-    } else {
-      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
-        .then(response => response.json())
-        .then(({ api_server }) => {
-          fetchData('https://' + api_server);
-        });
-    }
-  })();
-</script>
 
 
       </div>
@@ -1072,6 +996,35 @@ window.addEventListener('pjax:success', () => {
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz',
+      appKey     : 'GcHQqd7KtA98Da2PX9rtN54k',
+      placeholder: "欢迎留下你的评论、建议以及吐槽！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
     </div>
 </body>

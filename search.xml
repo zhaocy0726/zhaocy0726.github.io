@@ -935,12 +935,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac获取当前电池健康状态</title>
-    <url>/2021/05/18/Mac/Mac%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%94%B5%E6%B1%A0%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<p>终端执行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ioreg -rn AppleSmartBattery | grep -i capacity</span><br></pre></td></tr></table></figure>
+    <title>Mac终端统计代码行数</title>
+    <url>/2020/12/22/Mac/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqmk5e7ws9j30mh060q4o.jpg" alt="image-20210518140011203"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Mac</category>
@@ -951,14 +953,12 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac终端统计代码行数</title>
-    <url>/2020/12/22/Mac/Mac%E7%BB%88%E7%AB%AF%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 总代码量</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> |xargs grep -v |wc -l</span><br></pre></td></tr></table></figure>
+    <title>Mac获取当前电池健康状态</title>
+    <url>/2021/05/18/Mac/Mac%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%94%B5%E6%B1%A0%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<p>终端执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ioreg -rn AppleSmartBattery | grep -i capacity</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &quot;^$&quot;是去掉空行</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs grep -v <span class="string">&quot;^$&quot;</span>|wc -l </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 每个文件的行数</span></span><br><span class="line">$ find . -name <span class="string">&quot;*.m&quot;</span> -or -name <span class="string">&quot;*.h&quot;</span> -or -name <span class="string">&quot;*.xib&quot;</span> -or -name <span class="string">&quot;*.c&quot;</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqmk5e7ws9j30mh060q4o.jpg" alt="image-20210518140011203"></p>
 ]]></content>
       <categories>
         <category>Mac</category>

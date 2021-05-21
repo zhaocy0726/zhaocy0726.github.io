@@ -1028,7 +1028,7 @@
 <h1 id="二、配置-Git"><a href="#二、配置-Git" class="headerlink" title="二、配置 Git"></a>二、配置 Git</h1><p>Git安装完成后需要配置Git环境。Git自带 <code>git config</code> 工具帮助设置控制Git仓库的外观和行为的配置变量。这些配置变量分别存储在三个不同的位置：</p>
 <blockquote>
 <ol>
-<li> <code>/etc/gitconfig</code> 文件：包含系统上每一个用户及他们仓库的通用配置。如果使用带有 <code>--system</code> 选项的 <code>git config</code> 时, 它会从文件读写配置变量</li>
+<li> <code>/etc/gitconfig</code> 文件：包含系统上每一个用户及他们仓库的通用配置。如果使用带有 <code>--system</code> 选项的 <code>git config</code> 时, 它会从这个文件读写配置变量</li>
 <li> <code>~/.gitconfig</code> 或 <code>~/.config/git/config</code> 文件: 只针对当前用户。可以传递 <code>--global</code> 选项让Git读写此文件</li>
 <li>当前使用仓库的Git目录中的 <code>config</code> 文件(就是 <code>.git/config</code>): 针对该仓库。<br> 每一个界别覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量。</li>
 </ol>
@@ -1065,12 +1065,12 @@
 <ol start="2">
 <li> 初始化git</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init //将当前目录变成Git可以管理的仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init //将当前目录变成Git可以管理的仓库，这会在指定的文件夹内创建一个 .git 文件用来存放数组和资源</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li> 添加文件</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add *.* //添加具体文件，注意，可反复多次使用，添加多个文件；</span><br><span class="line">$ git add . //也可以使用这句，添加全部修改文件</span><br><span class="line">$ git commit -m &quot;提交说明&quot; //把修改提交到仓库</span><br><span class="line">$ git remote add origin &quot;xxx.git&quot; // 链接远程仓库</span><br><span class="line">$ git pull origin master // 拉取远程</span><br><span class="line">$ git push -u origin master // 推送修改</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add *.* //添加具体文件，通知Git准备跟踪，注意，可反复多次使用，添加多个文件；</span><br><span class="line">$ git add . //也可以使用这句，添加全部修改文件</span><br><span class="line">$ git commit -m &quot;提交说明&quot; //把修改提交到仓库</span><br><span class="line">$ git remote add origin &quot;xxx.git&quot; // 链接远程仓库</span><br><span class="line">$ git pull origin master // 拉取远程</span><br><span class="line">$ git push -u origin master // 推送修改</span><br></pre></td></tr></table></figure>
 
 <p><code>git add</code> 是将工作区数据添加到暂存区<br><code>git commit</code> 是将暂存区数据提交到分支</p>
 <h1 id="四、Git常用命令"><a href="#四、Git常用命令" class="headerlink" title="四、Git常用命令"></a>四、Git常用命令</h1><h2 id="1-状态检查"><a href="#1-状态检查" class="headerlink" title="1. 状态检查"></a>1. 状态检查</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status // 查看当前版本库的状态</span><br></pre></td></tr></table></figure>
@@ -1091,11 +1091,13 @@
 <blockquote>
 <p>出现在右面的话表示该文件被修改了，但是还没有放到暂存区。<br>出现在左面的话表示该文件修改了，并放入了暂存区。<br>如果出现了两个则表示，在工作区中修改了并提交到了暂存区后又被修改了，还没有存到暂存区。</p>
 </blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqnhhr4uidj30dw08tdgs.jpg" alt="文件状态的变化"></p>
+<p>&lt;% cq %&gt; 文件状态的变化 &lt;% endcq %&gt;</p>
 <h2 id="3-查看当前相对修改的内容"><a href="#3-查看当前相对修改的内容" class="headerlink" title="3. 查看当前相对修改的内容"></a>3. 查看当前相对修改的内容</h2><p>如果觉得 <code>git status</code> 不够详细，想查看尚未暂存的文件具体修改的地方，可以用 </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">$ git diff HEAD --xxx</span><br></pre></td></tr></table></figure>
 
-<p>此命令比较的是工作区和版本库中文件的差异</p>
-<p>如果要查看已暂存未提交的内容，可以用</p>
+<p>此命令比较的是工作区和暂存区中文件的差异</p>
+<p>如果要查看已暂存和最新版本库中内容差异，可以用</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff -cached</span><br><span class="line">$ git diff -staged // Git 1.6.1 及更高版本可以用</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-提交更新"><a href="#4-提交更新" class="headerlink" title="4. 提交更新"></a>4. 提交更新</h2><p>如果觉得使用暂存区较为繁琐，Git 提供了一个跳过使用暂存区的方式，只要在提交的时候给 <code>git commit</code> 加上 <code>-a</code> 选项，Git就会自动把<strong>所有已经跟踪过的</strong>文件暂存起来并一起提交，从而跳过 <code>git add</code> 步骤：</p>
@@ -1118,7 +1120,7 @@
 <p>如果修改的文件还没有到暂存区，想还原成上次提交的样子，即放弃此次对工作区内容的修改。可以使用</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：一定要带着 <code>--</code> , 如果没有 <code>--</code> , 就变成了 ++切换另一个分支++ 命令。</strong></p>
+<p><strong>注意：一定要带着 <code>--</code> , 如果没有 <code>--</code> , 就变成了==切换另一个分支== 命令。</strong></p>
 <h2 id="6-查看提交历史"><a href="#6-查看提交历史" class="headerlink" title="6. 查看提交历史"></a>6. 查看提交历史</h2><p><strong>在提交了若干更新后，可以回顾提交历史，使用</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log // 按照由近到远的提交时间列出所有更新</span><br><span class="line">$ git log -p // 按补丁格式显示每次提交内容的差异</span><br><span class="line">$ git log --graph // 显示ASCII图形表示分支合并历史（很有用）</span><br><span class="line">$ git log --stat // 额外查看每次提交的简略统计信息</span><br><span class="line">$ git log --shortstat // 仅显示--stat中最后行数的修改统计</span><br><span class="line">$ git log --name-only // 仅显示已修改的文件清单</span><br><span class="line">$ git log --name-status // 显示新增、修改、删除的文件清单</span><br><span class="line">$ git log --abbrev-commit // 显示简短且唯一的哈希字串（默认7个字符，有时会增加到8-10个）</span><br><span class="line">$ git log --relative-date // 使用较短的时间显示</span><br><span class="line">$ git log --pretty=oneline // 当行显示简易log, 不显示很多凌乱的信息（online 可替换成 short，full和fuller）</span><br><span class="line"></span><br><span class="line">$ q // 如果显示log版本信息有很多，使用q键停止查看</span><br></pre></td></tr></table></figure>
 
@@ -1204,7 +1206,7 @@
 
 <h2 id="7-移动文件-或者说是重命名文件"><a href="#7-移动文件-或者说是重命名文件" class="headerlink" title="7. 移动文件(或者说是重命名文件)"></a>7. 移动文件(或者说是重命名文件)</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
 
-<h2 id="8-删除文件"><a href="#8-删除文件" class="headerlink" title="8. 删除文件"></a>8. 删除文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm xxx // 删除本地文件</span><br><span class="line">$ git rm xxx // 删除暂存区文件</span><br><span class="line"></span><br><span class="line">$ git rm --cached xx // 停止追踪指定文件，但该文件会保留在工作区</span><br><span class="line">$ git rm *.* // 删除文件也可以用glob模式</span><br></pre></td></tr></table></figure>
+<h2 id="8-删除文件"><a href="#8-删除文件" class="headerlink" title="8. 删除文件"></a>8. 删除文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm xxx // 删除本地文件</span><br><span class="line">$ git rm xxx // 删除跟踪的文件。如果修改过并已加入暂存区，则需要添加 -f 强制删除</span><br><span class="line"></span><br><span class="line">$ git rm --cached xx // 停止追踪指定文件，但该文件会保留在工作区</span><br><span class="line">$ git rm *.* // 删除文件也可以用glob模式</span><br></pre></td></tr></table></figure>
 
 <p>删除本地文件后，需要执行 <code>git rm</code> 命令也同时删除掉缓存区中的文件。<br>如果误删了，执行 <code>git checkout</code> 撤销命令，即可恢复。</p>
 <p><strong>注意：无法恢复从来没有被添加到版本库就被删除的文件</strong></p>
@@ -1228,12 +1230,12 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log -s fileD // 显示提交信息</span><br><span class="line">$ git log -s --oneline fileD // 单行显示简要信息</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">b8db0f4 (HEAD -&gt; master) C6 // 有修改</span><br><span class="line">9f9a151 (develop) C4 // 有修改</span><br><span class="line">bf7bb79 C2 // 这里引入</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
 <h1 id="五、远程仓库"><a href="#五、远程仓库" class="headerlink" title="五、远程仓库"></a>五、远程仓库</h1><p>远程仓库指的是托管在其他网络中你的项目的版本库。（GitHub/BitBucket/GitLab/私有服务器等）</p>
-<h2 id="1-查看远程仓库"><a href="#1-查看远程仓库" class="headerlink" title="1. 查看远程仓库"></a>1. 查看远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote // 查看已经配置的远程仓库服务器</span><br><span class="line">$ git remote -v // 会显示对应的URL</span><br><span class="line">$ git remote show [remote-name] // 显示更多信息</span><br></pre></td></tr></table></figure>
+<h2 id="1-查看远程仓库"><a href="#1-查看远程仓库" class="headerlink" title="1. 查看远程仓库"></a>1. 查看远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote // 查看已经配置的远程仓库服务器</span><br><span class="line">$ git remote -v / --verbose // 会显示对应的URL</span><br><span class="line">$ git remote show [remote-name] // 显示更多信息</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-添加远程仓库"><a href="#2-添加远程仓库" class="headerlink" title="2. 添加远程仓库"></a>2. 添加远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 先有远程仓库</span><br><span class="line">$ git clone &lt;远程仓库地址/url&gt; // 从服务器拉取项目到本地 命名与远程一样</span><br><span class="line">$ git clone &lt;url&gt; xxx // 将项目放到xxx文件中（如果没有，创建xxx）</span><br><span class="line"></span><br><span class="line">// 先有本地仓库</span><br><span class="line">$ git remote add origin &lt;远程仓库地址&gt; // 关联一个新的远程Git仓库</span><br><span class="line">$ git push -u origin master // 第一次推送master分支的所有内容到远程仓库</span><br><span class="line">$ git push origin master // 本地推送到远程主分支，`master` 可以切换分支名</span><br><span class="line">$ git push // 本地推送到远程（不考虑分支等情况或明确自动推送的分支）</span><br></pre></td></tr></table></figure>
+<h2 id="2-添加远程仓库"><a href="#2-添加远程仓库" class="headerlink" title="2. 添加远程仓库"></a>2. 添加远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 先有远程仓库</span><br><span class="line">$ git clone &lt;远程仓库地址/url&gt; // 从服务器拉取项目到本地 命名与远程一样</span><br><span class="line">$ git clone &lt;url&gt; xxx // 将项目放到xxx文件中（如果没有，创建xxx）</span><br><span class="line"></span><br><span class="line">// 先有本地仓库</span><br><span class="line">$ git remote add origin &lt;远程仓库地址&gt; // 关联一个新的远程Git仓库</span><br><span class="line">$ git push -u origin master // 第一次推送master分支的所有内容到远程仓库</span><br><span class="line">$ git push origin master // 本地推送到远程主分支，`master` 可以切换分支名</span><br><span class="line">$ git push origin A:B // 将本地的 A 分支推送到 origin 仓库的 B 分支（前提是有写入权限）</span><br><span class="line">$ git push // 本地推送到远程（不考虑分支等情况或明确自动推送的分支）</span><br></pre></td></tr></table></figure>
 
 <p>第一次推送master分支时，加上了 <code>-u</code> 参数，Git不但会把本地的<code>master</code>分支内容推送的远程的 <code>master</code> 分支，还会关联本地的 <code>master</code>分支和远程的 <code>master</code> 分支，在以后的推送或者拉取时就可以简化命令。</p>
-<h2 id="3-拉取更新的内容"><a href="#3-拉取更新的内容" class="headerlink" title="3. 拉取更新的内容"></a>3. 拉取更新的内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git fetch [remote-name] // 拉取还没有的数据（该命令不会自动合并并修改当前的工作，需要手动合并）</span><br><span class="line">$ git pull origin master // 拉取远程分支未同步的数据</span><br><span class="line">$ git pull // 拉取还没有的数据（自动合并并修改当前的工作）</span><br></pre></td></tr></table></figure>
+<h2 id="3-拉取更新的内容"><a href="#3-拉取更新的内容" class="headerlink" title="3. 拉取更新的内容"></a>3. 拉取更新的内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git fetch [remote-name] // 拉取本地仓库还没有的数据（该命令不会自动合并并修改当前的工作，需要手动合并）</span><br><span class="line">$ git pull origin master // 拉取远程分支未同步的数据</span><br><span class="line">$ git pull // 拉取还没有的数据（自动合并并修改当前的工作）</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-远程仓库移除与重命名"><a href="#4-远程仓库移除与重命名" class="headerlink" title="4. 远程仓库移除与重命名"></a>4. 远程仓库移除与重命名</h2><ol>
 <li> 重命名引用名字可以执行命令：</li>
@@ -1297,7 +1299,7 @@
 <p>当我们创了新的分支 <code>testing</code>，这会在当前所提交的对象上创建一个 <code>testing</code> 指针。此时，<code>HEAD</code> 仍然指向 <code>master</code> 分支。因为 <code>git branch xx</code> 命令仅仅是创建了一个新的分支，不会自动切换到新分支上。</p>
 <p>可以使用 <code>git log --oneline --decorate</code> 查看当前各个分支当前所指向的对象。</p>
 <h2 id="3-切换分支"><a href="#3-切换分支" class="headerlink" title="3. 切换分支"></a>3. 切换分支</h2><p>要切换到一个已存在的分支，需要执行以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout testing // testing 为已存在的分支</span><br><span class="line"></span><br><span class="line">$ git checkout -b testing // 上述如果加上 -b 表示创建并切换分支，等价于下面两条命令</span><br><span class="line">$ git branch testing</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout testing // testing 为已存在的分支</span><br><span class="line"></span><br><span class="line">// 创建并切换分支</span><br><span class="line">$ git checkout -b testing // 上述如果加上 -b 表示创建并切换分支，等价于下面两条命令</span><br><span class="line">$ git branch testing</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
 
 <p>这样 <code>HEAD</code> 分支就会指向新创建的 <code>testing</code> 分支。</p>
 <p>假设此时最新提交对象为 <code>a</code>。再次提交，<code>testing</code> 分支会向前移动，指向新对象 <code>b</code>。<br>此时再次切换回 <code>master</code> 分支，会发现 <code>master</code> 分支内容没有改变，分支仍然是指向对象 <code>a</code>。</p>
@@ -1314,7 +1316,7 @@
 5.  切换回 `A` 分支，继续开发工作。
 </code></pre>
 <p>整体流程如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 1</span><br><span class="line">$ git checkout -b A // 创建分支 `A`</span><br><span class="line">update</span><br><span class="line"></span><br><span class="line">// 2</span><br><span class="line">$ git commit -a -m &quot;update&quot; // 更新工作内容，并且提交到分支 `A` </span><br><span class="line"></span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">// 3</span><br><span class="line">$ git checkout -b B // 创建新分支 `B`</span><br><span class="line"></span><br><span class="line">// 4</span><br><span class="line">update</span><br><span class="line">$ git commit -a -m &quot;fix bug&quot; // 修复完成，提交修改</span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">$ git merge B // 合并分支 `B` 中修改的内容到 `master` 分支</span><br><span class="line"></span><br><span class="line">$ git branch -d B // 删除分支 `B`，因为此时已经不需要它了</span><br><span class="line"></span><br><span class="line">// 5</span><br><span class="line">$ git checkout A // 切换到分支 `A`，要注意此时不带 `-b`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 1</span><br><span class="line">$ git checkout -b A // 创建分支 `A`</span><br><span class="line">update</span><br><span class="line"></span><br><span class="line">// 2</span><br><span class="line">$ git commit -a -m &quot;update&quot; // 更新工作内容，并且提交到分支 `A` ，如果不更新，会被Git阻止切换分支</span><br><span class="line"></span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">// 3</span><br><span class="line">$ git checkout -b B // 创建新分支 `B`</span><br><span class="line"></span><br><span class="line">// 4</span><br><span class="line">update</span><br><span class="line">$ git commit -a -m &quot;fix bug&quot; // 修复完成，提交修改</span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">$ git merge B // 合并分支 `B` 中修改的内容到 `master` 分支</span><br><span class="line"></span><br><span class="line">$ git branch -d B // 删除分支 `B`，因为此时已经不需要它了</span><br><span class="line"></span><br><span class="line">// 5</span><br><span class="line">$ git checkout A // 切换到分支 `A`，要注意此时不带 `-b`</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p> 在合并的时候，会看到“快进（fast-forward）”这个词。由于当前 <code>master</code> 分支所指向的当前提交(有关 <code>B</code> 提交)的直接上游。所以Git只是简单的将指针向前移动。当试图合并两个分支时，如果顺着分支走下去就能到达另一个分支，那么Git在合并时只会简单的将指针向前推进，因为这种情况下合并操作没有需要解决的分歧——这就叫快进。</p>
@@ -1338,8 +1340,8 @@
 <p>这表示 <code>HEAD</code> 所示的版本（当前分支 <code>master</code>）在这个区段的上半部分 (<code>&lt;&lt;&lt;</code> 到 <code>===</code>)，而 <code>A</code> 分支所指示的版本在这个区段的下半部分(<code>===</code> 到 <code>&gt;&gt;&gt;</code>)。为了解决冲突，需要选择其中一个版本的内容，或者自行合并这些内容。修改完成后删除掉 <code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code>。</p>
 <p>在修改完成后，使用 <code>git add</code> 来标记文件冲突以解决。暂存这些原本有冲突的文件，Git会将他们标记为冲突已解决。你可以再次运行 <code>git status</code> 来确认所有的冲突已解决。</p>
 <p>如果遇到冲突，但是不想处理冲突这种情况，你可以使用 <code>git merge --abort</code> 来退出合并。该命令会尝试恢复到你运行合并之前的状态。但是，当运行命令前，在工作目录有未储藏、未提交的修改时，它不能完美的处理，即有可能有代码丢失的风险。</p>
-<p>如果发现合并后出现了冲突，因为一些特殊情况弄的你很混乱，而本地的代码如果修改不是很多，很重要。那么可以尝试 <code>git reset --hard HEAD</code> 回到初始状态。<strong>这个命令会清空工作目录中的所有修改。</strong></p>
-<h2 id="5-分支列表"><a href="#5-分支列表" class="headerlink" title="5. 分支列表"></a>5. 分支列表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -v // 查看每一个分支的最后一次提交</span><br><span class="line">$ git branch --megred // 过滤这个列表中已经合并的分支</span><br><span class="line">$ git branch --no-megred // 过滤这个列表中有未合并工作的分支</span><br></pre></td></tr></table></figure>
+<p>如果发现合并后出现了冲突，因为一些特殊情况弄的你很混乱，而本地的代码如果修改不是很多，很重要。那么可以尝试 <code>git reset --hard HEAD</code> 回到初始状态。<strong>注意：这个命令会清空工作目录中的所有修改。</strong></p>
+<h2 id="5-分支列表"><a href="#5-分支列表" class="headerlink" title="5. 分支列表"></a>5. 分支列表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch // 查看当前的分支列表</span><br><span class="line">$ git branch -v // 查看每一个分支的最后一次提交</span><br><span class="line">$ git branch --megred // 过滤这个列表中已经合并的分支</span><br><span class="line">$ git branch --no-megred // 过滤这个列表中有未合并工作的分支</span><br></pre></td></tr></table></figure>
 
 <h2 id="6-分支开发工作流"><a href="#6-分支开发工作流" class="headerlink" title="6. 分支开发工作流"></a>6. 分支开发工作流</h2><ol>
 <li> 长期分支：<code>master</code> 分支只保留完全稳定的代码，可能只是已经发布或即将发布的代码。开发工作在 <code>develop</code> / <code>next</code> 或其他平行分支上进行，在开发完成后在合并到 <code>master</code> 分支。</li>
@@ -1365,15 +1367,15 @@
 <h2 id="8-删除远程分支"><a href="#8-删除远程分支" class="headerlink" title="8. 删除远程分支"></a>8. 删除远程分支</h2><p>如果已经通过远程分支完成了所有的工作（完成了一个特性并合并到了 <code>master</code> 分支）。可以将远程分支删除。运行命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push origin --delete serverfix</span><br></pre></td></tr></table></figure>
 
-<h2 id="9-变基"><a href="#9-变基" class="headerlink" title="9. 变基"></a>9. 变基</h2><p><strong>写在前头：不要对在你的仓库外有副本的分支执行变基！（个人理解：不要变基提交到 <code>master</code> 或多人共同提交工作的分支，不要变基已经提交过的历史。只用于完全属于个人的分支或者尚未推送到公用仓库的提交上）</strong></p>
+<h2 id="9-变基"><a href="#9-变基" class="headerlink" title="9. 变基"></a>9. 变基</h2><p><strong>写在前头的重点：千万不要对在你的仓库外有副本的分支执行变基！（个人理解：不要变基提交到 <code>master</code> 或多人共同提交工作的分支，不要变基已经提交过的历史。只用于完全属于个人的分支或者尚未推送到公用仓库的提交上）</strong></p>
 <p>在Git中整合不同分支的修改主要有两种方法合并 <code>merge</code> 与变基 <code>rebase</code>。</p>
-<p>首先，对比下合并与变基的流程差异。开发分支 <code>develop</code> 与提交分支 <code>master</code>。</p>
 <blockquote>
 <ol>
 <li>使用合并：分叉了历史，它会把两个分支的最新快照及最近的共同祖先进行三方合并成一个最新的快照并提交。</li>
 <li>使用变基：在当前开发分支引入提交分支的更新，再开发。再将开发分支并入提交分支。<strong>变基的实质是丢弃一些现有的提交，然后相对应的创建一些内容一样但是实际上不同的提交。</strong></li>
 </ol>
 </blockquote>
+<p>首先，对比下合并与变基的流程差异。开发分支 <code>develop</code> 与提交分支 <code>master</code>。</p>
 <p>举个栗子对比下：</p>
 <ol>
 <li> 合并</li>
@@ -1383,16 +1385,18 @@
 <ol start="2">
 <li>变基</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 重复合并前五步创建新仓库 rebaseTest</span><br><span class="line"></span><br><span class="line">// 6. 变基，输出结果</span><br><span class="line">// 当前在 develop 分支</span><br><span class="line">$ git rebase master</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 (master) C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 7. 将 develop 分支上的代码合并到 master 输出结果</span><br><span class="line">$ git checkout master</span><br><span class="line">$ git merge develop</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; master, develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 重复合并前五步创建新仓库 rebaseTest</span><br><span class="line"></span><br><span class="line">// 6. 变基，输出结果</span><br><span class="line">// 当前在 develop 分支</span><br><span class="line">$ git rebase master // 如果在主线分支，可用 $ git rebase master develop ，两个命令是等效的</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 (master) C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 7. 将 develop 分支上的代码合并到 master 输出结果</span><br><span class="line">$ git checkout master</span><br><span class="line">$ git merge develop</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; master, develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 8. 此时 develop 分支无用了的话就可以删除掉了</span><br><span class="line">$ git branch -d develop</span><br></pre></td></tr></table></figure>
 
 <p>对比合并与变基的输出结果，可以得到总结：</p>
 <pre><code>1.  变基把分叉的提交历史整理成为一条直线，相对于合并可以得到一个更加简洁的提交历史。
 2.  变基比合并少一个合并提交节点。
 3.  合并的分支是按照时间倒序排列的。而变基中 `master` 分支的时间线是错乱的，可能会影响到提交历史的查看。
 4.  无论是变基还是合并，整合的最终指向提交都是一样的。只是提交历史不同而已。
-5.  个人建议：仓库的提交历史是对实际发生过什么的历史记录。它是针对历史的文档，本身就非常的有价值且很重要。它可以供开发者或者后来者查阅，尽可能的不要乱改。如果一定要改动的话，相对于重要的分支或长期分支也不建议使用变基，对提交历史没有影响或特性分支可以采用变基，用来使提交历史更简洁。
+5.  在 master 合并 developer 是由合并者解决冲突问题，变基由 developer 解决冲突问题。
+6.  变基是按照每行的修改次序重演一遍修改，而合并是把最终结果合到一起。
+7.  个人建议：仓库的提交历史是对实际发生过什么的历史记录。它是针对历史的文档，本身就非常的有价值且很重要。它可以供开发者或者后来者查阅，尽可能的不要乱改。如果一定要改动的话，相对于重要的分支或长期分支也不建议使用变基，对提交历史没有影响或特性分支可以采用变基，用来使提交历史更简洁。
 </code></pre>
-<p><strong>补充</strong>：万一真遇到有人对 <code>master</code> 下手了，执行了变基操作，可以让团队中的每个人都执行 <code>git pull --rebase</code> 尝试稍微挽救一下。</p>
+<p><strong>补充</strong>：万一真遇到有人对线上 <code>master</code> 下手了，执行了变基操作，可以让团队中的每个人都执行 <code>git pull --rebase</code> 尝试稍微挽救一下。</p>
 <h2 id="10-暂存文件"><a href="#10-暂存文件" class="headerlink" title="10. 暂存文件"></a>10. 暂存文件</h2><p>Git自带一些脚本可以使部分工作更简单。如果想将文件的特定组合部分组合成提交可以暂存对应文件。在调用 <code>git add</code> 命令时添加 <code>-i</code> 或 <code>--interactive</code>，进入终端模式。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add -i</span><br><span class="line">$ git add --interactive</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line">$</span><br><span class="line">           staged     unstaged path</span><br><span class="line">  1:    unchanged        +1/-0 fileD</span><br><span class="line"></span><br><span class="line">*** Commands ***</span><br><span class="line">  1: status	  2: update	  3: revert	  4: add untracked</span><br><span class="line">  5: patch	  6: diff	  7: quit	  8: help</span><br><span class="line">What now&gt; </span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
@@ -1404,7 +1408,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">           staged     unstaged path</span><br><span class="line">  1:        +1/-0      nothing fileD</span><br><span class="line"></span><br><span class="line">*** Commands ***</span><br><span class="line">  1: status	  2: update	  3: revert	  4: add untracked</span><br><span class="line">  5: patch	  6: diff	  7: quit	  8: help</span><br><span class="line">What now&gt; </span><br></pre></td></tr></table></figure>
 
 <p>要取消暂存文件，输入 <code>3</code> 或 <code>revert</code>，执行与暂存相同操作。再次查看，会发现已取消暂存。</p>
-<h2 id="11-储藏"><a href="#11-储藏" class="headerlink" title="11. 储藏"></a>11. 储藏</h2><p>当开发中突然遇到问题需要紧急修复，又不能放弃当前的更改，当前的修改还在报错又不能提交（真惨）。<br>这种情况经常会发生，在这种情况下我们可以先将手里的工作<strong>储藏</strong>起来，存储在栈上。执行命令 <code>git stash</code> 或 <code>git stash save</code>。待其他工作完成后，回来再继续。</p>
+<h2 id="11-储藏"><a href="#11-储藏" class="headerlink" title="11. 储藏"></a>11. 储藏</h2><p>当开发中突然遇到问题需要紧急修复，又不能放弃当前的更改，当前的修改还在报错又不能提交。<br>这种情况经常会发生，在这种情况下我们出了开一个新分支之外，害可以先将手里的工作<strong>储藏</strong>起来，存储在栈上。执行命令 <code>git stash</code> 或 <code>git stash save</code>。待其他工作完成后，回来再继续。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">	modified:   fileD</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   fileM</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">$ git stash // 或 `git stash save`</span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
 <p>可以看到，工作目录清空了，未暂存的和已暂存的都消失了。这时我们就可以去搞别的事情了。</p>
@@ -1426,7 +1430,7 @@
 <p>文件 <code>.gitignore</code> 的格式规范如下：</p>
 <ul>
 <li>  所有空行或者以#开头的行都会被Git忽略</li>
-<li>  可以使用标准的glob模式匹配</li>
+<li>  可以使用标准的glob模式匹配（指 shell 所使用的简化了的正则表达式）</li>
 <li>  匹配模式可以以 <code>/</code> 开头防止递归</li>
 <li>  匹配模式可以以 <code>/</code> 结尾指定目录</li>
 <li>  要忽略指定模式以外的文件或目录，可以在模式前加上 <code>!</code> 取反</li>
@@ -1474,6 +1478,105 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN常用命令</title>
+    <url>/2021/05/20/Git/SVN%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="检出"><a href="#检出" class="headerlink" title="检出"></a>检出</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn  checkout  &lt;http://路径&gt;(目录或文件的全路径)　[本地目录全路径] --username　用户名</span><br><span class="line">svn  checkout  svn://路径(目录或文件的全路径)　[本地目录全路径]  --username　用户名</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出（不带目录）"><a href="#导出（不带目录）" class="headerlink" title="导出（不带目录）"></a>导出（不带目录）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn  <span class="built_in">export</span>  [-r 版本号]  &lt;http://路径&gt;(目录或文件的全路径) [本地目录全路径]　--username　用户名</span><br><span class="line">svn  <span class="built_in">export</span>  [-r 版本号]  svn://路径(目录或文件的全路径) [本地目录全路径]　--username　用户名</span><br><span class="line">svn  <span class="built_in">export</span>  本地检出的(即带有.svn文件夹的)目录全路径  要导出的本地目录全路径</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn add 文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn update</span><br><span class="line">svn　update　-r　修正版本　文件名</span><br><span class="line">svn　update　文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn del 文件</span><br><span class="line">svn delete 文件名</span><br><span class="line">svn rm 文件</span><br><span class="line">svn remove 文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn　diff　文件名 </span><br><span class="line">svn　diff　-r　修正版本号m:修正版本号n　文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn　commit　-m　“提交备注信息文本“　[-N]　[--no-unlock]　文件名</span><br><span class="line">svn　ci　-m　“提交备注信息文本“　[-N]　[--no-unlock]　文件名</span><br><span class="line">必须带上-m参数，参数可以为空，但是必须写上-m</span><br><span class="line">例子：</span><br><span class="line">svn commit -m “提交当前目录下的全部在版本控制下的文件“ * ＜－ 注意这个*表示全部文件</span><br><span class="line">svn commit -m “提交我的测试用test.php“ test.php</span><br><span class="line">svn commit -m “提交我的测试用test.php“ -N --no-unlock test.php ＜－ 保持锁就用–no-unlock开关</span><br><span class="line">svn ci -m “提交当前目录下的全部在版本控制下的文件“ * ＜－ 注意这个*表示全部文件</span><br><span class="line">svn ci -m “提交我的测试用test.php“ test.php</span><br><span class="line">svn ci -m “提交我的测试用test.php“ -N --no-unlock test.php ＜－ 保持锁就用–no-unlock开关</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn st 目录路径/名</span><br><span class="line">svn status 目录路径/名＜－ 目录下的文件和子目录的状态，正常状态不显示 </span><br><span class="line">　　　　　　　　　　　　　【?：不在svn的控制中；  M：内容被修改；C：发生冲突；</span><br><span class="line">　　　　　　　　　　　　　　A：预定加入到版本库；K：被锁定】 </span><br><span class="line">svn  -v 目录路径/名</span><br><span class="line">svn status -v 目录路径/名＜－ 显示文件和子目录状态</span><br><span class="line">　　　　　　　　　　　　　　【第一列保持相同，第二列显示工作版本号，</span><br><span class="line">　　　　　　　　　　　　　　 第三和第四列显示最后一次修改的版本号和修改人】</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn <span class="built_in">log</span></span><br><span class="line">svn <span class="built_in">log</span> 文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件详细信息"><a href="#查看文件详细信息" class="headerlink" title="查看文件详细信息"></a>查看文件详细信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn info 文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn <span class="built_in">help</span></span><br><span class="line"><span class="comment">## 全部</span></span><br><span class="line"></span><br><span class="line">svn <span class="built_in">help</span> ci </span><br><span class="line"><span class="comment">## 指定功能的具体说明</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="恢复本地修改"><a href="#恢复本地修改" class="headerlink" title="恢复本地修改"></a>恢复本地修改</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn　revert　[--recursive]　文件名</span><br><span class="line">注意: 本子命令不会存取网络，并且会解除冲突的状况。但是它不会恢复被删除的目录。</span><br><span class="line">例子：</span><br><span class="line">svn revert foo.c ＜－ 丢弃对一个文件的修改</span><br><span class="line">svn revert --recursive . ＜－恢复一整个目录的文件，. 为当前目录</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">svn　resolved　[本地目录全路径]</span><br><span class="line"><span class="comment"># 例子：</span></span><br><span class="line"><span class="comment"># $ svn update</span></span><br><span class="line"><span class="comment"># C foo.c</span></span><br><span class="line"><span class="comment"># Updated to revision 31.</span></span><br><span class="line"><span class="comment"># 如果你在更新时得到冲突，你的工作拷贝会产生三个新的文件：</span></span><br><span class="line">$ ls</span><br><span class="line">foo.c</span><br><span class="line">foo.c.mine</span><br><span class="line">foo.c.r30</span><br><span class="line">foo.c.r31</span><br><span class="line"><span class="comment"># 当你解决了foo.c的冲突，并且准备提交，运行svn resolved让你的工作拷贝知道你已经完成了所有事情。</span></span><br><span class="line"><span class="comment"># 你可以仅仅删除冲突的文件并且提交，但是svn resolved除了删除冲突文件，还修正了一些记录在工作拷贝管理区域的记录数据，所以我们推荐你使用这个命令。</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接入苹果登录 Sign In Apple</title>
+    <url>/2021/05/20/iOS/Xcode/%E6%8E%A5%E5%85%A5%E8%8B%B9%E6%9E%9C%E7%99%BB%E5%BD%95%20Sign%20In%20Apple/</url>
+    <content><![CDATA[<h2 id="接入流程"><a href="#接入流程" class="headerlink" title="接入流程"></a>接入流程</h2><p><strong>iOS 13以后如果项目中接入了其他第三方登录则必须同时接入苹果登录，否则审核会被拒。</strong></p>
+<p>本文主要记录个人接入的流程及遇到的问题。</p>
+<ol>
+<li> 首先需要苹果账号，Apple Developer 中设置配置 App</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozohtrb4j31gy0bmtae.jpg" alt="image-20210520164828902"></p>
+<p>如果没有 Identify ，点击列表上方的加号自己添加</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozdk20t4j31kg0comyx.jpg#width-full" alt="image-20210520163850041"></p>
+<p>勾选 Sign In With Apple</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozpvwg22j31j6044t95.jpg" alt="image-20210520165040401"></p>
+<ol start="2">
+<li> 回到 <code>Xcode</code> ，自动更新 <code>Profiles</code>配置文件</li>
+<li> 选择 <code>Target</code> 添加 <code>Sign In Apple</code></li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozw9mqszj311b0u0jxu.jpg" alt="image-20210520165648582"></p>
+<ol start="4">
+<li> 添加完成</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozxocywbj31dm0lsdif.jpg" alt="image-20210520165810288"></p>
+<ol start="5">
+<li> 初步配置完成，添加 <code>ASAuthorizationAppleIDButton</code> 即苹果提供的登录苹果登录按键</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在需要的地方添加苹果登录</span><br><span class="line">#import &lt;AuthenticationServices/AuthenticationServices.h&gt;</span><br><span class="line"></span><br><span class="line">@property (strong, nonatomic) ASAuthorizationAppleIDButton *appleLoginBtn API_AVAILABLE(ios(13.0));</span><br><span class="line"></span><br><span class="line">// 初始化及配置样式</span><br><span class="line">- (ASAuthorizationAppleIDButton *)appleLoginBtn API_AVAILABLE(ios(13.0))</span><br><span class="line">&#123;</span><br><span class="line">    if (!_appleLoginBtn) &#123;</span><br><span class="line">        _appleLoginBtn = [[ASAuthorizationAppleIDButton alloc] initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeSignIn                                 authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];</span><br><span class="line">        _appleLoginBtn.cornerRadius = kThirdpartyButtonHeight/2;</span><br><span class="line">        _appleLoginBtn.bounds = CGRectMake(0, 0, kThirdpartyButtonHeight, kThirdpartyButtonHeight);</span><br><span class="line">        // 添加点击操作</span><br><span class="line">        [_appleLoginBtn addTarget:self action:@selector(appleLoginHandler) forControlEvents:(UIControlEventTouchUpInside)];</span><br><span class="line">    &#125;</span><br><span class="line">    return _appleLoginBtn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li> 单例实现苹果登录核心逻辑</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--- 头文件</span><br><span class="line">    </span><br><span class="line">#import &lt;AuthenticationServices/AuthenticationServices.h&gt; </span><br><span class="line"></span><br><span class="line">--- 添加代理</span><br><span class="line"></span><br><span class="line">&lt;</span><br><span class="line">ASAuthorizationControllerDelegate,  // 苹果登录处理数据回调</span><br><span class="line">ASAuthorizationControllerPresentationContextProviding // 苹果登录设置上下文，管理视图弹出在哪里</span><br><span class="line">&gt;</span><br><span class="line">    </span><br><span class="line">--- 授权请求</span><br><span class="line"></span><br><span class="line">/// MARK: 创建授权请求</span><br><span class="line">- (void)creatAuthorizationRequest</span><br><span class="line">&#123;</span><br><span class="line">    // 基于用户的Apple ID授权用户，生成用户授权请求的一种机制</span><br><span class="line">    ASAuthorizationAppleIDRequest *request = [ASAuthorizationAppleIDProvider.new createRequest];</span><br><span class="line">    request.requestedScopes = @[ASAuthorizationScopeFullName, ASAuthorizationScopeEmail];</span><br><span class="line">    </span><br><span class="line">    // 管理授权请求的控制器</span><br><span class="line">    ASAuthorizationController *auth = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];</span><br><span class="line">    auth.delegate = self;</span><br><span class="line">    auth.presentationContextProvider = self;</span><br><span class="line">    // 启动授权</span><br><span class="line">    [auth performRequests];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// MARK: 执行现有的授权请求</span><br><span class="line">- (void)performExistingAccountSetupFlows</span><br><span class="line">&#123;</span><br><span class="line">    self.firstRequest = YES;</span><br><span class="line">    // 基于用户的Apple ID授权用户，生成用户授权请求的一种机制</span><br><span class="line">    ASAuthorizationAppleIDRequest *idRequest = [ASAuthorizationAppleIDProvider.new createRequest];</span><br><span class="line"></span><br><span class="line">    // 为了执行钥匙串凭证分享生成请求的一种机制</span><br><span class="line">    ASAuthorizationPasswordRequest *passwordRequest = [ASAuthorizationPasswordProvider.new createRequest];</span><br><span class="line"></span><br><span class="line">    // 管理授权请求的控制器</span><br><span class="line">    ASAuthorizationController *auth = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[idRequest, passwordRequest]];</span><br><span class="line">    auth.delegate = self;</span><br><span class="line">    auth.presentationContextProvider = self;</span><br><span class="line">    // 启动授权</span><br><span class="line">    [auth performRequests];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">--- 代理实现</span><br><span class="line">    </span><br><span class="line">#pragma mark - ASAuthorizationControllerDelegate</span><br><span class="line"></span><br><span class="line">/// 苹果登录授权成功</span><br><span class="line">- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization</span><br><span class="line">&#123;</span><br><span class="line">    NSString *userIdentifier = @&quot;&quot;; // 苹果用户唯一标识符</span><br><span class="line">    NSString *email = @&quot;&quot;; // 传入的邮箱</span><br><span class="line">    NSString *identityToken = @&quot;&quot;; // 验证令牌，给后台向苹果服务器验证使用</span><br><span class="line">    NSString *authorizationCode = @&quot;&quot;; // 授权码，给后台向苹果服务器验证使用，有效时间五分钟。</span><br><span class="line">    </span><br><span class="line">    // 首次授权登录 !!!注意：第二次登录的时候不会返回所有数据，只返回了user，所以需要根据这个userIdentifier查询存储在服务器的完整用户信息</span><br><span class="line">    if([authorization.credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) &#123;</span><br><span class="line">        ASAuthorizationAppleIDCredential *apple = (ASAuthorizationAppleIDCredential *)authorization.credential;</span><br><span class="line">        </span><br><span class="line">        userIdentifier = apple.user;</span><br><span class="line">        email = apple.email;</span><br><span class="line">        authorizationCode = [[NSString alloc] initWithData:apple.authorizationCode encoding:NSUTF8StringEncoding];</span><br><span class="line">        identityToken = [[NSString alloc] initWithData:apple.identityToken encoding:NSUTF8StringEncoding];</span><br><span class="line">        // 用于判断当前登录的苹果账号是否是一个真实用户</span><br><span class="line">        ASUserDetectionStatus realUserStatus = apple.realUserStatus;</span><br><span class="line">        NSPersonNameComponents *fullName = apple.fullName;</span><br><span class="line">        </span><br><span class="line">        [SSKeychain setPassword:userIdentifier forService:kKeyChainService account:kKeyChainAccount];</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;\n==Sign in with apple== \</span><br><span class="line">              \n userIdentifier: %@ \</span><br><span class="line">              \n name: %@ \</span><br><span class="line">              \n email: %@ \</span><br><span class="line">              \n authorizationCode: %@ \</span><br><span class="line">              \n identityToken: %@ \</span><br><span class="line">              \n realUserStatus: %@&quot;,</span><br><span class="line">              userIdentifier, fullName, email, authorizationCode, identityToken, @(realUserStatus));</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125; else if ([authorization.credential isKindOfClass:[ASPasswordCredential class]]) &#123;</span><br><span class="line">        </span><br><span class="line">        // Sign in using an existing iCloud Keychain credential.</span><br><span class="line">        ASPasswordCredential *pass = (ASPasswordCredential *)authorization.credential;</span><br><span class="line">        userIdentifier = pass.user;</span><br><span class="line">        NSString *password = pass.password;</span><br><span class="line">        NSLog(@&quot;\n==sign in with password==: \nusername: %@\n password: %@&quot;, userIdentifier, password);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (userIdentifier)</span><br><span class="line">        !self.success ?: self.success(userIdentifier, email, identityToken, authorizationCode);</span><br><span class="line">    else</span><br><span class="line">        !self.failure ?: self.failure(@&quot;未能获取到用户信息&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/// 授权失败</span><br><span class="line">- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error</span><br><span class="line">&#123;</span><br><span class="line">    NSString * errorMsg;</span><br><span class="line">    switch(error.code) &#123;</span><br><span class="line">        case ASAuthorizationErrorCanceled:</span><br><span class="line">            errorMsg = @&quot;取消了授权请求&quot;;</span><br><span class="line">            break;</span><br><span class="line">        case ASAuthorizationErrorFailed:</span><br><span class="line">            errorMsg = @&quot;授权请求失败&quot;;</span><br><span class="line">            break;</span><br><span class="line">        case ASAuthorizationErrorInvalidResponse:</span><br><span class="line">            errorMsg = @&quot;授权请求响应无效&quot;;</span><br><span class="line">            break;</span><br><span class="line">        case ASAuthorizationErrorNotHandled:</span><br><span class="line">            errorMsg = @&quot;未能处理授权请求&quot;;</span><br><span class="line">            break;</span><br><span class="line">        case ASAuthorizationErrorUnknown: &#123;</span><br><span class="line">            if (self.firstRequest) &#123;</span><br><span class="line">                self.firstRequest = NO;</span><br><span class="line">                [self creatAuthorizationRequest];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            errorMsg = @&quot;未知错误&quot;;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    if (errorMsg.length &gt; 0) &#123;</span><br><span class="line">        !self.failure ?: self.failure(errorMsg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - ASAuthorizationControllerPresentationContextProviding</span><br><span class="line"></span><br><span class="line">/// 苹果登录授权界面展示在哪里</span><br><span class="line">- (ASPresentationAnchor)presentationAnchorForAuthorizationController:(ASAuthorizationController *)controller</span><br><span class="line">&#123;</span><br><span class="line">    return UIApplication.sharedApplication.keyWindow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="处理报错"><a href="#处理报错" class="headerlink" title="处理报错"></a>处理报错</h2><ol>
+<li><p><strong>报错内容为 <code>AKAuthenticationError Code=-7089</code></strong></p>
+<p> 再创建苹果登录时，检测到之前没有创建过账号，直接使用 <code>ASAuthorizationPasswordProvider</code> 会报此错误，应该单独使用 <code>ASAuthorizationAppleIDProvider</code> 先创建苹果账号。创建两种请求，根据业务选择调用。</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqoyskfw4ej31jp0u0dq4.jpg" alt="image"></p>
+</li>
+<li><p><strong>报错内容为 <code>AKAuthenticationError Code=-7026</code></strong></p>
+<p> 运行项目时没有在<code>xcode</code>中设置 <code>sign in apple</code></p>
+<ol>
+<li> 选中项目 <code>target</code></li>
+<li> 选择 <code>signing &amp; Capabilities</code></li>
+<li> 点击左上角 <code>+ Capability</code></li>
+<li> 双击 <code>Sign In With Apple</code></li>
+<li> 再次运行项目即可</li>
+</ol>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.apple.com/videos/play/wwdc2019/706/">官方介绍WWDC2019</a></p>
+<p><a href="https://developer.apple.com/documentation/authenticationservices/implementing_user_authentication_with_sign_in_with_apple">官方代码-Swift</a></p>
+<p><a href="https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens">官方验证</a></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>Sign In Apple</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
 </search>

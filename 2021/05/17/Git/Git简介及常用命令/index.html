@@ -29,11 +29,13 @@
 <meta property="og:site_name" content="zhaocy&#39;s blog">
 <meta property="og:description" content="阅读 《Pro Git》总结的一部分常用配置及命令。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqnhhr4uidj30dw08tdgs.jpg">
 <meta property="article:published_time" content="2021-05-17T06:51:36.413Z">
-<meta property="article:modified_time" content="2021-05-18T05:47:43.709Z">
+<meta property="article:modified_time" content="2021-05-20T08:10:56.345Z">
 <meta property="article:author" content="春阳">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqnhhr4uidj30dw08tdgs.jpg">
 
 <link rel="canonical" href="https://www.zhaocy.fun/2021/05/17/Git/Git%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
@@ -218,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-18 13:47:43" itemprop="dateModified" datetime="2021-05-18T13:47:43+08:00">2021-05-18</time>
+                <time title="修改时间：2021-05-20 16:10:56" itemprop="dateModified" datetime="2021-05-20T16:10:56+08:00">2021-05-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,7 +294,7 @@
 <h1 id="二、配置-Git"><a href="#二、配置-Git" class="headerlink" title="二、配置 Git"></a>二、配置 Git</h1><p>Git安装完成后需要配置Git环境。Git自带 <code>git config</code> 工具帮助设置控制Git仓库的外观和行为的配置变量。这些配置变量分别存储在三个不同的位置：</p>
 <blockquote>
 <ol>
-<li> <code>/etc/gitconfig</code> 文件：包含系统上每一个用户及他们仓库的通用配置。如果使用带有 <code>--system</code> 选项的 <code>git config</code> 时, 它会从文件读写配置变量</li>
+<li> <code>/etc/gitconfig</code> 文件：包含系统上每一个用户及他们仓库的通用配置。如果使用带有 <code>--system</code> 选项的 <code>git config</code> 时, 它会从这个文件读写配置变量</li>
 <li> <code>~/.gitconfig</code> 或 <code>~/.config/git/config</code> 文件: 只针对当前用户。可以传递 <code>--global</code> 选项让Git读写此文件</li>
 <li>当前使用仓库的Git目录中的 <code>config</code> 文件(就是 <code>.git/config</code>): 针对该仓库。<br> 每一个界别覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量。</li>
 </ol>
@@ -329,12 +331,12 @@
 <ol start="2">
 <li> 初始化git</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init //将当前目录变成Git可以管理的仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init //将当前目录变成Git可以管理的仓库，这会在指定的文件夹内创建一个 .git 文件用来存放数组和资源</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li> 添加文件</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add *.* //添加具体文件，注意，可反复多次使用，添加多个文件；</span><br><span class="line">$ git add . //也可以使用这句，添加全部修改文件</span><br><span class="line">$ git commit -m &quot;提交说明&quot; //把修改提交到仓库</span><br><span class="line">$ git remote add origin &quot;xxx.git&quot; // 链接远程仓库</span><br><span class="line">$ git pull origin master // 拉取远程</span><br><span class="line">$ git push -u origin master // 推送修改</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add *.* //添加具体文件，通知Git准备跟踪，注意，可反复多次使用，添加多个文件；</span><br><span class="line">$ git add . //也可以使用这句，添加全部修改文件</span><br><span class="line">$ git commit -m &quot;提交说明&quot; //把修改提交到仓库</span><br><span class="line">$ git remote add origin &quot;xxx.git&quot; // 链接远程仓库</span><br><span class="line">$ git pull origin master // 拉取远程</span><br><span class="line">$ git push -u origin master // 推送修改</span><br></pre></td></tr></table></figure>
 
 <p><code>git add</code> 是将工作区数据添加到暂存区<br><code>git commit</code> 是将暂存区数据提交到分支</p>
 <h1 id="四、Git常用命令"><a href="#四、Git常用命令" class="headerlink" title="四、Git常用命令"></a>四、Git常用命令</h1><h2 id="1-状态检查"><a href="#1-状态检查" class="headerlink" title="1. 状态检查"></a>1. 状态检查</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status // 查看当前版本库的状态</span><br></pre></td></tr></table></figure>
@@ -355,11 +357,13 @@
 <blockquote>
 <p>出现在右面的话表示该文件被修改了，但是还没有放到暂存区。<br>出现在左面的话表示该文件修改了，并放入了暂存区。<br>如果出现了两个则表示，在工作区中修改了并提交到了暂存区后又被修改了，还没有存到暂存区。</p>
 </blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqnhhr4uidj30dw08tdgs.jpg" alt="文件状态的变化"></p>
+<p>&lt;% cq %&gt; 文件状态的变化 &lt;% endcq %&gt;</p>
 <h2 id="3-查看当前相对修改的内容"><a href="#3-查看当前相对修改的内容" class="headerlink" title="3. 查看当前相对修改的内容"></a>3. 查看当前相对修改的内容</h2><p>如果觉得 <code>git status</code> 不够详细，想查看尚未暂存的文件具体修改的地方，可以用 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">$ git diff HEAD --xxx</span><br></pre></td></tr></table></figure>
 
-<p>此命令比较的是工作区和版本库中文件的差异</p>
-<p>如果要查看已暂存未提交的内容，可以用</p>
+<p>此命令比较的是工作区和暂存区中文件的差异</p>
+<p>如果要查看已暂存和最新版本库中内容差异，可以用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git diff -cached</span><br><span class="line">$ git diff -staged // Git 1.6.1 及更高版本可以用</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-提交更新"><a href="#4-提交更新" class="headerlink" title="4. 提交更新"></a>4. 提交更新</h2><p>如果觉得使用暂存区较为繁琐，Git 提供了一个跳过使用暂存区的方式，只要在提交的时候给 <code>git commit</code> 加上 <code>-a</code> 选项，Git就会自动把<strong>所有已经跟踪过的</strong>文件暂存起来并一起提交，从而跳过 <code>git add</code> 步骤：</p>
@@ -382,7 +386,7 @@
 <p>如果修改的文件还没有到暂存区，想还原成上次提交的样子，即放弃此次对工作区内容的修改。可以使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：一定要带着 <code>--</code> , 如果没有 <code>--</code> , 就变成了 ++切换另一个分支++ 命令。</strong></p>
+<p><strong>注意：一定要带着 <code>--</code> , 如果没有 <code>--</code> , 就变成了==切换另一个分支== 命令。</strong></p>
 <h2 id="6-查看提交历史"><a href="#6-查看提交历史" class="headerlink" title="6. 查看提交历史"></a>6. 查看提交历史</h2><p><strong>在提交了若干更新后，可以回顾提交历史，使用</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log // 按照由近到远的提交时间列出所有更新</span><br><span class="line">$ git log -p // 按补丁格式显示每次提交内容的差异</span><br><span class="line">$ git log --graph // 显示ASCII图形表示分支合并历史（很有用）</span><br><span class="line">$ git log --stat // 额外查看每次提交的简略统计信息</span><br><span class="line">$ git log --shortstat // 仅显示--stat中最后行数的修改统计</span><br><span class="line">$ git log --name-only // 仅显示已修改的文件清单</span><br><span class="line">$ git log --name-status // 显示新增、修改、删除的文件清单</span><br><span class="line">$ git log --abbrev-commit // 显示简短且唯一的哈希字串（默认7个字符，有时会增加到8-10个）</span><br><span class="line">$ git log --relative-date // 使用较短的时间显示</span><br><span class="line">$ git log --pretty=oneline // 当行显示简易log, 不显示很多凌乱的信息（online 可替换成 short，full和fuller）</span><br><span class="line"></span><br><span class="line">$ q // 如果显示log版本信息有很多，使用q键停止查看</span><br></pre></td></tr></table></figure>
 
@@ -468,7 +472,7 @@
 
 <h2 id="7-移动文件-或者说是重命名文件"><a href="#7-移动文件-或者说是重命名文件" class="headerlink" title="7. 移动文件(或者说是重命名文件)"></a>7. 移动文件(或者说是重命名文件)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
 
-<h2 id="8-删除文件"><a href="#8-删除文件" class="headerlink" title="8. 删除文件"></a>8. 删除文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rm xxx // 删除本地文件</span><br><span class="line">$ git rm xxx // 删除暂存区文件</span><br><span class="line"></span><br><span class="line">$ git rm --cached xx // 停止追踪指定文件，但该文件会保留在工作区</span><br><span class="line">$ git rm *.* // 删除文件也可以用glob模式</span><br></pre></td></tr></table></figure>
+<h2 id="8-删除文件"><a href="#8-删除文件" class="headerlink" title="8. 删除文件"></a>8. 删除文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rm xxx // 删除本地文件</span><br><span class="line">$ git rm xxx // 删除跟踪的文件。如果修改过并已加入暂存区，则需要添加 -f 强制删除</span><br><span class="line"></span><br><span class="line">$ git rm --cached xx // 停止追踪指定文件，但该文件会保留在工作区</span><br><span class="line">$ git rm *.* // 删除文件也可以用glob模式</span><br></pre></td></tr></table></figure>
 
 <p>删除本地文件后，需要执行 <code>git rm</code> 命令也同时删除掉缓存区中的文件。<br>如果误删了，执行 <code>git checkout</code> 撤销命令，即可恢复。</p>
 <p><strong>注意：无法恢复从来没有被添加到版本库就被删除的文件</strong></p>
@@ -492,12 +496,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git log -s fileD // 显示提交信息</span><br><span class="line">$ git log -s --oneline fileD // 单行显示简要信息</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">b8db0f4 (HEAD -&gt; master) C6 // 有修改</span><br><span class="line">9f9a151 (develop) C4 // 有修改</span><br><span class="line">bf7bb79 C2 // 这里引入</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
 <h1 id="五、远程仓库"><a href="#五、远程仓库" class="headerlink" title="五、远程仓库"></a>五、远程仓库</h1><p>远程仓库指的是托管在其他网络中你的项目的版本库。（GitHub/BitBucket/GitLab/私有服务器等）</p>
-<h2 id="1-查看远程仓库"><a href="#1-查看远程仓库" class="headerlink" title="1. 查看远程仓库"></a>1. 查看远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote // 查看已经配置的远程仓库服务器</span><br><span class="line">$ git remote -v // 会显示对应的URL</span><br><span class="line">$ git remote show [remote-name] // 显示更多信息</span><br></pre></td></tr></table></figure>
+<h2 id="1-查看远程仓库"><a href="#1-查看远程仓库" class="headerlink" title="1. 查看远程仓库"></a>1. 查看远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote // 查看已经配置的远程仓库服务器</span><br><span class="line">$ git remote -v / --verbose // 会显示对应的URL</span><br><span class="line">$ git remote show [remote-name] // 显示更多信息</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-添加远程仓库"><a href="#2-添加远程仓库" class="headerlink" title="2. 添加远程仓库"></a>2. 添加远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 先有远程仓库</span><br><span class="line">$ git clone &lt;远程仓库地址/url&gt; // 从服务器拉取项目到本地 命名与远程一样</span><br><span class="line">$ git clone &lt;url&gt; xxx // 将项目放到xxx文件中（如果没有，创建xxx）</span><br><span class="line"></span><br><span class="line">// 先有本地仓库</span><br><span class="line">$ git remote add origin &lt;远程仓库地址&gt; // 关联一个新的远程Git仓库</span><br><span class="line">$ git push -u origin master // 第一次推送master分支的所有内容到远程仓库</span><br><span class="line">$ git push origin master // 本地推送到远程主分支，`master` 可以切换分支名</span><br><span class="line">$ git push // 本地推送到远程（不考虑分支等情况或明确自动推送的分支）</span><br></pre></td></tr></table></figure>
+<h2 id="2-添加远程仓库"><a href="#2-添加远程仓库" class="headerlink" title="2. 添加远程仓库"></a>2. 添加远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 先有远程仓库</span><br><span class="line">$ git clone &lt;远程仓库地址/url&gt; // 从服务器拉取项目到本地 命名与远程一样</span><br><span class="line">$ git clone &lt;url&gt; xxx // 将项目放到xxx文件中（如果没有，创建xxx）</span><br><span class="line"></span><br><span class="line">// 先有本地仓库</span><br><span class="line">$ git remote add origin &lt;远程仓库地址&gt; // 关联一个新的远程Git仓库</span><br><span class="line">$ git push -u origin master // 第一次推送master分支的所有内容到远程仓库</span><br><span class="line">$ git push origin master // 本地推送到远程主分支，`master` 可以切换分支名</span><br><span class="line">$ git push origin A:B // 将本地的 A 分支推送到 origin 仓库的 B 分支（前提是有写入权限）</span><br><span class="line">$ git push // 本地推送到远程（不考虑分支等情况或明确自动推送的分支）</span><br></pre></td></tr></table></figure>
 
 <p>第一次推送master分支时，加上了 <code>-u</code> 参数，Git不但会把本地的<code>master</code>分支内容推送的远程的 <code>master</code> 分支，还会关联本地的 <code>master</code>分支和远程的 <code>master</code> 分支，在以后的推送或者拉取时就可以简化命令。</p>
-<h2 id="3-拉取更新的内容"><a href="#3-拉取更新的内容" class="headerlink" title="3. 拉取更新的内容"></a>3. 拉取更新的内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch [remote-name] // 拉取还没有的数据（该命令不会自动合并并修改当前的工作，需要手动合并）</span><br><span class="line">$ git pull origin master // 拉取远程分支未同步的数据</span><br><span class="line">$ git pull // 拉取还没有的数据（自动合并并修改当前的工作）</span><br></pre></td></tr></table></figure>
+<h2 id="3-拉取更新的内容"><a href="#3-拉取更新的内容" class="headerlink" title="3. 拉取更新的内容"></a>3. 拉取更新的内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch [remote-name] // 拉取本地仓库还没有的数据（该命令不会自动合并并修改当前的工作，需要手动合并）</span><br><span class="line">$ git pull origin master // 拉取远程分支未同步的数据</span><br><span class="line">$ git pull // 拉取还没有的数据（自动合并并修改当前的工作）</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-远程仓库移除与重命名"><a href="#4-远程仓库移除与重命名" class="headerlink" title="4. 远程仓库移除与重命名"></a>4. 远程仓库移除与重命名</h2><ol>
 <li> 重命名引用名字可以执行命令：</li>
@@ -561,7 +565,7 @@
 <p>当我们创了新的分支 <code>testing</code>，这会在当前所提交的对象上创建一个 <code>testing</code> 指针。此时，<code>HEAD</code> 仍然指向 <code>master</code> 分支。因为 <code>git branch xx</code> 命令仅仅是创建了一个新的分支，不会自动切换到新分支上。</p>
 <p>可以使用 <code>git log --oneline --decorate</code> 查看当前各个分支当前所指向的对象。</p>
 <h2 id="3-切换分支"><a href="#3-切换分支" class="headerlink" title="3. 切换分支"></a>3. 切换分支</h2><p>要切换到一个已存在的分支，需要执行以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout testing // testing 为已存在的分支</span><br><span class="line"></span><br><span class="line">$ git checkout -b testing // 上述如果加上 -b 表示创建并切换分支，等价于下面两条命令</span><br><span class="line">$ git branch testing</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout testing // testing 为已存在的分支</span><br><span class="line"></span><br><span class="line">// 创建并切换分支</span><br><span class="line">$ git checkout -b testing // 上述如果加上 -b 表示创建并切换分支，等价于下面两条命令</span><br><span class="line">$ git branch testing</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
 
 <p>这样 <code>HEAD</code> 分支就会指向新创建的 <code>testing</code> 分支。</p>
 <p>假设此时最新提交对象为 <code>a</code>。再次提交，<code>testing</code> 分支会向前移动，指向新对象 <code>b</code>。<br>此时再次切换回 <code>master</code> 分支，会发现 <code>master</code> 分支内容没有改变，分支仍然是指向对象 <code>a</code>。</p>
@@ -578,7 +582,7 @@
 5.  切换回 `A` 分支，继续开发工作。
 </code></pre>
 <p>整体流程如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">$ git checkout -b A // 创建分支 `A`</span><br><span class="line">update</span><br><span class="line"></span><br><span class="line">// 2</span><br><span class="line">$ git commit -a -m &quot;update&quot; // 更新工作内容，并且提交到分支 `A` </span><br><span class="line"></span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">// 3</span><br><span class="line">$ git checkout -b B // 创建新分支 `B`</span><br><span class="line"></span><br><span class="line">// 4</span><br><span class="line">update</span><br><span class="line">$ git commit -a -m &quot;fix bug&quot; // 修复完成，提交修改</span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">$ git merge B // 合并分支 `B` 中修改的内容到 `master` 分支</span><br><span class="line"></span><br><span class="line">$ git branch -d B // 删除分支 `B`，因为此时已经不需要它了</span><br><span class="line"></span><br><span class="line">// 5</span><br><span class="line">$ git checkout A // 切换到分支 `A`，要注意此时不带 `-b`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">$ git checkout -b A // 创建分支 `A`</span><br><span class="line">update</span><br><span class="line"></span><br><span class="line">// 2</span><br><span class="line">$ git commit -a -m &quot;update&quot; // 更新工作内容，并且提交到分支 `A` ，如果不更新，会被Git阻止切换分支</span><br><span class="line"></span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">// 3</span><br><span class="line">$ git checkout -b B // 创建新分支 `B`</span><br><span class="line"></span><br><span class="line">// 4</span><br><span class="line">update</span><br><span class="line">$ git commit -a -m &quot;fix bug&quot; // 修复完成，提交修改</span><br><span class="line">$ git checkout master // 切换到线上主分支</span><br><span class="line"></span><br><span class="line">$ git merge B // 合并分支 `B` 中修改的内容到 `master` 分支</span><br><span class="line"></span><br><span class="line">$ git branch -d B // 删除分支 `B`，因为此时已经不需要它了</span><br><span class="line"></span><br><span class="line">// 5</span><br><span class="line">$ git checkout A // 切换到分支 `A`，要注意此时不带 `-b`</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p> 在合并的时候，会看到“快进（fast-forward）”这个词。由于当前 <code>master</code> 分支所指向的当前提交(有关 <code>B</code> 提交)的直接上游。所以Git只是简单的将指针向前移动。当试图合并两个分支时，如果顺着分支走下去就能到达另一个分支，那么Git在合并时只会简单的将指针向前推进，因为这种情况下合并操作没有需要解决的分歧——这就叫快进。</p>
@@ -602,8 +606,8 @@
 <p>这表示 <code>HEAD</code> 所示的版本（当前分支 <code>master</code>）在这个区段的上半部分 (<code>&lt;&lt;&lt;</code> 到 <code>===</code>)，而 <code>A</code> 分支所指示的版本在这个区段的下半部分(<code>===</code> 到 <code>&gt;&gt;&gt;</code>)。为了解决冲突，需要选择其中一个版本的内容，或者自行合并这些内容。修改完成后删除掉 <code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code>。</p>
 <p>在修改完成后，使用 <code>git add</code> 来标记文件冲突以解决。暂存这些原本有冲突的文件，Git会将他们标记为冲突已解决。你可以再次运行 <code>git status</code> 来确认所有的冲突已解决。</p>
 <p>如果遇到冲突，但是不想处理冲突这种情况，你可以使用 <code>git merge --abort</code> 来退出合并。该命令会尝试恢复到你运行合并之前的状态。但是，当运行命令前，在工作目录有未储藏、未提交的修改时，它不能完美的处理，即有可能有代码丢失的风险。</p>
-<p>如果发现合并后出现了冲突，因为一些特殊情况弄的你很混乱，而本地的代码如果修改不是很多，很重要。那么可以尝试 <code>git reset --hard HEAD</code> 回到初始状态。<strong>这个命令会清空工作目录中的所有修改。</strong></p>
-<h2 id="5-分支列表"><a href="#5-分支列表" class="headerlink" title="5. 分支列表"></a>5. 分支列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v // 查看每一个分支的最后一次提交</span><br><span class="line">$ git branch --megred // 过滤这个列表中已经合并的分支</span><br><span class="line">$ git branch --no-megred // 过滤这个列表中有未合并工作的分支</span><br></pre></td></tr></table></figure>
+<p>如果发现合并后出现了冲突，因为一些特殊情况弄的你很混乱，而本地的代码如果修改不是很多，很重要。那么可以尝试 <code>git reset --hard HEAD</code> 回到初始状态。<strong>注意：这个命令会清空工作目录中的所有修改。</strong></p>
+<h2 id="5-分支列表"><a href="#5-分支列表" class="headerlink" title="5. 分支列表"></a>5. 分支列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch // 查看当前的分支列表</span><br><span class="line">$ git branch -v // 查看每一个分支的最后一次提交</span><br><span class="line">$ git branch --megred // 过滤这个列表中已经合并的分支</span><br><span class="line">$ git branch --no-megred // 过滤这个列表中有未合并工作的分支</span><br></pre></td></tr></table></figure>
 
 <h2 id="6-分支开发工作流"><a href="#6-分支开发工作流" class="headerlink" title="6. 分支开发工作流"></a>6. 分支开发工作流</h2><ol>
 <li> 长期分支：<code>master</code> 分支只保留完全稳定的代码，可能只是已经发布或即将发布的代码。开发工作在 <code>develop</code> / <code>next</code> 或其他平行分支上进行，在开发完成后在合并到 <code>master</code> 分支。</li>
@@ -629,15 +633,15 @@
 <h2 id="8-删除远程分支"><a href="#8-删除远程分支" class="headerlink" title="8. 删除远程分支"></a>8. 删除远程分支</h2><p>如果已经通过远程分支完成了所有的工作（完成了一个特性并合并到了 <code>master</code> 分支）。可以将远程分支删除。运行命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete serverfix</span><br></pre></td></tr></table></figure>
 
-<h2 id="9-变基"><a href="#9-变基" class="headerlink" title="9. 变基"></a>9. 变基</h2><p><strong>写在前头：不要对在你的仓库外有副本的分支执行变基！（个人理解：不要变基提交到 <code>master</code> 或多人共同提交工作的分支，不要变基已经提交过的历史。只用于完全属于个人的分支或者尚未推送到公用仓库的提交上）</strong></p>
+<h2 id="9-变基"><a href="#9-变基" class="headerlink" title="9. 变基"></a>9. 变基</h2><p><strong>写在前头的重点：千万不要对在你的仓库外有副本的分支执行变基！（个人理解：不要变基提交到 <code>master</code> 或多人共同提交工作的分支，不要变基已经提交过的历史。只用于完全属于个人的分支或者尚未推送到公用仓库的提交上）</strong></p>
 <p>在Git中整合不同分支的修改主要有两种方法合并 <code>merge</code> 与变基 <code>rebase</code>。</p>
-<p>首先，对比下合并与变基的流程差异。开发分支 <code>develop</code> 与提交分支 <code>master</code>。</p>
 <blockquote>
 <ol>
 <li>使用合并：分叉了历史，它会把两个分支的最新快照及最近的共同祖先进行三方合并成一个最新的快照并提交。</li>
 <li>使用变基：在当前开发分支引入提交分支的更新，再开发。再将开发分支并入提交分支。<strong>变基的实质是丢弃一些现有的提交，然后相对应的创建一些内容一样但是实际上不同的提交。</strong></li>
 </ol>
 </blockquote>
+<p>首先，对比下合并与变基的流程差异。开发分支 <code>develop</code> 与提交分支 <code>master</code>。</p>
 <p>举个栗子对比下：</p>
 <ol>
 <li> 合并</li>
@@ -647,16 +651,18 @@
 <ol start="2">
 <li>变基</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 重复合并前五步创建新仓库 rebaseTest</span><br><span class="line"></span><br><span class="line">// 6. 变基，输出结果</span><br><span class="line">// 当前在 develop 分支</span><br><span class="line">$ git rebase master</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 (master) C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 7. 将 develop 分支上的代码合并到 master 输出结果</span><br><span class="line">$ git checkout master</span><br><span class="line">$ git merge develop</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; master, develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 重复合并前五步创建新仓库 rebaseTest</span><br><span class="line"></span><br><span class="line">// 6. 变基，输出结果</span><br><span class="line">// 当前在 develop 分支</span><br><span class="line">$ git rebase master // 如果在主线分支，可用 $ git rebase master develop ，两个命令是等效的</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 (master) C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 7. 将 develop 分支上的代码合并到 master 输出结果</span><br><span class="line">$ git checkout master</span><br><span class="line">$ git merge develop</span><br><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">------</span><br><span class="line">* 7f9e86d (HEAD -&gt; master, develop) C4</span><br><span class="line">* b088e32 C2</span><br><span class="line">* 2a4a7b5 C3</span><br><span class="line">* 4397a6b C1</span><br><span class="line">* ab9683f C0</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">// 8. 此时 develop 分支无用了的话就可以删除掉了</span><br><span class="line">$ git branch -d develop</span><br></pre></td></tr></table></figure>
 
 <p>对比合并与变基的输出结果，可以得到总结：</p>
 <pre><code>1.  变基把分叉的提交历史整理成为一条直线，相对于合并可以得到一个更加简洁的提交历史。
 2.  变基比合并少一个合并提交节点。
 3.  合并的分支是按照时间倒序排列的。而变基中 `master` 分支的时间线是错乱的，可能会影响到提交历史的查看。
 4.  无论是变基还是合并，整合的最终指向提交都是一样的。只是提交历史不同而已。
-5.  个人建议：仓库的提交历史是对实际发生过什么的历史记录。它是针对历史的文档，本身就非常的有价值且很重要。它可以供开发者或者后来者查阅，尽可能的不要乱改。如果一定要改动的话，相对于重要的分支或长期分支也不建议使用变基，对提交历史没有影响或特性分支可以采用变基，用来使提交历史更简洁。
+5.  在 master 合并 developer 是由合并者解决冲突问题，变基由 developer 解决冲突问题。
+6.  变基是按照每行的修改次序重演一遍修改，而合并是把最终结果合到一起。
+7.  个人建议：仓库的提交历史是对实际发生过什么的历史记录。它是针对历史的文档，本身就非常的有价值且很重要。它可以供开发者或者后来者查阅，尽可能的不要乱改。如果一定要改动的话，相对于重要的分支或长期分支也不建议使用变基，对提交历史没有影响或特性分支可以采用变基，用来使提交历史更简洁。
 </code></pre>
-<p><strong>补充</strong>：万一真遇到有人对 <code>master</code> 下手了，执行了变基操作，可以让团队中的每个人都执行 <code>git pull --rebase</code> 尝试稍微挽救一下。</p>
+<p><strong>补充</strong>：万一真遇到有人对线上 <code>master</code> 下手了，执行了变基操作，可以让团队中的每个人都执行 <code>git pull --rebase</code> 尝试稍微挽救一下。</p>
 <h2 id="10-暂存文件"><a href="#10-暂存文件" class="headerlink" title="10. 暂存文件"></a>10. 暂存文件</h2><p>Git自带一些脚本可以使部分工作更简单。如果想将文件的特定组合部分组合成提交可以暂存对应文件。在调用 <code>git add</code> 命令时添加 <code>-i</code> 或 <code>--interactive</code>，进入终端模式。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git add -i</span><br><span class="line">$ git add --interactive</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line">$</span><br><span class="line">           staged     unstaged path</span><br><span class="line">  1:    unchanged        +1/-0 fileD</span><br><span class="line"></span><br><span class="line">*** Commands ***</span><br><span class="line">  1: status	  2: update	  3: revert	  4: add untracked</span><br><span class="line">  5: patch	  6: diff	  7: quit	  8: help</span><br><span class="line">What now&gt; </span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
@@ -668,7 +674,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           staged     unstaged path</span><br><span class="line">  1:        +1/-0      nothing fileD</span><br><span class="line"></span><br><span class="line">*** Commands ***</span><br><span class="line">  1: status	  2: update	  3: revert	  4: add untracked</span><br><span class="line">  5: patch	  6: diff	  7: quit	  8: help</span><br><span class="line">What now&gt; </span><br></pre></td></tr></table></figure>
 
 <p>要取消暂存文件，输入 <code>3</code> 或 <code>revert</code>，执行与暂存相同操作。再次查看，会发现已取消暂存。</p>
-<h2 id="11-储藏"><a href="#11-储藏" class="headerlink" title="11. 储藏"></a>11. 储藏</h2><p>当开发中突然遇到问题需要紧急修复，又不能放弃当前的更改，当前的修改还在报错又不能提交（真惨）。<br>这种情况经常会发生，在这种情况下我们可以先将手里的工作<strong>储藏</strong>起来，存储在栈上。执行命令 <code>git stash</code> 或 <code>git stash save</code>。待其他工作完成后，回来再继续。</p>
+<h2 id="11-储藏"><a href="#11-储藏" class="headerlink" title="11. 储藏"></a>11. 储藏</h2><p>当开发中突然遇到问题需要紧急修复，又不能放弃当前的更改，当前的修改还在报错又不能提交。<br>这种情况经常会发生，在这种情况下我们出了开一个新分支之外，害可以先将手里的工作<strong>储藏</strong>起来，存储在栈上。执行命令 <code>git stash</code> 或 <code>git stash save</code>。待其他工作完成后，回来再继续。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">	modified:   fileD</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   fileM</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">$ git stash // 或 `git stash save`</span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
 
 <p>可以看到，工作目录清空了，未暂存的和已暂存的都消失了。这时我们就可以去搞别的事情了。</p>
@@ -690,7 +696,7 @@
 <p>文件 <code>.gitignore</code> 的格式规范如下：</p>
 <ul>
 <li>  所有空行或者以#开头的行都会被Git忽略</li>
-<li>  可以使用标准的glob模式匹配</li>
+<li>  可以使用标准的glob模式匹配（指 shell 所使用的简化了的正则表达式）</li>
 <li>  匹配模式可以以 <code>/</code> 开头防止递归</li>
 <li>  匹配模式可以以 <code>/</code> 结尾指定目录</li>
 <li>  要忽略指定模式以外的文件或目录，可以在模式前加上 <code>!</code> 取反</li>
@@ -830,20 +836,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

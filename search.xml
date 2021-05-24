@@ -1940,4 +1940,86 @@
         <tag>LaunchView</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Markdown基本语法</title>
+    <url>/2021/05/24/Markdown/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">...</span><br><span class="line">###### 六级标题（最多六级）</span><br></pre></td></tr></table></figure>
+
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[toc] 目录可以写在任何位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">**加粗字体**  </span><br><span class="line">__加粗字体__ </span><br><span class="line"></span><br><span class="line">*倾斜*  </span><br><span class="line">_倾斜_  </span><br><span class="line"></span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line"></span><br><span class="line">***粗倾斜***  </span><br><span class="line">~~加删除线~~   </span><br><span class="line">&lt;i&gt;斜体&lt;/i&gt;  </span><br><span class="line">&lt;b&gt;粗体&lt;/b&gt;  </span><br><span class="line">&lt;em&gt;强调&lt;/em&gt;   </span><br><span class="line">Z&lt;sup&gt;sup&lt;/sup&gt;上角标  </span><br><span class="line">Z&lt;sub&gt;sub&lt;/sub&gt;下角标  </span><br><span class="line">&lt;kbd&gt;Ctrl&lt;/kbd&gt;键盘文本  </span><br><span class="line">MardDown[^1]</span><br><span class="line"></span><br><span class="line">[^1]: 注脚</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;引用</span><br><span class="line">&gt;单行引用  </span><br><span class="line">&gt;也可以多行</span><br><span class="line">&gt;&gt;还是引用</span><br><span class="line">&gt;&gt;</span><br><span class="line">&gt;&gt;&gt;继续引用</span><br><span class="line">&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;四级啦</span><br><span class="line">&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;还能n多级别</span><br></pre></td></tr></table></figure>
+
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下面三个都可以作为分割线使用</span><br><span class="line">---</span><br><span class="line">* * *</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![图片啊](https://www.xx.jpg &quot;区块链&quot;)</span><br><span class="line">[![带链接的图片](https://www.xx.jpg &quot;区块链&quot;)](http://www.baidu.com)</span><br></pre></td></tr></table></figure>
+
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[百度](http://www.baidu.com)  </span><br><span class="line">百度&lt;http://www.baidu.com&gt;  </span><br><span class="line">[还有这样的](本地连接)  </span><br><span class="line">[或者这样的百度][1]</span><br><span class="line"></span><br><span class="line">[1]: http://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: #AD5D0F;font-size: 30px; font-family: &#x27;宋体&#x27;;&quot;</span>&gt;</span>内联样式<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 代码</span><br><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">hello</span><br><span class="line">	hi</span><br><span class="line">	who are you </span><br><span class="line">	i don&#x27;t know</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;iframe height=498 width=510 src=&#x27;http://xxx&#x27; frameborder=0 &#x27;allowfullscreen&#x27;&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">[或者这样跳转视频](http://xxx)</span><br></pre></td></tr></table></figure>
+
+<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 可以用横杠</span><br><span class="line">+ 也可以用加号</span><br><span class="line">* 还可以用一个星号</span><br><span class="line">	- 可以缩进</span><br></pre></td></tr></table></figure>
+
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 输入数字后加一个点再加一个空格</span><br><span class="line">	1. 有序列表也可以锁进</span><br><span class="line">3. 顺序可以自己调整，相当于重新设置一个有序列表</span><br></pre></td></tr></table></figure>
+
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">| 这是表头1 | 这是表头2 | 这是表头3 |</span><br><span class="line">| --------- | :-------: | --------: |</span><br><span class="line">| 内容1     |   内容2   |     内容3 |</span><br><span class="line">| 内容4     |           |     内容5 |</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`单行代码`</span><br><span class="line">``Ctrl+C``  </span><br><span class="line">代码行也可以作为`标记`使用</span><br><span class="line"></span><br><span class="line">​```c</span><br><span class="line">NSLog(@&quot;这是输出&quot;);</span><br><span class="line">​```</span><br><span class="line"></span><br><span class="line">    使用四个空格或一个制表符也是多行代码</span><br><span class="line">    printf(&quot;code&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- [x] 任务列表</span><br><span class="line">- [ ] 未选中</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>获取IP与通过IP获取当前城市</title>
+    <url>/2021/05/24/iOS/ObjectC/%E8%8E%B7%E5%8F%96IP%E4%B8%8E%E9%80%9A%E8%BF%87IP%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%9F%8E%E5%B8%82/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)getIp</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;开始获取ip&quot;);</span><br><span class="line">    NSError*error;</span><br><span class="line">    NSString*ip =@&quot;&quot;;</span><br><span class="line">    // 方法1    不稳定，有时太慢，有时得不到结果</span><br><span class="line">    NSURL *url = [NSURL URLWithString:@&quot;https://ifconfig.me/ip&quot;];</span><br><span class="line">    ip = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error];</span><br><span class="line"></span><br><span class="line">    // 方法2 如果网址错误或注销得不到结果</span><br><span class="line">    NSURL *url = [NSURL URLWithString:@&quot;http://ip.taobao.com/service/getIpInfo.php?ip=myip&quot;];</span><br><span class="line">    NSString *response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error];</span><br><span class="line">    NSDictionary*dicResponse = [responsemj_JSONObject];</span><br><span class="line">    if(dicResponse &amp;&amp; dicResponse[@&quot;data&quot;]) &#123;</span><br><span class="line">        NSDictionary*dicData = dicResponse[@&quot;data&quot;];</span><br><span class="line">        if(dicData &amp;&amp; dicData[@&quot;ip&quot;]) &#123;</span><br><span class="line">            ip = dicData[@&quot;ip&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 方法3 如果网址错误或注销得不到结果</span><br><span class="line">    NSURL *url = [NSURL URLWithString:@&quot;http://pv.sohu.com/cityjson?ie=utf-8&quot;];</span><br><span class="line">    NSString*response = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error];</span><br><span class="line">    //判断返回字符串是否为所需数据</span><br><span class="line">    NSString *prefix = @&quot;var returnCitySN = &quot;;</span><br><span class="line">    if([responsehasPrefix:prefix]) &#123;</span><br><span class="line">        // 删除多余内容</span><br><span class="line">        response = [responsesubstringFromIndex:prefix.length];</span><br><span class="line">        response = [responsesubstringToIndex:response.length-1];</span><br><span class="line">        NSDictionary*dicResponse = [responsemj_JSONObject];</span><br><span class="line">        if(dicResponse &amp;&amp; dicResponse[@&quot;cip&quot;]) &#123;</span><br><span class="line">            ip = dicResponse[@&quot;cip&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    NSLog(@&quot;当前网络ip %@&quot;, ip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>ObjectC</tag>
+        <tag>IP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>输出台打印对象具体信息</title>
+    <url>/2021/05/24/iOS/ObjectC/%E8%BE%93%E5%87%BA%E5%8F%B0%E6%89%93%E5%8D%B0%E5%AF%B9%E8%B1%A1%E5%85%B7%E4%BD%93%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// 写在 baseModel 中</span><br><span class="line"></span><br><span class="line">/** 在控制台po输入对象具体信息 */</span><br><span class="line">- (NSString *)debugDescription &#123;</span><br><span class="line">    </span><br><span class="line">    if ([self isKindOfClass:[NSArray class]] || [self isKindOfClass:[NSDictionary class]] || [self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSString class]]) &#123;</span><br><span class="line">        return self.debugDescription;</span><br><span class="line">    &#125;</span><br><span class="line">    // 初始化一个字典</span><br><span class="line">    NSMutableDictionary *dic = [NSMutableDictionary dictionary];</span><br><span class="line">    // 得到当前class的所有属性</span><br><span class="line">    uint count;</span><br><span class="line">    objc_property_t *properites = class_copyPropertyList([self class], &amp;count);</span><br><span class="line">    for (int i = 0; i &lt; count; i ++) &#123; // 循环使用kvc获取每一个值</span><br><span class="line">        objc_property_t property = properites[i];</span><br><span class="line">        NSString *name = @(property_getName(property));</span><br><span class="line">        id value = [self valueForKey:name] ?: @&quot;nil&quot;;</span><br><span class="line">        [dic setValue:value forKey:name];</span><br><span class="line">    &#125;</span><br><span class="line">    free(properites);</span><br><span class="line">    return [NSString stringWithFormat:@&quot;%@(%p): %@&quot;, [self class], self, dic];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/** 模型转字典 */</span><br><span class="line">- (NSMutableDictionary *)createDictionayFromModelProperties &#123;</span><br><span class="line">	NSMutableDictionary *propsDic = [NSMutableDictionary dictionary];</span><br><span class="line">	unsigned int outCount, i;</span><br><span class="line">	// class:获取哪个类的成员属性列表</span><br><span class="line">	// count:成员属性总数</span><br><span class="line">	// 拷贝属性列表</span><br><span class="line">	objc_property_t *properties = class_copyPropertyList([self class], &amp;outCount);</span><br><span class="line"></span><br><span class="line">	for (i = 0; i &lt; outCount; i++) &#123;</span><br><span class="line">		objc_property_t property = properties[i];</span><br><span class="line">		const char *char_f = property_getName(property);</span><br><span class="line">		// 属性名</span><br><span class="line">		NSString *propertyName = [NSString stringWithUTF8String:char_f];</span><br><span class="line">		// 属性值</span><br><span class="line">		id propertyValue = [self valueForKey:(NSString *)propertyName];</span><br><span class="line">		// 设置KeyValues</span><br><span class="line">		if (propertyValue)</span><br><span class="line">			[propsDic setObject:propertyValue forKey:propertyName];</span><br><span class="line">	&#125;</span><br><span class="line">	// 需手动释放 不受ARC约束</span><br><span class="line">	free(properties);</span><br><span class="line">	return propsDic;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>ObjectC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过外网获取当前网络状态</title>
+    <url>/2021/05/24/iOS/ObjectC/%E9%80%9A%E8%BF%87%E5%A4%96%E7%BD%91%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// 服务器可达返回true (https://www.jianshu.com/p/e96bfde21313)</span><br><span class="line">+ (BOOL)socketReachability &#123;</span><br><span class="line">    // 客户端 AF_INET:ipv4  SOCK_STREAM:TCP链接</span><br><span class="line">    int socketNumber = socket(AF_INET, SOCK_STREAM, 0);</span><br><span class="line">    // 配置服务器端套接字</span><br><span class="line">    struct sockaddr_in serverAddress;</span><br><span class="line">    // 设置服务器ipv4</span><br><span class="line">    serverAddress.sin_family = AF_INET;</span><br><span class="line">    // 百度的ip</span><br><span class="line">    serverAddress.sin_addr.s_addr = inet_addr(&quot;202.108.22.5&quot;);</span><br><span class="line">    // 设置端口号，HTTP默认80端口</span><br><span class="line">    serverAddress.sin_port = htons(80);</span><br><span class="line">    if (connect(socketNumber, (const struct sockaddr *)&amp;serverAddress, sizeof(serverAddress)) == 0) &#123;</span><br><span class="line">        close(socketNumber);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    close(socketNumber);;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>ObjectC</tag>
+        <tag>网络状态</tag>
+      </tags>
+  </entry>
 </search>

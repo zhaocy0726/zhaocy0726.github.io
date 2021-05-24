@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="创建自定义Framework，抽取项目中常用的模块并封装，以提供后面的项目复用，或提供给第三方使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建自定义Framework">
+<meta property="og:url" content="https://www.zhaocy.fun/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/index.html">
+<meta property="og:site_name" content="zhaocy&#39;s blog">
+<meta property="og:description" content="创建自定义Framework，抽取项目中常用的模块并封装，以提供后面的项目复用，或提供给第三方使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb58srvhj314k0swdj0.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb5goejwj314k0swacj.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb5ppmigj31ay0i0k23.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6006r5j31f00egae4.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6wnuv0j30ka0egjro.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtayd27hxj30k80eg753.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6ndzz2j314u0iiwj2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb74n6nmj317w0jo43k.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb78v9uoj315m0ik0xb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7c567ij316o0hk0x6.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7gkimzj31qi0kg0zw.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7ykdttj313c0h8gpb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb84hf3uj31dk08mtae.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb8fh2fhj31n20i4mzb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb8w0am8j310a0u0k2b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9m4og8j314k0swtbj.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9r8m2yj31l60u0wmi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9yd98bj317q0u0dsy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtba6c7xfj32g50u04cu.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtbaculq8j31x40q248i.jpg">
+<meta property="article:published_time" content="2021-05-24T01:50:47.000Z">
+<meta property="article:modified_time" content="2021-05-24T02:34:10.773Z">
+<meta property="article:author" content="春阳">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Xcode">
+<meta property="article:tag" content="Framework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtb58srvhj314k0swdj0.jpg">
+
+<link rel="canonical" href="https://www.zhaocy.fun/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>创建自定义Framework | zhaocy's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zhaocy's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">iOS developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="春阳">
+      <meta itemprop="description" content="iOS, Mac">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaocy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          创建自定义Framework
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 09:50:47 / 修改时间：10:34:10" itemprop="dateCreated datePublished" datetime="2021-05-24T09:50:47+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/" class="post-meta-item leancloud_visitors" data-flag-title="创建自定义Framework" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/24/iOS/ObjectC/%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89Framework/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">创建自定义Framework，抽取项目中常用的模块并封装，以提供后面的项目复用，或提供给第三方使用。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li><p>创建 Cocoa Touch Framework 工程</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb58srvhj314k0swdj0.jpg" alt="1"></p>
+</li>
+<li><p> 输入Framework的名字，并选择相关配置，一般默认就好，完成后选择Next。</p>
+</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb5goejwj314k0swacj.jpg" alt="2"></p>
+<ol start="3">
+<li> Finder 切换到工程文件夹，终端执行 <code>pod init</code> 创建 <code>Podfile</code> ，再执行 <code>pod install</code></li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb5ppmigj31ay0i0k23.jpg" alt="3"></p>
+<ol start="4">
+<li> 关掉 <code>xcodeproj</code> 打开 <code>xcworkspace</code> ，修改 <code>Podfile</code> ，添加需要的第三方依赖库</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6006r5j31f00egae4.jpg" alt="4"></p>
+<ol start="5">
+<li> 终端再次执行 <code>pod install</code> </li>
+<li> 添加自定义类，完善业务与逻辑，对外开放的头文件中使用 <code>#import &lt;xx/xx.h&gt;</code> 添加需要对外开放的头文件，内部使用 <code>#import &quot;xx.h&quot;</code></li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6wnuv0j30ka0egjro.jpg" alt="image-20210524101835331"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtayd27hxj30k80eg753.jpg" alt="image-20210524101911947"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb6ndzz2j314u0iiwj2.jpg" alt="5"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb74n6nmj317w0jo43k.jpg" alt="6"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb78v9uoj315m0ik0xb.jpg" alt="7"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7c567ij316o0hk0x6.jpg" alt="8"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7gkimzj31qi0kg0zw.jpg" alt="9"></p>
+<ol start="6">
+<li> 修改 <code>Target</code> / <code>Build Settings</code></li>
+</ol>
+<ul>
+<li><p><code>Dead Code Stripping</code>  修改为 <code>NO</code></p>
+<p>  <code>Dead Code Stripping</code>对程序编译出的可执行二进制文件中没有被实际使用的代码进行strip操作。</p>
+</li>
+<li><p><code>Link With Standard Libraries</code> 修改为 <code>NO</code></p>
+<p>  <code>Link With Standard Libraries</code> 默认是<code>YES</code>，编译器在链接时会自动使用标准库的链接器</p>
+<p>  看网上好多资料都说要改成<code>NO</code>，但是看官方的文档，如果设置为<code>NO</code>，需要配置 <code>Other Linker Flags</code> 来指定链接器。</p>
+</li>
+<li><p><code>Mach-O Type</code> 修改为 <code>Static Library</code></p>
+<p>  <code>Mach-O Type</code> 可执行文件的格式</p>
+<p>  <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb7ykdttj313c0h8gpb.jpg" alt="10"></p>
+</li>
+<li><p><code>Build Active Architecture Only</code> 修改为 <code>NO</code></p>
+<p>  <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb84hf3uj31dk08mtae.jpg" alt="11"></p>
+</li>
+</ul>
+<ol start="7">
+<li> 在 <code>Target</code> / <code>Build Phases</code> / <code>Headers</code> / <code>Public</code> 中添加对外暴露的头文件</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb8fh2fhj31n20i4mzb.jpg" alt="12"></p>
+<ol start="8">
+<li><p> （如果需要调试，继续往下，也可以编译出 <code>Framework</code> 后导出到其他项目测试）</p>
+</li>
+<li><p> 在工程中选择 <code>Target</code> ，点击左下角的 <code>+</code> ，选择创建一个 <code>app</code> ，命名为 <code>demo</code></p>
+</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb8w0am8j310a0u0k2b.jpg" alt="13"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9m4og8j314k0swtbj.jpg" alt="15"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9r8m2yj31l60u0wmi.jpg" alt="16"></p>
+<ol start="10">
+<li> 添加好 <code>target</code> 后，编译 <code>framework</code> ，得到 <code>framework</code></li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtb9yd98bj317q0u0dsy.jpg" alt="17"></p>
+<ol start="11">
+<li> 选择编译出来的 <code>framework</code> ，在最右侧边栏中，勾选 <code>Target Membership</code> 中的<code>demo</code></li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtba6c7xfj32g50u04cu.jpg" alt="18"></p>
+<ol start="12">
+<li> 切换 <code>target</code> 到 <code>demo</code> 引入 <code>framework</code> ，执行对应的测试方法</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtbaculq8j31x40q248i.jpg" alt="19"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Xcode/" rel="tag"># Xcode</a>
+              <a href="/tags/Framework/" rel="tag"># Framework</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/24/iOS/ObjectC/%E8%8E%B7%E5%8F%96%E8%AE%BE%E5%A4%87%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4%E5%A4%A7%E5%B0%8F/" rel="prev" title="获取设备剩余空间大小">
+      <i class="fa fa-chevron-left"></i> 获取设备剩余空间大小
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/24/iOS/Swift/%E6%94%B9%E5%8F%98TableView%E5%B7%A6%E5%88%92%E5%88%A0%E9%99%A4%E6%A0%B7%E5%BC%8F/" rel="next" title="改变TableView左划删除样式">
+      改变TableView左划删除样式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">春阳</p>
+  <div class="site-description" itemprop="description">iOS, Mac</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZCY</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/14/2021 14:17:10");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+
+<!--
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz',
+      appKey     : 'GcHQqd7KtA98Da2PX9rtN54k',
+      placeholder: "欢迎留下你的评论、建议以及吐槽！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

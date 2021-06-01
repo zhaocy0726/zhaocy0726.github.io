@@ -22,24 +22,21 @@
     var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="通过 AVFoundation 自定义相机样式及操作">
+  <meta name="description" content="OC 单例宏，免去每个单例类的重复创建代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自定义相机">
-<meta property="og:url" content="https://www.zhaocy.fun/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/index.html">
+<meta property="og:title" content="OC单例宏">
+<meta property="og:url" content="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/index.html">
 <meta property="og:site_name" content="zhaocy&#39;s blog">
-<meta property="og:description" content="通过 AVFoundation 自定义相机样式及操作">
+<meta property="og:description" content="OC 单例宏，免去每个单例类的重复创建代码">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtbl406qkj30wi068js5.jpg">
-<meta property="article:published_time" content="2021-05-24T02:41:58.000Z">
-<meta property="article:modified_time" content="2021-05-24T02:44:07.799Z">
+<meta property="article:published_time" content="2021-06-01T02:27:37.000Z">
+<meta property="article:modified_time" content="2021-06-01T02:28:41.373Z">
 <meta property="article:author" content="春阳">
 <meta property="article:tag" content="iOS">
-<meta property="article:tag" content="Swift">
-<meta property="article:tag" content="相机">
+<meta property="article:tag" content="ObjectC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gqtbl406qkj30wi068js5.jpg">
 
-<link rel="canonical" href="https://www.zhaocy.fun/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/">
+<link rel="canonical" href="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/">
 
 
 <script id="page-configurations">
@@ -52,7 +49,7 @@
   };
 </script>
 
-  <title>自定义相机 | zhaocy's blog</title>
+  <title>OC单例宏 | zhaocy's blog</title>
   
 
 
@@ -192,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +202,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          自定义相机
+          OC单例宏
         </h1>
 
         <div class="post-meta">
@@ -216,7 +213,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-24 10:41:58 / 修改时间：10:44:07" itemprop="dateCreated datePublished" datetime="2021-05-24T10:41:58+08:00">2021-05-24</time>
+              <time title="创建时间：2021-06-01 10:27:37 / 修改时间：10:28:41" itemprop="dateCreated datePublished" datetime="2021-06-01T10:27:37+08:00">2021-06-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,7 +226,7 @@
             </span>
 
           
-            <span id="/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" class="post-meta-item leancloud_visitors" data-flag-title="自定义相机" title="阅读次数">
+            <span id="/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/" class="post-meta-item leancloud_visitors" data-flag-title="OC单例宏" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -244,13 +241,13 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/24/iOS/Swift/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">通过 AVFoundation 自定义相机样式及操作</div>
+            <div class="post-description">OC 单例宏，免去每个单例类的重复创建代码</div>
 
         </div>
       </header>
@@ -261,99 +258,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong><code>AVFoundation</code> 是 <code>iOS</code> 中所有视听事务的最高级别框架。</strong></p>
-<p>其中 <code>AVFoundation Capture</code> 子系统为 <code>iOS</code> 和 <code>macOS</code> 中的视频、照片和音频捕获服务提供了通用的高级体系结构。可以用来执行以下功能：</p>
-<ul>
-<li>  构建自定义的相机UI，将拍摄的照片或视频继承到应用程序的用户体验中。</li>
-<li>  为用户提供对拍摄照片和视频更直接的控制，包括焦点、曝光和稳定选项。</li>
-<li>  与系统UI产生不同的结果，例如 <code>RAW</code> 格式的照片，深度图或者具有自定义定时元数据的视频。</li>
-<li>  直接从捕获设备实时访问流媒体的像素或音频数据。</li>
-</ul>
-<p>捕获体系主要结构体系为会话、输入和输入。通过 <code>AVCaptureSession</code> 链接一个或多个输入源 <code>AVCaptueDevice/AVCaptueDeviceInput</code> 并输出到一个或多个输出 <code>AVCaptureOutput</code> 。</p>
-<p>输入是媒体的来源，包括捕获设备，例如内置在<code>iOS</code>设备或<code>Mac</code>中的相机和麦克风。输出从输入中获取媒体以产生有用的数据，例如写入磁盘的电影文件或可用于实时处理的原始像素缓冲区。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtbl406qkj30wi068js5.jpg" alt="1"></p>
-<h3 id="第一步：设置-AVCaptureSession"><a href="#第一步：设置-AVCaptureSession" class="headerlink" title="第一步：设置 AVCaptureSession"></a>第一步：设置 AVCaptureSession</h3><p>自定义相机的第一件事是将<code>AVFoundation</code>框架导入到项目中，然后创建会话单例，以备使用。想要会话开始做事，我们需要调用开始配置 <code>beginConfiguration()</code> ，然后分别使用 <code>beginConfiguration()</code> 和 <code>commitConfiguration()</code> 提交配置修改。</p>
-<p>这样的好处是捕捉会话的任何操作都将被自动应用，这意味着所有的修改立即执行。这会为用户切换相机等输入源时带来更平滑的过度。完成所有配置后，准备开始会话。</p>
-<p>在后台线程上需要执行 <code>setupAndStartCaptureSession()</code> 的主体，因为 <code>startRuning()</code> 是一个阻塞调用，这意味着执行的时候将会卡住主线程。当它失败时，会发送通知 <code>AVCaptureSessionRuntimeError</code>。</p>
-<h3 id="第二步：设置输入"><a href="#第二步：设置输入" class="headerlink" title="第二步：设置输入"></a>第二步：设置输入</h3><p><code>AVCaptureDevice</code> 提供用于捕获会话的输入（例如音频或视频）并提供针对特定于硬件的控件的设备捕获功能。该对象表示“捕获设备”，它是硬件，例如照相机或麦克风。关于拍照我们需要其中两个设备，前置摄像头和后置摄像头。从 <code>AVMediaType</code> 中读取需要的类型。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">default</span>(<span class="keyword">_</span> <span class="params">deviceType</span>: <span class="type">AVCaptureDevice</span>.<span class="type">DeviceType</span>, </span></span><br><span class="line"><span class="function">            <span class="params">for</span> <span class="params">mediaType</span>: <span class="type">AVMediaType</span>?, </span></span><br><span class="line"><span class="function">                 <span class="params">position</span>: <span class="type">AVCaptureDevice</span>.<span class="type">Position</span></span></span><br><span class="line"><span class="function">            )</span> -&gt; <span class="type">AVCaptureDevice</span>?</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#ifndef Macro_Singleton_h</span><br><span class="line">#define Macro_Singleton_h</span><br><span class="line"></span><br><span class="line">#import &lt;objc/runtime.h&gt;</span><br><span class="line"></span><br><span class="line">#pragma mark -</span><br><span class="line">#pragma mark - interface</span><br><span class="line">/* Usage:</span><br><span class="line"> *</span><br><span class="line"> * MyClass.h:</span><br><span class="line"> * ========================================</span><br><span class="line"> *    #import &quot;Singleton.h&quot;</span><br><span class="line"> *</span><br><span class="line"> *    @interface MyClass: SomeSuperclass</span><br><span class="line"> *    &#123;</span><br><span class="line"> *      ...</span><br><span class="line"> *    &#125;</span><br><span class="line"> *    SYNTHESIZE_SINGLETON_INTERFACE(MyClass);</span><br><span class="line"> *</span><br><span class="line"> *    @end</span><br><span class="line"> * ========================================</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">#undef  SINGLETON_INTERFACE</span><br><span class="line">#define SINGLETON_INTERFACE( __class ) \</span><br><span class="line">\</span><br><span class="line">+ (__class *)sharedInstance; \</span><br><span class="line">\</span><br><span class="line">+ (void)load; \</span><br><span class="line">\</span><br><span class="line"></span><br><span class="line">#pragma mark -</span><br><span class="line">#pragma mark - implementation</span><br><span class="line"></span><br><span class="line">/* Usage:</span><br><span class="line"> *</span><br><span class="line"> *    MyClass.m:</span><br><span class="line"> * ========================================</span><br><span class="line"> *    #import &quot;MyClass.h&quot;</span><br><span class="line"> *</span><br><span class="line"> *    @implementation MyClass</span><br><span class="line"> *</span><br><span class="line"> *    SYNTHESIZE_SINGLETON_IMPLEMENTION(MyClass);</span><br><span class="line"> *</span><br><span class="line"> *    ...</span><br><span class="line"> *</span><br><span class="line"> *    @end</span><br><span class="line"> * ========================================</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">#undef SINGLETON_IMPLEMENTION</span><br><span class="line">#define SINGLETON_IMPLEMENTION( __class ) \</span><br><span class="line">\</span><br><span class="line">static __class * __singleton__; \</span><br><span class="line">\</span><br><span class="line">+ (__class *)sharedInstance \</span><br><span class="line">&#123; \</span><br><span class="line">static dispatch_once_t predicate; \</span><br><span class="line">dispatch_once( &amp;predicate, ^&#123; __singleton__ = [[[self class] alloc] init]; &#125; ); \</span><br><span class="line">return __singleton__; \</span><br><span class="line">&#125; \</span><br><span class="line">+ (void)load \</span><br><span class="line">&#123; \</span><br><span class="line">[self sharedInstance]; \</span><br><span class="line">&#125; \</span><br><span class="line"></span><br><span class="line">#endif /* Macro_Singleton_h */</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p><strong>AVMediaType</strong></p>
-<p>  audio 音频</p>
-<p>  closedCaption 隐藏式字幕</p>
-<p>  depthData 深度数据</p>
-<p>  metadata 元数据</p>
-<p>  metadataObject 元数据对象</p>
-<p>  muxed 混合</p>
-<p>  subtitle 字幕</p>
-<p>  text 文本</p>
-<p>  timecode  时间码</p>
-<p>  video 视频</p>
-</li>
-<li><p><strong>AVCaptureDevice.DeviceType</strong></p>
-<p>  builtInWideAngleCamera 广角照相机，前后都有，普遍适用</p>
-<p>  builtInTelephotoCamera 长焦照相机</p>
-<p>  builtInDualCamera 双摄照相机（广角与长焦）</p>
-<p>  builtInDualWideCamera 双广角摄照相机</p>
-<p>  buildInTripleCamera 三摄照相机</p>
-<p>  builtInUltraWideCamera 超广角照相机</p>
-<p>  builtInMicrophone 麦克风</p>
-<p>  externalUnknown 外部未知</p>
-</li>
-</ul>
-<p>在<code>setupAndStartCaptureSession()</code>函数中调用<code>setupInputs()</code>，可以获得<code>inputs</code>。我们在输入设备中能获取到为捕获会话提供输入数据的抽象超类对象 <code>AVCaptureInput</code> 。</p>
-<p><strong>配置输入</strong></p>
-<ul>
-<li>  Formats - resolution, aspect ratio, refresh rate 分辨率，宽高比，刷新率等</li>
-<li>  Image Exposure 影像曝光</li>
-<li>  Depth data 深度数据</li>
-<li>  Zoom 放大</li>
-<li>  Focus 焦点</li>
-<li>  Flash 闪光灯</li>
-<li>  Tourch 手电筒</li>
-<li>  Framerate 帧率</li>
-<li>  Lens postion 镜头位置</li>
-<li>  White balance 白平衡</li>
-<li>  ISO 图像传感器感光度</li>
-<li>  HDR 高动态范围</li>
-<li>  Color Spaces 色彩空间</li>
-<li>  Geometric distortion correction 几何变形校正</li>
-<li>  Device calibration 设备校准</li>
-<li>  Tone Mapping 色调映射</li>
-</ul>
-<p>不同的相机具有不同的配置选项。相机并不是一个整体对象，比如iphone11后置相机。iOS设备，尤其是最新的设备，都具有多个摄像头且每个摄像头的功能是不一样的。</p>
-<h3 id="第三步：设置相机供稿"><a href="#第三步：设置相机供稿" class="headerlink" title="第三步：设置相机供稿"></a>第三步：设置相机供稿</h3><p><code>AVFoundtion</code> 框架提供了一种非常简单的方式累显示图像预览 <code>AVCaptureVideoPreviewLayer</code>。它在捕获会话中创建<code>CALayer</code>，并将其作为子层添加到视图中准备预览。</p>
-<h3 id="第四步：设置输出"><a href="#第四步：设置输出" class="headerlink" title="第四步：设置输出"></a>第四步：设置输出</h3><p><code>AVCaptureOutput</code> 用于输出捕获会话记录中的媒体的对象，为我们提供了输入设备中介的数据。</p>
-<p>这里有两种常用的方式来获取输出结果：</p>
-<ol>
-<li><p><code>AVCapturePhotoOutput</code></p>
-<p> 这个非常简单。你需要做的就是创建对象，并将其附加到会话上，在用户点击拍照时，调用<code>capturePhoto(with:delegate:)</code>方法并获取到一个图片对象。根据项目的业务再对其进行再次处理。</p>
-</li>
-<li><p><code>AVCaptureVideoDataOutput</code></p>
-<p> 捕获输出，用于记录视频并提供对视频帧的访问以进行处理。注意，这个获取的对象是视频而不是照片。这是因为从相机中获取到了每一帧，你可以决定如何处理这些图片帧。如果需要照片，可以获取用户按下照相机的下一帧。</p>
-<p> 此输出对象有很多配置选项，我们可以暂时不管，只关心我们需要的方法：</p>
-<p> <code>func setSampleBufferDelegate(AVCaptureVideoDataOutputSampleBufferDelegate?, queue: DispatchQueue?)</code></p>
-<p> 第一个参数是委托，它将在其上回调帧，第二个参数是队列，在其上调用回调。将以摄像机的帧速率调用它，并回调需要处理的数据。它不会在主线程上发生。如果有新帧可以用时，如果正在运行的队列繁忙，将会根据<code>alwaysDiscardsLateVideoFrames</code>属性将帧“延迟” 。</p>
-</li>
-</ol>
-<p>我们重点关注 <code>captureOutput</code> 。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">captureOutput</span>(<span class="keyword">_</span> <span class="params">output</span>:<span class="type">AVCaptureOutput</span>,</span></span><br><span class="line"><span class="function">							<span class="params">didOutput</span> <span class="params">sampleBuffer</span>:<span class="type">CMSampleBuffer</span>,</span></span><br><span class="line"><span class="function">                     <span class="params">from</span> <span class="params">connection</span>:<span class="type">AVCaptureConnection</span>)</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p> <strong>第一个参数</strong>指定了它来自哪个输出设备</p>
-</li>
-<li><p><strong>第二个参数</strong>指定了采样率。包含零个或多个特定媒体类型的压缩样本对象。该对象的全部范围很复杂，在这里我们只关心图片相关。</p>
-<ul>
-<li>  <code>UIImage</code> 最高级别的图像容器，你可以在需要不同的图像表示形式中创建UIImage</li>
-<li>  <code>CGImage</code> 图像的位图表示</li>
-<li>  <code>CIImage</code> 图像的配方，你可以使用Core Image框架对其进行处理</li>
-</ul>
-<p> <code>CMSampleBuffer</code>本质上可以包含不同数据类型的整个数组，我们最需要的是图像缓冲区。在此我们需要 <code>CMSampleBufferGetImageBuffer()</code>，现在我们可以从中获取到<code>CIImage</code>，并创建<code>UIImage</code></p>
-</li>
-<li><p> <strong>第三个参数</strong>是捕获会话中特定的输入和输出对象之间的连接。</p>
-</li>
-</ol>
 
     </div>
 
@@ -364,8 +270,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/iOS/" rel="tag"># iOS</a>
-              <a href="/tags/Swift/" rel="tag"># Swift</a>
-              <a href="/tags/%E7%9B%B8%E6%9C%BA/" rel="tag"># 相机</a>
+              <a href="/tags/ObjectC/" rel="tag"># ObjectC</a>
           </div>
 
         
@@ -374,13 +279,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/24/iOS/Swift/%E8%BD%AC%E6%8D%A2Range%E4%B8%8ENSRange/" rel="prev" title="转换Range与NSRange">
-      <i class="fa fa-chevron-left"></i> 转换Range与NSRange
+    <a href="/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="prev" title="OC常用宏定义">
+      <i class="fa fa-chevron-left"></i> OC常用宏定义
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/24/Markdown/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" rel="next" title="Markdown基本语法">
-      Markdown基本语法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -440,7 +342,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE-AVCaptureSession"><span class="nav-text">第一步：设置 AVCaptureSession</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%85%A5"><span class="nav-text">第二步：设置输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%9B%B8%E6%9C%BA%E4%BE%9B%E7%A8%BF"><span class="nav-text">第三步：设置相机供稿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%87%BA"><span class="nav-text">第四步：设置输出</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

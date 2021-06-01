@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="OC 中个人常用的宏定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC常用宏定义">
+<meta property="og:url" content="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/index.html">
+<meta property="og:site_name" content="zhaocy&#39;s blog">
+<meta property="og:description" content="OC 中个人常用的宏定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-01T02:23:58.000Z">
+<meta property="article:modified_time" content="2021-06-01T02:25:08.332Z">
+<meta property="article:author" content="春阳">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="ObjectC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OC常用宏定义 | zhaocy's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zhaocy's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">iOS developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="春阳">
+      <meta itemprop="description" content="iOS, Mac">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaocy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OC常用宏定义
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-01 10:23:58 / 修改时间：10:25:08" itemprop="dateCreated datePublished" datetime="2021-06-01T10:23:58+08:00">2021-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/" class="post-meta-item leancloud_visitors" data-flag-title="OC常用宏定义" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">OC 中个人常用的宏定义</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">#ifndef Macros_h</span><br><span class="line">#define Macros_h</span><br><span class="line"></span><br><span class="line">#pragma mark - 输出</span><br><span class="line"></span><br><span class="line">// MARK: 开发的时候打印，但是发布的时候不打印的NSLog</span><br><span class="line">#ifdef DEBUG</span><br><span class="line">#define NSLog(...) NSLog(@&quot;%s 第%d行 \n %@\n\n&quot;,__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])</span><br><span class="line">#else</span><br><span class="line">#define NSLog(...)</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#pragma mark - 字体语言</span><br><span class="line"></span><br><span class="line">// MARK: 字体大小(常规/粗体)</span><br><span class="line">#define BOLDSYSTEMFONT(FONTSIZE)[UIFont boldSystemFontOfSize:FONTSIZE]</span><br><span class="line">#define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]</span><br><span class="line">#define FONT(NAME, FONTSIZE)    [UIFont fontWithName:(NAME) size:(FONTSIZE)]</span><br><span class="line"></span><br><span class="line">// MARK: 获取当前语言</span><br><span class="line">#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])</span><br><span class="line"></span><br><span class="line">#pragma mark - 颜色</span><br><span class="line"></span><br><span class="line">// MARK: 基础色值获取方法</span><br><span class="line">#define COLOR_RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]</span><br><span class="line">#define COLOR_RGB(r,g,b) COLOR_RGBA(r,g,b,1.0f)</span><br><span class="line"></span><br><span class="line">#define COLOR_HEX(hex) [UIColor colorWithRed:((float)((hex &amp; 0xFF0000) &gt;&gt; 16)) / 255.0 green:((float)((hex &amp; 0xFF00) &gt;&gt; 8)) / 255.0 blue:((float)(hex &amp; 0xFF)) / 255.0 alpha:1]</span><br><span class="line">#define COLOR_HEX_A(rgbValue,a) [UIColor colorWithRed:((float)(((rgbValue) &amp; 0xFF0000) &gt;&gt; 16))/255.0 green:((float)(((rgbValue) &amp; 0xFF00)&gt;&gt;8))/255.0 blue: ((float)((rgbValue) &amp; 0xFF))/255.0 alpha:(a)]</span><br><span class="line"></span><br><span class="line">// MARK: 字体色彩，</span><br><span class="line">#define COLOR_WORD(x)         COLOR_RGB(x,x,x)</span><br><span class="line"></span><br><span class="line">#define COLOR_UNDER_LINE [UIColor colorWithRed:198/255.0 green:198/255.0 blue:198/255.0 alpha:1]</span><br><span class="line"></span><br><span class="line">#pragma mark - 尺寸</span><br><span class="line"></span><br><span class="line">// MARK: 获取View的属性</span><br><span class="line">#define GetViewWidth(view)  view.frame.size.width</span><br><span class="line">#define GetViewHeight(view) view.frame.size.height</span><br><span class="line">#define GetViewX(view)      view.frame.origin.x</span><br><span class="line">#define GetViewY(view)      view.frame.origin.y</span><br><span class="line"></span><br><span class="line">// MARK:  MainScreen Height&amp;Width</span><br><span class="line">#define Screen_Height      [[UIScreen mainScreen] bounds].size.height</span><br><span class="line">#define Screen_Width       [[UIScreen mainScreen] bounds].size.width</span><br><span class="line"></span><br><span class="line">// MARK:  MainScreen bounds</span><br><span class="line">#define Screen_Bounds      [[UIScreen mainScreen] bounds]</span><br><span class="line"></span><br><span class="line">// MARK:  导航栏高度</span><br><span class="line">#define kNavigationBar_HEIGHT (isPhoneX ? 88.f : 64.f)</span><br><span class="line">// MARK:  状态栏高度，iphoneX-&gt;44 其他 20</span><br><span class="line">#define kStatusBar_Height (isPhoneX ? 44.f : 20.f)</span><br><span class="line">// MARK:  tabbar 高度 iphoneX:83 其他:49</span><br><span class="line">#define kTabbar_Height (isPhoneX ? 83.f : 49.f)</span><br><span class="line">// MARK:  底部安全区偏移量</span><br><span class="line">#define kSafe_Bottom_Inset (isPhoneX ? 34.f : 0.f)</span><br><span class="line"></span><br><span class="line">// MARK:  判断是否为 iPhone 5</span><br><span class="line">#define isPhone5 [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;&amp; [[UIScreen mainScreen] bounds].size.height == 568.0f</span><br><span class="line">// MARK:  判断是否为iPhone 6/6s</span><br><span class="line">#define isPhone6 [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;&amp; [[UIScreen mainScreen] bounds].size.height == 667.0f</span><br><span class="line">// MARK:  判断是否为iPhone 6Plus/6sPlus</span><br><span class="line">#define isPhone6P [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;&amp; [[UIScreen mainScreen] bounds].size.height == 736.0f</span><br><span class="line">// MARK:  ipnoneX</span><br><span class="line">#define isPhoneX \</span><br><span class="line">(&#123;\</span><br><span class="line">BOOL isiPhoneX=NO;\</span><br><span class="line">if(@available(iOS 11.0, *))&#123;\</span><br><span class="line">isiPhoneX=[[[UIApplication sharedApplication] delegate] window].safeAreaInsets.bottom &gt; 0.0;\</span><br><span class="line">&#125;else&#123;\</span><br><span class="line">isiPhoneX=NO;\</span><br><span class="line">&#125;\</span><br><span class="line">(isiPhoneX);\</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#pragma mark - 版本</span><br><span class="line"></span><br><span class="line">// MARK: App版本号</span><br><span class="line">#define kLocalVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;]</span><br><span class="line">// MARK:  当前版本</span><br><span class="line">#define FSystemVersion          ([[[UIDevice currentDevice] systemVersion] floatValue])</span><br><span class="line">#define DSystemVersion          ([[[UIDevice currentDevice] systemVersion] doubleValue])</span><br><span class="line">#define SSystemVersion          ([[UIDevice currentDevice] systemVersion])</span><br><span class="line"></span><br><span class="line">// MARK:  是否大于IOS9</span><br><span class="line">#define isIOS9                  ([[[UIDevice currentDevice]systemVersion]floatValue] &gt;=9.0)</span><br><span class="line">// MARK:  是否iPad</span><br><span class="line">#define isPad                   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)</span><br><span class="line"></span><br><span class="line">#pragma mark - 沙盒及路径</span><br><span class="line"></span><br><span class="line">// MARK: Library/Caches 文件路径</span><br><span class="line">#define FilePath ([[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil])</span><br><span class="line">// MARK: 获取temp</span><br><span class="line">#define kPathTemp NSTemporaryDirectory()</span><br><span class="line">// MARK: 获取沙盒 Document</span><br><span class="line">#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]</span><br><span class="line">// MARK: 获取沙盒 Cache</span><br><span class="line">#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]</span><br><span class="line"></span><br><span class="line">#pragma mark - 强弱引用</span><br><span class="line"></span><br><span class="line">// MARK: 弱引用/强引用  可配对引用在外面用WeakSelf(self)，block用StrongSelf(self)  也可以单独引用在外面用WeakSelf(self) block里面用weakself</span><br><span class="line">#define WeakSelf(type)  __weak typeof(type) weak##type = type;</span><br><span class="line">#define StrongSelf(type)  __strong typeof(type) type = weak##type;</span><br><span class="line"></span><br><span class="line">#pragma mark - 系统调用简写</span><br><span class="line"></span><br><span class="line">#define kAppDelegate        [[UIApplication sharedApplication] delegate]</span><br><span class="line">#define kApplication        [UIApplication sharedApplication]</span><br><span class="line">#define kKeyWindow          [UIApplication sharedApplication].keyWindow</span><br><span class="line">#define kUserDefaults       [NSUserDefaults standardUserDefaults]</span><br><span class="line">#define kNotificationCenter [NSNotificationCenter defaultCenter]</span><br><span class="line"></span><br><span class="line">#pragma mark - other</span><br><span class="line"></span><br><span class="line">// MARK: 获取图片资源</span><br><span class="line">#define Image(name) [UIImage imageNamed:name]</span><br><span class="line"></span><br><span class="line">// MARK: 由角度转换弧度</span><br><span class="line">#define kDegreesToRadian(x)      (M_PI * (x) / 180.0)</span><br><span class="line"></span><br><span class="line">// MARK: 由弧度转换角度</span><br><span class="line">#define kRadianToDegrees(radian) (radian * 180.0) / (M_PI)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/// MARK: 临时测试数据，接通接口后删除</span><br><span class="line"></span><br><span class="line">#define kTestImage0 @&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546858200032&amp;di=82cada865edd3fe0e18c5c5a848773ec&amp;imgtype=0&amp;src=http%3A%2F%2Fpic23.nipic.com%2F20120816%2F10691507_162853344170_2.jpg&quot;</span><br><span class="line">#define kTestImage1 @&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546926546357&amp;di=0952a36a8379537c5b22d56a352026a8&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.redocn.com%2F20100622%2F20100621_8c78a30dc5c10ef5552cwCXmHvkvaDCT.jpg&quot;</span><br><span class="line">#define kTestImage2 @&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1547521379&amp;di=1cbd6c9de4afb1144879a267aa95fa1d&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fb6f31e9505acda1d37fee330da3a1d6a1711f28a.jpg&quot;</span><br><span class="line">#define kTestImage3 @&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546926779248&amp;di=66b6fc56643c7ec4c3a31b90d6261710&amp;imgtype=0&amp;src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Faccec800ff454bfc474d154da6ef282664b1db84.jpg&quot;</span><br><span class="line">#define kTestImage4 @&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546926893108&amp;di=06c38eced5b278076cb33bc872ae9834&amp;imgtype=0&amp;src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F534%2Fw1366h768%2F20181213%2FvWhR-hqackac2454235.jpg&quot;</span><br><span class="line">#define kArrayImage @[kTestImage0, kTestImage1, kTestImage2, kTestImage3, kTestImage4]</span><br><span class="line">#define kRandomImage [kArrayImage objectAtIndex:arc4random()%5]</span><br><span class="line"></span><br><span class="line">#endif /* Macros_h */</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/ObjectC/" rel="tag"># ObjectC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/28/iOS/ObjectC/%E7%AE%80%E5%8D%95%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E5%87%B8%E8%B5%B7%E7%9A%84tabbar/" rel="prev" title="OC简单自定义中间凸起的tabbar">
+      <i class="fa fa-chevron-left"></i> OC简单自定义中间凸起的tabbar
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/01/iOS/ObjectC/OC%E5%8D%95%E4%BE%8B%E5%AE%8F/" rel="next" title="OC单例宏">
+      OC单例宏 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">春阳</p>
+  <div class="site-description" itemprop="description">iOS, Mac</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZCY</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/14/2021 14:17:10");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+
+<!--
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz',
+      appKey     : 'GcHQqd7KtA98Da2PX9rtN54k',
+      placeholder: "欢迎留下你的评论、建议以及吐槽！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

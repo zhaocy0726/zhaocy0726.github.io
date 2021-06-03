@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhaocy.fun","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="iOS 设备屏幕旋转控制及适配（转载）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS屏幕旋转及基本定义">
+<meta property="og:url" content="https://www.zhaocy.fun/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/index.html">
+<meta property="og:site_name" content="zhaocy&#39;s blog">
+<meta property="og:description" content="iOS 设备屏幕旋转控制及适配（转载）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghp84kr0bzj30en020mxo.jpg">
+<meta property="article:published_time" content="2021-05-29T01:29:21.000Z">
+<meta property="article:modified_time" content="2021-06-03T05:40:05.554Z">
+<meta property="article:author" content="春阳">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="ObjectC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghp84kr0bzj30en020mxo.jpg">
+
+<link rel="canonical" href="https://www.zhaocy.fun/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>iOS屏幕旋转及基本定义 | zhaocy's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zhaocy's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">iOS developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.zhaocy.fun/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="春阳">
+      <meta itemprop="description" content="iOS, Mac">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaocy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS屏幕旋转及基本定义
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-29 09:29:21" itemprop="dateCreated datePublished" datetime="2021-05-29T09:29:21+08:00">2021-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-03 13:40:05" itemprop="dateModified" datetime="2021-06-03T13:40:05+08:00">2021-06-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/" class="post-meta-item leancloud_visitors" data-flag-title="iOS屏幕旋转及基本定义" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/29/iOS/ObjectC/iOS%E5%B1%8F%E5%B9%95%E6%97%8B%E8%BD%AC%E5%8F%8A%E5%9F%BA%E6%9C%AC%E9%80%82%E9%85%8D/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">iOS 设备屏幕旋转控制及适配（转载）</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>转载：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1106957">https://cloud.tencent.com/developer/article/1106957</a></p>
+<p><strong>目录</strong></p>
+<p>一、最让人纠结的三种枚举 </p>
+<p>二、两种屏幕旋转的触发方式 </p>
+<p>三、屏幕旋转控制的优先级 </p>
+<p>四、开启屏幕旋转的全局权限 </p>
+<p>五、开启屏幕旋转的局部权限(视图控制器)</p>
+<p>六、实现需求：项目主要界面竖屏，部分界面横屏 </p>
+<p>七、默认横屏无效的问题 </p>
+<p>八、关于旋转后的适配问题 </p>
+<p>九、APP启动即全屏</p>
+<p><strong>一、最让人纠结的三种枚举</strong></p>
+<p>刚开始接触屏幕旋转这块知识的时候，最让人抓狂的也许就是三种相关的枚举类型了，它们就是</p>
+<p>UIDeviceOrientation、UIInterfaceOrientation、UIInterfaceOrientationMask。</p>
+<p><strong>下面我们针对三种属性进行解析：</strong></p>
+<p><strong>1. 设备方向：UIDeviceOrientation</strong></p>
+<p>UIDeviceOrientation是硬件设备(iPhone、iPad等)本身的当前旋转方向，设备方向有7种(包括一种未知的情况)，判断设备的方向是以home键的位置作为参照的，我们来看一下它们在源码中的定义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//Portrait 表示纵向，Landscape 表示横向。</span><br><span class="line">typedef NS_ENUM(NSInteger, UIDeviceOrientation) &#123;    </span><br><span class="line">    UIDeviceOrientationUnknown,   </span><br><span class="line">    UIDeviceOrientationPortrait,// Device oriented vertically, home button on the bottom   </span><br><span class="line">    UIDeviceOrientationPortraitUpsideDown,// Device oriented vertically, home button on the top   </span><br><span class="line">    UIDeviceOrientationLandscapeLeft,// Device oriented horizontally, home button on the right  </span><br><span class="line">    UIDeviceOrientationLandscapeRight,// Device oriented horizontally, home button on the left  </span><br><span class="line">    UIDeviceOrientationFaceUp,// Device oriented flat, face up    </span><br><span class="line">    UIDeviceOrientationFaceDown  // Device oriented flat, face down</span><br><span class="line">&#125; __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+
+<p>设备方向只能取值,不能设置， <strong>获取设备当前旋转方向使用方法：<code>[UIDevice currentDevice].orientation</code></strong> 监测设备方向的变化，我们可以在Appdelegate文件中使用通知如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationDidChange) name:UIDeviceOrientationDidChangeNotification object:nil];</span><br><span class="line">[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];</span><br><span class="line">- (BOOL)onDeviceOrientationDidChange &#123;</span><br><span class="line">    //获取当前设备Device   </span><br><span class="line">    UIDevice *device =[UIDevice currentDevice];</span><br><span class="line">    //识别当前设备的旋转方向</span><br><span class="line">     switch (device.orientation) &#123;</span><br><span class="line">         case UIDeviceOrientationFaceUp:</span><br><span class="line">             NSLog(@&quot;屏幕幕朝上平躺&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationFaceDown:</span><br><span class="line">             NSLog(@&quot;屏幕朝下平躺&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationLandscapeLeft:</span><br><span class="line">             NSLog(@&quot;屏幕向左橫置&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationLandscapeRight:</span><br><span class="line">             NSLog(@&quot;屏幕向右橫置&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationPortrait:</span><br><span class="line">             NSLog(@&quot;屏幕直立&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationPortraitUpsideDown:</span><br><span class="line">             NSLog(@&quot;屏幕直立，上下顛倒&quot;);</span><br><span class="line">         break;</span><br><span class="line">         case UIDeviceOrientationUnknown:</span><br><span class="line">             //系统当前无法识别设备朝向，可能是倾斜</span><br><span class="line">             NSLog(@&quot;未知方向&quot;);</span><br><span class="line">         break;</span><br><span class="line">         default:</span><br><span class="line">             NSLog(@&quot;無法识别&quot;);</span><br><span class="line">         break;</span><br><span class="line">     &#125;</span><br><span class="line">     return YES;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.页面方向：UIInterfaceOrientation</strong></p>
+<p>UIInterfaceOrientation程序界面的当前旋转方向(可以设置)，其源码的定义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Note that UIInterfaceOrientationLandscapeLeft is equal to UIDeviceOrientationLandscapeRight (and vice versa).</span><br><span class="line">// This is because rotating the device to the left requires rotating the content to the right.    </span><br><span class="line">typedef NS_ENUM(NSInteger, UIInterfaceOrientation) &#123;</span><br><span class="line">    UIInterfaceOrientationUnknown               = UIDeviceOrientationUnknown,</span><br><span class="line">    UIInterfaceOrientationPortrait              = UIDeviceOrientationPortrait,        </span><br><span class="line">    UIInterfaceOrientationPortraitUpsideDown    = UIDeviceOrientationPortraitUpsideDown,        </span><br><span class="line">    UIInterfaceOrientationLandscapeLeft         = UIDeviceOrientationLandscapeRight,        </span><br><span class="line">    UIInterfaceOrientationLandscapeRight        = UIDeviceOrientationLandscapeLeft</span><br><span class="line">&#125; __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+
+<p><strong>区别与UIDeviceOrientation，表示我们开发的程序界面的方向使用UIInterfaceOrientation。</strong> 值得注意的是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIInterfaceOrientationLandscapeLeft  = UIDeviceOrientationLandscapeRight, </span><br><span class="line">UIInterfaceOrientationLandscapeRight = UIDeviceOrientationLandscapeLeft</span><br></pre></td></tr></table></figure>
+
+<p>我们可以发现两者的枚举值大多是可以对应上的。只有左右旋转的时候是UIInterfaceOrientationLandscapeLeft 与UIDeviceOrientationLandscapeRight相等，<strong>反之亦然，这是因为向左旋转设备需要旋转程序界面右边的内容。</strong></p>
+<p><strong>3.页面方向：UIInterfaceOrientationMask</strong></p>
+<p>UIInterfaceOrientationMask是iOS6之后增加的一种枚举，其源码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_OPTIONS(NSUInteger, UIInterfaceOrientationMask) &#123;    </span><br><span class="line">    UIInterfaceOrientationMaskPortrait = (1&lt;&lt; UIInterfaceOrientationPortrait),    </span><br><span class="line">    UIInterfaceOrientationMaskLandscapeLeft = (1&lt;&lt; UIInterfaceOrientationLandscapeLeft),</span><br><span class="line">    UIInterfaceOrientationMaskLandscapeRight = (1&lt;&lt; UIInterfaceOrientationLandscapeRight),</span><br><span class="line">    UIInterfaceOrientationMaskPortraitUpsideDown = (1&lt;&lt; UIInterfaceOrientationPortraitUpsideDown),</span><br><span class="line">    UIInterfaceOrientationMaskLandscape = (UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),    </span><br><span class="line">    UIInterfaceOrientationMaskAll = (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortraitUpsideDown),    </span><br><span class="line">    UIInterfaceOrientationMaskAllButUpsideDown =(UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),</span><br><span class="line">&#125; __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道UIDeviceOrientation与UIInterfaceOrientation的区别在于：前者是真实的设备方向，后者是页面方向。 而UIInterfaceOrientation和UIInterfaceOrientationMask的区别是什么呢？其实观察源码，<strong>我们就会发现这是一种为了支持多种UIInterfaceOrientation而定义的类型。</strong>下面的示例将很好的说明这点：</p>
+<p>在iOS6之后，控制单个界面的旋转我们通常是下面三个方法来控制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//方法1</span><br><span class="line">- (BOOL)shouldAutorotate NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;</span><br><span class="line">//方法2</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;// Returns interface orientation masks.</span><br><span class="line">//方法3</span><br><span class="line">- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED;</span><br></pre></td></tr></table></figure>
+
+<p>方法2的作用是设置当前界面支持的所有方向，所以返回值是UIInterfaceOrientationMask，更加方便的表达支持多方向旋转的情况。</p>
+<p>方法3作用是设置进入界面默认支持的方向，使用了返回值类型UIInterfaceOrientation，默认进入界面的方向是个确定的方向，所以使用UIInterfaceOrientation更适合。</p>
+<p><strong>二、两种屏幕旋转的触发方式</strong></p>
+<p>我们开发的App的，大多情况都是大多界面支持竖屏，几个特别的界面支持旋转横屏，两种界面相互切换，触发其旋转有两种情况：</p>
+<p><strong>情况1：系统没有关闭自动旋转屏幕功能,</strong></p>
+<p>这种情况，支持旋转的界面跟随用户手持设备旋转方向自动旋转。我们需要在当前视图控制器中添加如下方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//1.决定当前界面是否开启自动转屏，如果返回NO，后面两个方法也不会被调用，只是会支持默认的方向</span><br><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">//2.返回支持的旋转方向</span><br><span class="line">//iPad设备上，默认返回值UIInterfaceOrientationMaskAllButUpSideDwon</span><br><span class="line">//iPad设备上，默认返回值是UIInterfaceOrientationMaskAll</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    return UIInterfaceOrientationMaskAll;</span><br><span class="line">&#125;</span><br><span class="line">//3.返回进入界面默认显示方向</span><br><span class="line">-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation &#123;</span><br><span class="line">    return UIInterfaceOrientationPortrait;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>情况2：单个界面强制旋转</strong></p>
+<p>在程序界面通过点击等方式切换到横屏(尤其是视频播放的情况)，有以下两种方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 方法1：</span><br><span class="line">-(void)setInterfaceOrientation:(UIDeviceOrientation)orientation &#123;</span><br><span class="line">    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) &#123;</span><br><span class="line">        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:orientation] forKey:@&quot;orientation&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 方法2：</span><br><span class="line">-(void)setInterfaceOrientation:(UIInterfaceOrientation)orientation &#123;</span><br><span class="line">    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) &#123;</span><br><span class="line">        SEL selector = NSSelectorFromString(@&quot;setOrientation:&quot;);</span><br><span class="line">        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];</span><br><span class="line">        [invocation setSelector:selector];[invocation setTarget:[UIDevice currentDevice]];            </span><br><span class="line">        int val = orientation;[invocation setArgument:&amp;val atIndex:2];[invocation invoke];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：使用这两个方法的时候，也要确保shouldAutorotate方法返回YES，这样这两个方法才会生效。还要注意两者使用的参数类型不同。</p>
+<p><strong>三、屏幕旋转控制的优先级</strong></p>
+<p>事实上，如果我们只用上面的方法来控制旋转的开启与关闭，并不能符合我们的需求，而且方法无效。这是因为我们忽略了旋转权限优先级的问题。<strong>关于屏幕旋转的设置有很多，有Xcode的General设置，也有info.plist设置，更还有代码设置等</strong>，这么多的设置很是繁杂。但是这些其实都是在不同级别上实现旋转的设置，我们会遇到设置关闭旋转无效的情况，这就很可能是被上一级别控制的原因。</p>
+<p>我们首先有个大致的了解，控制屏幕旋转优先级为：<strong>工程Target属性配置(全局权限) = Appdelegate&amp;&amp;Window &gt; 根视图控制器&gt; 普通视图控制器。</strong></p>
+<p><strong>四、开启屏幕旋转的全局权限</strong></p>
+<p>这里我使用全局权限来描述这个问题可能不太准确，其实是设置我们的设备能够支持的方向有哪些，这也是实现旋转的前提。 开启屏幕旋转的全局权限有三种方法，包括通过Xcode直接配置的两种方法和代码控制的一种方法。这三种方法作用相同，但是由于代码的控制在程序启动之后，所以也是最有效的。下面分别对三种方法的用法介绍：</p>
+<p><strong>1.Device Orientation属性配置</strong></p>
+<p>我们创建了新工程，Xcode就默认替我们选择了支持旋转的几个方向，这就是Device Orientation属性的默认配置。在Xcode中依次打开：<strong>【General】—&gt;【Deployment Info】—&gt;【Device Orientation】</strong>,我们可以看到默认支持的设备方向有 Proprait / Landscape Left / Landscape Right。</p>
+<p>可以发现，UpsideDown没有被默认支持，因为对于iPhone即使勾选也没有UpSideDown的旋转效果。我们可以在这里勾选或者取消以修改支持的旋转方向。如果是iPad设备勾选之后会同时支持四个方向。</p>
+<p><strong>值得注意的是，对于iPhone，如果四个属性我们都选或者都不选，效果和默认的情况一样。</strong></p>
+<p><strong>2.Info.Plist设置</strong></p>
+<p>其实我们设置了Device Orientation之后，再到info.plist中查看Supported interface orientation,我们会看到：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghp84kr0bzj30en020mxo.jpg" alt="hcz7r8j70p"></p>
+<p>没错，此时Supported interface orientation里的设置和UIDevice Orientation的值一致的，并且我们在这里增加或者删除其中的值，UIDevice Orientation的值也会随之变化，两者属于同一种设置。</p>
+<p><strong>3.Appdelegate&amp;&amp;Window中设置</strong></p>
+<p>正常情况下，我们的App从Appdelegate中启动，而Appdelegate所持有唯一的Window对象是全局的，所以在Appdelegate文件中设置屏幕旋转也是全局有效的。下面的代码设置了只支持竖屏和右旋转：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window &#123;</span><br><span class="line">    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是：<strong>如果我们实现了Appdelegate的这一方法，那么我们的App的全局旋转设置将以这里的为准，即使前两种方法的设置与这里的不同。</strong></p>
+<p><strong>五、开启屏幕旋转的局部权限(视图控制器)</strong></p>
+<p>在设置了全局所支持的旋转方向后，接着就开始设置具体的控制器界面了。我们在上面已经说明了关于旋转的优先级了。而这里主要涉及了三种视图控制器(UITabbarViewController，UINavigationBarController ,UIViewController)</p>
+<p>自全局权限开启之后，接下来具有最高权限的就是Window的根视图控制器rootViewController了。如果我们要具体控制单个界面UIViewController的旋转就必须先看一下根视图控制器的配置情况了。</p>
+<p>当然，在一般情况下，我们的项目都是用UITabbarViewController作为Window的根视图控制器，然后管理着若干个导航控制器UINavigationBarController，再由导航栏控制器去管理普通的视图控制器UIViewController。<strong>若以此为例的话，关于旋转的优先级从高到低就是UITabbarViewController&gt;UINavigationBarController &gt;UIViewController了。如果具有高优先级的控制器关闭了旋转设置，那么低优先级的控制器是无法做到旋转的。</strong></p>
+<p>比如说我们设置要单个视图控制器可以自动旋转，这需要在视图控制器中增加shouldAutorotate方法返回YES或者NO来控制。但如果存在上层根视图控制器，而我们只在这个视图控制器中实现方法，会发现这个方法是不走的，因为这个方法被上层根视图控制器拦截了。理解这个原理后，我们有两种方法实现自动可控的旋转设置。</p>
+<p><strong>方法1：逐级设置各视图控制器，高优先级的视图控制器影响低优先级控制器，</strong></p>
+<p>解决上述的问题我们需要设置UITabbarViewController如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//是否自动旋转</span><br><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return self.selectedViewController.shouldAutorotate;</span><br><span class="line">&#125;</span><br><span class="line">//支持哪些屏幕方向</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    return [self.selectedViewController supportedInterfaceOrientations];</span><br><span class="line">&#125;</span><br><span class="line">//默认方向</span><br><span class="line">- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation &#123;</span><br><span class="line">    return [self.selectedViewController preferredInterfaceOrientationForPresentation];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置导航控制器UINavigationController如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//是否自动旋转</span><br><span class="line">//返回导航控制器的顶层视图控制器的自动旋转属性，因为导航控制器是以栈的原因叠加VC的</span><br><span class="line">//topViewController是其最顶层的视图控制器，</span><br><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return self.topViewController.shouldAutorotate;</span><br><span class="line">&#125;</span><br><span class="line">//支持哪些屏幕方向</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    return [self.topViewController supportedInterfaceOrientations];</span><br><span class="line">&#125;</span><br><span class="line">//默认方向</span><br><span class="line">- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation&#123;</span><br><span class="line">    return [self.topViewController preferredInterfaceOrientationForPresentation];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到这里，我们就应该明白了，其实就是高优先级的视图控制器要跟随低优先级控制器的旋转配置。这样就能够达到目的。</p>
+<p><strong>方法2: 另辟蹊径，使用模态视图</strong></p>
+<p>使用模态视图可以不受这种根视图控制器优先级的限制。这个也很容易理解，模态弹出的视图控制器是隔离出来的，不受根视图控制的影响。具体的设置和普通视图器代码相同，这里就不累述了。</p>
+<p><strong>六、实现需求：项目主要界面竖屏，部分界面横屏</strong></p>
+<p>这其实也是一个我们做屏幕旋转最常见的需求，在根据上面的讲述之后，我们实现这个需求会很容易，但是具体的实现却有着不同的思路，我在这里总结了两种方法：</p>
+<p><strong>方法1：使用基类控制器逐级控制</strong></p>
+<p>步骤：1.开启全局权限设置项目支持的旋转方向2.根据第五节中的方法1,自定义标签控制器和导航控制器来设置屏幕的自动旋转。3.自定义基类控制器设置不支持自动转屏，并默认只支持竖屏4.对项目中需要转屏幕的控制器开启自动转屏、设置支持的旋转方向并设置默认方向</p>
+<p>demo1链接: <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/DreamcoffeeZS/Demo_TestRotatesOne.git">https://github.com/DreamcoffeeZS/Demo_TestRotatesOne.git</a></p>
+<p><strong>方法2：Appdelegate增设旋转属性</strong></p>
+<p>步骤：1.在Applegate文件中增加一个用于记录当前屏幕是否横屏的属性2.需要横屏的界面，进入界面后强制横屏，离开界面时恢复竖屏</p>
+<p>demo2链接: <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/DreamcoffeeZS/Demo_TestRotatesTwo.git">https://github.com/DreamcoffeeZS/Demo_TestRotatesTwo.git</a></p>
+<p><strong>七、默认横屏无效的问题</strong></p>
+<p>在上面的项目中，我们可能会遇到一个关于默认横屏的问题，把它拿出来细说一下。 我们项目中有支持竖屏的界面A，也有支持横竖屏的界面B，而且界面B需要进入时就显示横屏。从界面A到界面B中，如果我们使用第五节中的方法1会遇到无法显示默认横屏的情况，因为没有旋转设备，shouldAutorotate就没被调用，也就没法显示我们需要的横屏。这里有两个解决方法：</p>
+<p><strong>方法1：在自定义导航控制器中增加以下方法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark -UINavigationControllerDelegate</span><br><span class="line">//不要忘记设置delegate</span><br><span class="line">- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated &#123;</span><br><span class="line">    [self presentViewController:[UIViewController new] animated:NO completion:^&#123;</span><br><span class="line">        [self dismissViewControllerAnimated:NO completion:nil];</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法的缺点是，原理上利用弹出模态视图来调用转屏，造成切换界面的时候有闪烁效果，体验不佳。所以这里也只是提供一种思路，不推荐使用。</p>
+<p><strong>方法2:在需要默认横屏的界面里设置，进入时强制横屏，离开时强制竖屏</strong></p>
+<p>关于这种使用，这个具体可以参考第五节中的demo2</p>
+<p>注：两种方法不可同时使用</p>
+<p><strong>八、关于旋转后的适配问题</strong></p>
+<p>屏幕旋转的实现会带来相应的UI适配问题，我们需要针对不同方向下的界面重新调整视图布局。首先我们要能够监测到屏幕旋转事件，这里分为两种情况：</p>
+<p><strong>1.视图控制器UIViewController里的监测</strong></p>
+<p>当发生转屏事件的时候，下面的UIViewControoller方法会监测到视图View的大小变化，从而帮助我们适配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//This method is called when the view controller&#x27;s view&#x27;s size ischanged by</span><br><span class="line">//its parent (i.e. for the root view controller when its window rotates or is resized).</span><br><span class="line">//If you override this method, you should either call super topropagate the change to children or manually forward the change to children.</span><br><span class="line">- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id &lt;UIViewControllerTransitionCoordinator&gt;)coordinator NS_AVAILABLE_IOS(8_0);</span><br></pre></td></tr></table></figure>
+
+<p>从注释里可以看出此方法在屏幕旋转的时候被调用，我们使用时候也应该首先调用super方法，具体代码使用示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//屏幕旋转之后，屏幕的宽高互换，我们借此判断重新布局</span><br><span class="line">//横屏：size.width &gt; size.height</span><br><span class="line">//竖屏: size.width &lt; size.height</span><br><span class="line">- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id&lt;UIViewControllerTransitionCoordinator&gt;)coordinator &#123;</span><br><span class="line">    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];</span><br><span class="line">    if (size.width &gt; size.height) &#123;</span><br><span class="line">        //横屏设置，为防止遮挡键盘,调整输入视图的高度     </span><br><span class="line">        self.textView_height.constant = 50;</span><br><span class="line">     &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">       //竖屏设置    </span><br><span class="line">       self.textView_height.constant = 200;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.子视图横竖屏监测</strong></p>
+<p>如果是类似于表视图的单元格，要监测到屏幕变化实现适配，我们需要用到layoutSubviews方法，因为屏幕切换横竖屏时会触发此方法，然后我们根据状态栏的位置就可以判断横竖屏了，代码示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)layoutSubviews &#123;</span><br><span class="line">    [super layoutSubviews];</span><br><span class="line">    //通过状态栏电池图标判断横竖屏</span><br><span class="line">    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationMaskPortrait) &#123;</span><br><span class="line">        //竖屏布局</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        //横屏布局</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>九、APP启动即全屏</strong></p>
+<p>有时项目需要从App启动就默认是横屏，这里有个很方便的方法，就是我们在Device Orientation属性配置里设置只选中 Landscape Left / Landscape Right。</p>
+<p>但是只这样处理的话，会让项目只支持横屏，所以我们可以在Appdelegate里再次调整我们所支持的方向，方法已经说过，这里就不累述了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/ObjectC/" rel="tag"># ObjectC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/28/iOS/ObjectC/%E7%AE%80%E5%8D%95%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E5%87%B8%E8%B5%B7%E7%9A%84tabbar/" rel="prev" title="OC简单自定义中间凸起的tabbar">
+      <i class="fa fa-chevron-left"></i> OC简单自定义中间凸起的tabbar
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/01/iOS/ObjectC/OC%E5%B8%B8%E7%94%A8%E5%AE%8F%E5%AE%9A%E4%B9%89/" rel="next" title="OC常用宏定义">
+      OC常用宏定义 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">春阳</p>
+  <div class="site-description" itemprop="description">iOS, Mac</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZCY</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/14/2021 14:17:10");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+
+<!--
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uq0VkpwElQGunpK9IN5yYKzh-gzGzoHsz',
+      appKey     : 'GcHQqd7KtA98Da2PX9rtN54k',
+      placeholder: "欢迎留下你的评论、建议以及吐槽！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

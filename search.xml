@@ -2255,4 +2255,19 @@
         <tag>ObjectC</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NSData按位取反</title>
+    <url>/2021/06/17/iOS/ObjectC/NSData%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 生成一个字符串，转换为Data类型的数据</span><br><span class="line">NSString *originalString = @&quot;testString&quot;;</span><br><span class="line">NSData *originalData = [originalString dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">NSLog(@&quot;originalData %@&quot;, originalData);</span><br><span class="line">Byte *bytes = (Byte *)[originalData bytes];</span><br><span class="line"></span><br><span class="line">// 全部取反加密</span><br><span class="line">for (NSInteger i = 0; i &lt; originalData.length; i ++) &#123;</span><br><span class="line">    bytes[i] = ~bytes[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 获取加密后的数据</span><br><span class="line">NSData *encodeData = [NSData dataWithBytes:bytes length:originalData.length];</span><br><span class="line">NSLog(@&quot;encodeData %@&quot;, encodeData);</span><br><span class="line">NSString *encodeString = [[NSString alloc] initWithData:encodeData encoding:NSUTF8StringEncoding];</span><br><span class="line">NSLog(@&quot;encodeString %@&quot;, encodeString);</span><br><span class="line"></span><br><span class="line">// 再次取反解密</span><br><span class="line">for (NSInteger i = 0; i &lt; originalData.length; i ++) &#123;</span><br><span class="line">    bytes[i] = ~bytes[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 获取解密后的数据</span><br><span class="line">NSData *decodeData = [NSData dataWithBytes:bytes length:originalData.length];</span><br><span class="line">NSLog(@&quot;decodeData %@&quot;, decodeData);</span><br><span class="line">NSString *decodeString = [[NSString alloc] initWithData:decodeData encoding:NSUTF8StringEncoding];</span><br><span class="line">NSLog(@&quot;decodeString %@&quot;, decodeString);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>ObjectC</tag>
+        <tag>取反</tag>
+      </tags>
+  </entry>
 </search>
